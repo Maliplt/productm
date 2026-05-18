@@ -1,0 +1,367 @@
+// ==========================================================================
+// 1. GLOBAL DEĞİŞKENLER (VARIABLES)
+// ==========================================================================
+
+// Renk Paleti (Modern Dashboard Teması)
+$color-primary: #4338ca;       // İndigo
+$color-primary-hover: #3730a3;
+$color-secondary: #64748b;     // Slate
+$color-success: #10b981;       // Zümrüt Yeşili
+$color-warning: #f59e0b;       // Kehribar
+$color-danger: #ef4444;        // Kırmızı
+
+// Arka Plan ve Yüzey Renkleri
+$bg-body: #f8fafc;
+$bg-surface: #ffffff;
+$bg-surface-hover: #f1f5f9;
+
+// Metin Renkleri
+$text-main: #0f172a;
+$text-muted: #64748b;
+
+// Sınır ve Gölgeler
+$border-color: #e2e8f0;
+$border-radius-sm: 6px;
+$border-radius-md: 10px;
+$border-radius-lg: 16px;
+
+$shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+$shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+$shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+$shadow-modal: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
+// ==========================================================================
+// 2. GENEL SIFIRLAMALAR VE LAYOUT (Container, Content)
+// ==========================================================================
+
+body {
+  background-color: $bg-body;
+  color: $text-main;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.rs-container {
+  min-height: 100vh;
+  background-color: $bg-body;
+}
+
+.rs-content {
+  padding: 24px;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+// ==========================================================================
+// 3. NAVİGASYON VE HEADER (Navbar, Nav, Tabs)
+// ==========================================================================
+
+.rs-navbar {
+  background-color: $bg-surface;
+  box-shadow: $shadow-sm;
+  padding: 0 24px;
+  border-bottom: 1px solid $border-color;
+
+  .rs-nav-item {
+    font-weight: 500;
+    color: $text-muted;
+    transition: all 0.2s;
+
+    &:hover {
+      color: $color-primary;
+      background-color: transparent;
+    }
+
+    &.rs-nav-item-active {
+      color: $color-primary;
+      border-bottom: 2px solid $color-primary;
+    }
+  }
+}
+
+// Tabs Tasarımı
+.rs-nav-tabs {
+  border-bottom: 2px solid $border-color;
+  margin-bottom: 20px;
+
+  .rs-nav-item {
+    font-size: 15px;
+    font-weight: 500;
+    padding: 12px 20px;
+    color: $text-muted;
+
+    &:hover {
+      color: $color-primary;
+    }
+
+    &.rs-nav-item-active {
+      color: $color-primary;
+      border-bottom: 2px solid $color-primary;
+      margin-bottom: -2px; // Çizgiyi border'ın üstüne oturtmak için
+    }
+  }
+}
+
+// ==========================================================================
+// 4. BUTONLAR VE İKONLAR (Button, IconButton)
+// ==========================================================================
+
+.rs-btn {
+  border-radius: $border-radius-sm;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  &-primary {
+    background-color: $color-primary;
+    
+    &:hover, &:focus {
+      background-color: $color-primary-hover;
+      box-shadow: 0 4px 12px rgba(67, 56, 202, 0.2);
+    }
+  }
+
+  // Edit, Trash, Eye gibi IconButton'lar için özel stiller
+  &-icon {
+    border-radius: $border-radius-sm;
+    
+    // Göz ikonlu buton (Görüntüleme)
+    &.rs-btn-subtle {
+      color: $color-secondary;
+      &:hover {
+        color: $color-primary;
+        background-color: rgba($color-primary, 0.1);
+      }
+    }
+
+    // Çöp Kutusu (Silme)
+    &.rs-btn-red {
+      color: $color-danger;
+      &:hover {
+        background-color: rgba($color-danger, 0.1);
+      }
+    }
+  }
+}
+
+// ==========================================================================
+// 5. FORMLAR VE GİRDİLER (Input, InputGroup, AutoComplete, Form)
+// ==========================================================================
+
+.rs-form-group {
+  margin-bottom: 20px;
+
+  .rs-form-control-label {
+    font-weight: 500;
+    color: $text-main;
+    margin-bottom: 8px;
+    display: block;
+  }
+}
+
+.rs-input, .rs-input-number, .rs-auto-complete {
+  border-radius: $border-radius-sm;
+  border: 1px solid $border-color;
+  background-color: $bg-surface;
+  padding: 8px 12px;
+  font-size: 14px;
+  color: $text-main;
+  transition: all 0.2s;
+
+  &:hover {
+    border-color: $color-secondary;
+  }
+
+  &:focus, &-focus {
+    border-color: $color-primary;
+    box-shadow: 0 0 0 3px rgba($color-primary, 0.15);
+  }
+}
+
+.rs-input-group {
+  border-radius: $border-radius-sm;
+  overflow: hidden;
+  border: 1px solid $border-color;
+
+  &-addon {
+    background-color: $bg-surface-hover;
+    color: $text-muted;
+    border: none;
+  }
+
+  &.rs-input-group-focus {
+    border-color: $color-primary;
+    box-shadow: 0 0 0 3px rgba($color-primary, 0.15);
+  }
+}
+
+// ==========================================================================
+// 6. VERİ GÖSTERİMİ (Panel, Table, List, Tag)
+// ==========================================================================
+
+// Ürün Kartları için Panel
+.rs-panel {
+  background-color: $bg-surface;
+  border-radius: $border-radius-md;
+  box-shadow: $shadow-md;
+  border: 1px solid transparent;
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: $shadow-lg;
+    border-color: $color-primary;
+  }
+
+  &-header {
+    border-bottom: 1px solid $border-color;
+    padding: 16px 20px;
+    font-weight: 600;
+    font-size: 16px;
+  }
+
+  &-body {
+    padding: 20px;
+  }
+}
+
+// Ürün Tablosu (ProductTable)
+.rs-table {
+  border-radius: $border-radius-md;
+  box-shadow: $shadow-sm;
+  border: 1px solid $border-color;
+  background-color: $bg-surface;
+
+  &-cell-header {
+    background-color: $bg-surface-hover;
+    font-weight: 600;
+    color: $text-muted;
+    border-bottom: 2px solid $border-color;
+  }
+
+  &-row {
+    transition: background-color 0.15s;
+
+    &:hover {
+      background-color: rgba($color-primary, 0.02);
+    }
+  }
+
+  &-cell-content {
+    padding: 12px 16px;
+    font-size: 14px;
+  }
+}
+
+// Etiketler (Kategori / Durum bildiren Tag'ler)
+.rs-tag {
+  border-radius: 4px;
+  font-weight: 500;
+  padding: 4px 8px;
+  
+  &-green { background-color: rgba($color-success, 0.1); color: $color-success; }
+  &-red { background-color: rgba($color-danger, 0.1); color: $color-danger; }
+  &-blue { background-color: rgba($color-primary, 0.1); color: $color-primary; }
+  &-orange { background-color: rgba($color-warning, 0.1); color: $color-warning; }
+}
+
+// Liste Görünümü
+.rs-list {
+  border-radius: $border-radius-md;
+  border: 1px solid $border-color;
+  
+  &-item {
+    padding: 16px;
+    transition: background-color 0.2s;
+    
+    &:hover {
+      background-color: $bg-surface-hover;
+    }
+  }
+}
+
+// ==========================================================================
+// 7. MODAL VE ARAÇ İPUÇLARI (Modal, Tooltip, Whisper)
+// ==========================================================================
+
+// Modallar (ProductModal, FilterModal vb.)
+.rs-modal {
+  &-content {
+    border-radius: $border-radius-lg;
+    box-shadow: $shadow-modal;
+    background-color: $bg-surface;
+    border: none;
+  }
+
+  &-header {
+    border-bottom: 1px solid $border-color;
+    padding: 20px 24px;
+    
+    .rs-modal-title {
+      font-weight: 600;
+      font-size: 18px;
+      color: $text-main;
+    }
+  }
+
+  &-body {
+    padding: 24px;
+  }
+
+  &-footer {
+    border-top: 1px solid $border-color;
+    padding: 16px 24px;
+    background-color: $bg-surface-hover;
+    border-bottom-left-radius: $border-radius-lg;
+    border-bottom-right-radius: $border-radius-lg;
+  }
+}
+
+// Araç İpuçları
+.rs-tooltip {
+  background-color: $text-main;
+  color: white;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 6px 10px;
+  box-shadow: $shadow-sm;
+}
+
+// ==========================================================================
+// 8. DİĞER YARDIMCILAR (Divider, Stack)
+// ==========================================================================
+
+.rs-divider {
+  background-color: $border-color;
+  
+  &-text {
+    color: $text-muted;
+    font-size: 13px;
+    font-weight: 500;
+  }
+}
+
+// Pagination Tasarımı
+.rs-pagination {
+  margin-top: 20px;
+  
+  .rs-pagination-btn {
+    border-radius: $border-radius-sm;
+    color: $text-main;
+    
+    &:hover {
+      background-color: $bg-surface-hover;
+      color: $color-primary;
+    }
+    
+    &.rs-pagination-btn-active {
+      background-color: $color-primary;
+      color: white;
+    }
+  }
+}
