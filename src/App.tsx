@@ -23,7 +23,7 @@ function App() {
         <Route path="/" element={isAuth ? <Dashboard onLogout={() => handleAuth(false)} /> : <Navigate to="/login" replace />} />
         <Route path="/dashboard" element={<Navigate to="/" replace />} />
         <Route path="/login" element={!isAuth ? <Login onLogin={() => handleAuth(true)} /> : <Navigate to="/" replace />} />
-        <Route path="/register" element={!isAuth ? <Register onRegister={() => handleAuth(true)} /> : <Navigate to="/" replace />} />
+        <Route path="/register" element={!isAuth ? <Register /> : <Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>
   )

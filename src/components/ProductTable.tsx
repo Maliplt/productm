@@ -1,8 +1,6 @@
 import { useState } from 'react'
 import { Table, Pagination, IconButton, Tooltip, Whisper, Stack } from 'rsuite'
-import EditIcon from '@rsuite/icons/Edit'
-import TrashIcon from '@rsuite/icons/Trash'
-import EyeIcon from '@rsuite/icons/Visible'
+import { Pencil, Trash2, Eye } from 'lucide-react'
 import type { Product } from '../types/product'
 
 const { Column, HeaderCell, Cell } = Table
@@ -134,7 +132,7 @@ export default function ProductTable({ products, onEdit, onDelete, onView }: Pro
               <Stack spacing={6} justifyContent="center">
                 <Whisper placement="top" speaker={<Tooltip>Detay</Tooltip>}>
                   <IconButton 
-                    icon={<EyeIcon />} 
+                    icon={<Eye size={18} />} 
                     circle 
                     size="sm" 
                     appearance="subtle"
@@ -143,7 +141,7 @@ export default function ProductTable({ products, onEdit, onDelete, onView }: Pro
                 </Whisper>
                 <Whisper placement="top" speaker={<Tooltip>Düzenle</Tooltip>}>
                   <IconButton 
-                    icon={<EditIcon />} 
+                    icon={<Pencil size={18} />} 
                     circle 
                     size="sm" 
                     appearance="subtle" 
@@ -153,7 +151,7 @@ export default function ProductTable({ products, onEdit, onDelete, onView }: Pro
                 </Whisper>
                 <Whisper placement="top" speaker={<Tooltip>Sil</Tooltip>}>
                   <IconButton 
-                    icon={<TrashIcon />} 
+                    icon={<Trash2 size={18} />} 
                     circle 
                     size="sm" 
                     appearance="subtle" 

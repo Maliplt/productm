@@ -1,9 +1,6 @@
 import { useState } from 'react'
 import { Container, Content, Input, InputGroup, Button, Grid, Row, Col, Panel, Tabs } from 'rsuite'
-import SearchIcon from '@rsuite/icons/Search'
-import PlusIcon from '@rsuite/icons/Plus'
-import ListIcon from '@rsuite/icons/List'
-import AppSelectIcon from '@rsuite/icons/AppSelect'
+import { Search, Plus, List as ListIcon, LayoutGrid } from 'lucide-react'
 import type { Product } from '../types/product'
 import ProductCard from '../components/ProductCard'
 import ProductModal from '../components/ProductModal'
@@ -170,7 +167,7 @@ export default function Dashboard({ onLogout }: DashboardProps) {
           <div style={{ display: 'flex', gap: '16px', marginBottom: '24px' }}>
             <InputGroup style={{ flex: 1, background: '#fff' }}>
               <InputGroup.Addon>
-                <SearchIcon />
+                <Search size={18} />
               </InputGroup.Addon>
               <Input 
                 placeholder="Ürün adı veya kategoriye göre ara..." 
@@ -181,13 +178,13 @@ export default function Dashboard({ onLogout }: DashboardProps) {
             <Button appearance="default" onClick={() => setIsFilterModalOpen(true)}>
               Filtre
             </Button>
-            <Button appearance="primary" color="orange" startIcon={<PlusIcon />} onClick={openNewForm}>
+            <Button appearance="primary" color="blue" startIcon={<Plus size={18} />} onClick={openNewForm}>
               Yeni Ürün
             </Button>
           </div>
 
           <Tabs activeKey={activeTab} onSelect={(key) => setActiveTab(key as string)} appearance="subtle" style={{ marginBottom: '20px' }}>
-            <Tabs.Tab eventKey="table" title="Liste Görünümü" icon={<ListIcon />}>
+            <Tabs.Tab eventKey="table" title="Liste Görünümü" icon={<ListIcon size={18} />}>
               <div className="pt-4">
                 {filteredProducts.length === 0 ? (
                   <Panel bordered style={{ textAlign: 'center', padding: '64px 0', background: '#fff' }}>
@@ -203,7 +200,7 @@ export default function Dashboard({ onLogout }: DashboardProps) {
                 )}
               </div>
             </Tabs.Tab>
-            <Tabs.Tab eventKey="grid" title="Grid Görünümü" icon={<AppSelectIcon />}>
+            <Tabs.Tab eventKey="grid" title="Grid Görünümü" icon={<LayoutGrid size={18} />}>
               <div className="pt-4">
                 {filteredProducts.length === 0 ? (
                   <Panel bordered style={{ textAlign: 'center', padding: '64px 0', background: '#fff' }}>

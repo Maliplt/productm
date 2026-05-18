@@ -1,8 +1,6 @@
 import { Modal, AutoComplete, List, Stack, IconButton, Tooltip, Whisper } from 'rsuite'
 import { useState } from 'react'
-import EditIcon from '@rsuite/icons/Edit'
-import TrashIcon from '@rsuite/icons/Trash'
-import EyeIcon from '@rsuite/icons/Visible'
+import { Pencil, Trash2, Eye } from 'lucide-react'
 import type { Product } from '../types/product'
 
 interface FilterModalProps {
@@ -49,13 +47,13 @@ export default function FilterModal({ isOpen, onClose, products, onEdit, onDelet
                 </Stack>
                 <Stack spacing={6}>
                   <Whisper placement="top" speaker={<Tooltip>Detay</Tooltip>}>
-                    <IconButton icon={<EyeIcon />} circle size="sm" appearance="subtle" onClick={() => { onView(product); onClose(); }} />
+                    <IconButton icon={<Eye size={18} />} circle size="sm" appearance="subtle" onClick={() => { onView(product); onClose(); }} />
                   </Whisper>
                   <Whisper placement="top" speaker={<Tooltip>Düzenle</Tooltip>}>
-                    <IconButton icon={<EditIcon />} circle size="sm" appearance="subtle" color="blue" onClick={() => { onEdit(product); onClose(); }} />
+                    <IconButton icon={<Pencil size={18} />} circle size="sm" appearance="subtle" color="blue" onClick={() => { onEdit(product); onClose(); }} />
                   </Whisper>
                   <Whisper placement="top" speaker={<Tooltip>Sil</Tooltip>}>
-                    <IconButton icon={<TrashIcon />} circle size="sm" appearance="subtle" color="red" onClick={() => {
+                    <IconButton icon={<Trash2 size={18} />} circle size="sm" appearance="subtle" color="red" onClick={() => {
                        if(confirm('Silmek istediğinize emin misiniz?')) { onDelete(product.id) }
                     }} />
                   </Whisper>

@@ -1,6 +1,6 @@
 import { Link, useNavigate, useLocation } from 'react-router-dom'
 import { Navbar, Nav, Button } from 'rsuite'
-import CogIcon from '@rsuite/icons/Gear'
+import { Settings } from 'lucide-react'
 
 interface HeaderProps {
   onLogout?: () => void
@@ -19,7 +19,7 @@ export default function Header({ onLogout }: HeaderProps) {
       </Navbar.Brand>
       <Nav>
         <Nav.Item as={Link} to="/">Ürünler</Nav.Item>
-        <Nav.Item icon={<CogIcon />}>Ayarlar</Nav.Item>
+        <Nav.Item icon={<Settings size={18} />} as={Link} to="/settings">Ayarlar</Nav.Item>
       </Nav>
       <Nav style={{ marginLeft: 'auto' }}>
         <Nav.Item as="div" style={{ paddingTop: '8px' }}>

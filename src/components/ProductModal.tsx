@@ -1,6 +1,5 @@
 import { Modal, Button, Stack, Divider } from 'rsuite'
-import EditIcon from '@rsuite/icons/Edit'
-import TrashIcon from '@rsuite/icons/Trash'
+import { Pencil, Trash2 } from 'lucide-react'
 import type { Product } from '../types/product'
 
 interface ProductModalProps {
@@ -67,10 +66,10 @@ export default function ProductModal({
       </Modal.Body>
       <Modal.Footer>
         <div style={{ display: 'flex', gap: '12px' }}>
-          <Button onClick={handleDelete} appearance="primary" color="red" startIcon={<TrashIcon />} style={{ flex: 1 }}>
+          <Button appearance="ghost" color="red" startIcon={<Trash2 size={18} />} onClick={handleDelete} style={{ flex: 1 }}>
             Sil
           </Button>
-          <Button onClick={handleEdit} appearance="primary" color="blue" startIcon={<EditIcon />} style={{ flex: 1 }}>
+          <Button appearance="ghost" color="blue" startIcon={<Pencil size={18} />} onClick={handleEdit} style={{ flex: 1 }}>
             Düzenle
           </Button>
         </div>

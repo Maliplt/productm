@@ -1,367 +1,2261 @@
 // ==========================================================================
-// 1. GLOBAL DEĞİŞKENLER (VARIABLES)
+// RSUITE ULTRA THEME — Kapsamlı Override Sistemi
+// Versiyon: 3.0
 // ==========================================================================
 
-// Renk Paleti (Modern Dashboard Teması)
-$color-primary: #4338ca;       // İndigo
-$color-primary-hover: #3730a3;
-$color-secondary: #64748b;     // Slate
-$color-success: #10b981;       // Zümrüt Yeşili
-$color-warning: #f59e0b;       // Kehribar
-$color-danger: #ef4444;        // Kırmızı
+// ==========================================================================
+// 1. DESIGN TOKENS — Tasarım Değişkenleri
+// ==========================================================================
 
-// Arka Plan ve Yüzey Renkleri
-$bg-body: #f8fafc;
-$bg-surface: #ffffff;
-$bg-surface-hover: #f1f5f9;
+// — Renk Paleti (HSL tabanlı, kolay türetme için)
+$hue-primary:   237;
+$hue-success:   160;
+$hue-warning:    38;
+$hue-danger:      4;
+$hue-info:       199;
 
-// Metin Renkleri
-$text-main: #0f172a;
-$text-muted: #64748b;
+// Primary — İndigo skalası
+$color-primary-50:   hsl($hue-primary, 87%, 97%);
+$color-primary-100:  hsl($hue-primary, 82%, 93%);
+$color-primary-200:  hsl($hue-primary, 79%, 85%);
+$color-primary-300:  hsl($hue-primary, 76%, 74%);
+$color-primary-400:  hsl($hue-primary, 73%, 63%);
+$color-primary-500:  hsl($hue-primary, 70%, 56%);
+$color-primary-600:  hsl($hue-primary, 66%, 48%);  // Ana renk
+$color-primary-700:  hsl($hue-primary, 65%, 40%);
+$color-primary-800:  hsl($hue-primary, 62%, 33%);
+$color-primary-900:  hsl($hue-primary, 60%, 25%);
 
-// Sınır ve Gölgeler
-$border-color: #e2e8f0;
-$border-radius-sm: 6px;
-$border-radius-md: 10px;
-$border-radius-lg: 16px;
+$color-primary:        $color-primary-600;
+$color-primary-hover:  $color-primary-700;
+$color-primary-light:  $color-primary-50;
+$color-primary-ring:   rgba($color-primary, 0.18);
 
-$shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-$shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-$shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-$shadow-modal: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+// Semantic renkler
+$color-success:  hsl($hue-success, 84%, 39%);
+$color-warning:  hsl($hue-warning,  91%, 55%);
+$color-danger:   hsl($hue-danger,   84%, 60%);
+$color-info:     hsl($hue-info,     82%, 45%);
+
+$color-success-light: hsl($hue-success, 84%, 95%);
+$color-warning-light: hsl($hue-warning,  91%, 95%);
+$color-danger-light:  hsl($hue-danger,   84%, 95%);
+$color-info-light:    hsl($hue-info,     82%, 95%);
+
+// Nötr / Slate skalası
+$slate-50:   #f8fafc;
+$slate-100:  #f1f5f9;
+$slate-200:  #e2e8f0;
+$slate-300:  #cbd5e1;
+$slate-400:  #94a3b8;
+$slate-500:  #64748b;
+$slate-600:  #475569;
+$slate-700:  #334155;
+$slate-800:  #1e293b;
+$slate-900:  #0f172a;
+
+// Arka planlar & Yüzeyler
+$bg-body:          $slate-50;
+$bg-surface:       #ffffff;
+$bg-surface-2:     $slate-100;
+$bg-surface-hover: $slate-100;
+$bg-overlay:       rgba($slate-900, 0.45);
+
+// Metin
+$text-primary:   $slate-900;
+$text-secondary: $slate-600;
+$text-muted:     $slate-400;
+$text-disabled:  $slate-300;
+$text-inverse:   #ffffff;
+
+// Kenarlar
+$border-color:       $slate-200;
+$border-color-hover: $slate-300;
+$border-color-focus: $color-primary;
+
+// — Köşe Yarıçapları
+$radius-xs:   4px;
+$radius-sm:   6px;
+$radius-md:   10px;
+$radius-lg:   14px;
+$radius-xl:   20px;
+$radius-2xl:  28px;
+$radius-full: 9999px;
+
+// — Gölgeler
+$shadow-xs:     0 1px 2px rgba($slate-900, 0.04);
+$shadow-sm:     0 1px 3px rgba($slate-900, 0.06), 0 1px 2px rgba($slate-900, 0.04);
+$shadow-md:     0 4px 8px rgba($slate-900, 0.07), 0 2px 4px rgba($slate-900, 0.05);
+$shadow-lg:     0 10px 20px rgba($slate-900, 0.08), 0 4px 8px rgba($slate-900, 0.04);
+$shadow-xl:     0 20px 40px rgba($slate-900, 0.10), 0 8px 16px rgba($slate-900, 0.06);
+$shadow-modal:  0 24px 48px rgba($slate-900, 0.14), 0 8px 24px rgba($slate-900, 0.08);
+$shadow-focus:  0 0 0 3px $color-primary-ring;
+$shadow-card-hover: 0 12px 28px rgba($color-primary, 0.12), 0 4px 8px rgba($color-primary, 0.06);
+$shadow-inset:  inset 0 2px 4px rgba($slate-900, 0.04);
+
+// — Tipografi
+$font-family:      'Inter', 'SF Pro Display', system-ui, -apple-system, sans-serif;
+$font-family-mono: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
+
+$font-xs:    11px;
+$font-sm:    13px;
+$font-base:  14px;
+$font-md:    15px;
+$font-lg:    16px;
+$font-xl:    18px;
+$font-2xl:   20px;
+$font-3xl:   24px;
+
+$weight-regular:  400;
+$weight-medium:   500;
+$weight-semibold: 600;
+$weight-bold:     700;
+
+$line-tight:   1.25;
+$line-normal:  1.5;
+$line-relaxed: 1.625;
+
+// — Spacing
+$space-1:   4px;
+$space-2:   8px;
+$space-3:   12px;
+$space-4:   16px;
+$space-5:   20px;
+$space-6:   24px;
+$space-8:   32px;
+$space-10:  40px;
+$space-12:  48px;
+
+// — Geçişler
+$transition-fast:    all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+$transition-base:    all 0.2s  cubic-bezier(0.4, 0, 0.2, 1);
+$transition-slow:    all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+$transition-spring:  all 0.3s  cubic-bezier(0.34, 1.56, 0.64, 1);
+$transition-color:   color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
+
+// — Z-index katmanları
+$z-dropdown:    1000;
+$z-sticky:      1020;
+$z-fixed:       1030;
+$z-overlay:     1040;
+$z-modal:       1050;
+$z-popover:     1060;
+$z-tooltip:     1070;
+$z-toast:       1080;
 
 // ==========================================================================
-// 2. GENEL SIFIRLAMALAR VE LAYOUT (Container, Content)
+// 2. MIXINLER & YARDIMCILAR
 // ==========================================================================
+
+// Flex yardımcısı
+@mixin flex($dir: row, $align: center, $justify: flex-start, $gap: 0) {
+  display: flex;
+  flex-direction: $dir;
+  align-items: $align;
+  justify-content: $justify;
+  @if $gap != 0 { gap: $gap; }
+}
+
+// Focus ring (erişilebilirlik)
+@mixin focus-ring($color: $color-primary) {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba($color, 0.2);
+}
+
+// Metin kırpma (ellipsis)
+@mixin truncate($lines: 1) {
+  @if $lines == 1 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  } @else {
+    display: -webkit-box;
+    -webkit-line-clamp: $lines;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+// Kart hover efekti
+@mixin card-hover {
+  transition: $transition-base;
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: $shadow-card-hover;
+    border-color: rgba($color-primary, 0.4);
+  }
+  &:active {
+    transform: translateY(-1px);
+  }
+}
+
+// Gradyan arka plan
+@mixin gradient-bg($from: $color-primary-600, $to: $color-primary-700, $dir: 135deg) {
+  background: linear-gradient($dir, $from 0%, $to 100%);
+}
+
+// Cam efekti (glassmorphism)
+@mixin glass($blur: 12px, $bg: rgba(255,255,255,0.8)) {
+  background: $bg;
+  backdrop-filter: blur($blur);
+  -webkit-backdrop-filter: blur($blur);
+}
+
+// Responsive kırılım noktaları
+@mixin respond-to($bp) {
+  @if $bp == sm     { @media (max-width: 640px)  { @content; } }
+  @else if $bp == md { @media (max-width: 768px)  { @content; } }
+  @else if $bp == lg { @media (max-width: 1024px) { @content; } }
+  @else if $bp == xl { @media (max-width: 1280px) { @content; } }
+}
+
+// Çizgi üstü dekorasyon (aktif sekme vb.)
+@mixin active-underline($color: $color-primary, $height: 2px) {
+  position: relative;
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    right: 0;
+    height: $height;
+    background: $color;
+    border-radius: $height;
+  }
+}
+
+// ==========================================================================
+// 3. GLOBAL SIFIRLAMALAR & TEMEL LAYOUT
+// ==========================================================================
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: $font-base;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
 
 body {
   background-color: $bg-body;
-  color: $text-main;
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  color: $text-primary;
+  font-family: $font-family;
+  font-size: $font-base;
+  line-height: $line-normal;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
 }
+
+// Kaydırma çubuğu
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track { background: $slate-100; }
+::-webkit-scrollbar-thumb {
+  background: $slate-300;
+  border-radius: $radius-full;
+  &:hover { background: $slate-400; }
+}
+
+// Seçim rengi
+::selection {
+  background: $color-primary-100;
+  color: $color-primary-700;
+}
+
+// ==========================================================================
+// 4. LAYOUT — Container, Content, Sidebar
+// ==========================================================================
 
 .rs-container {
   min-height: 100vh;
   background-color: $bg-body;
+
+  // Sidebar'lı layout
+  &.with-sidebar {
+    @include flex(row, stretch, flex-start);
+  }
 }
 
 .rs-content {
-  padding: 24px;
-  max-width: 1400px;
+  padding: $space-6;
+  max-width: 1440px;
   margin: 0 auto;
   width: 100%;
+
+  @include respond-to(lg) { padding: $space-5; }
+  @include respond-to(md) { padding: $space-4; }
+}
+
+// Sidebar
+.rs-sidebar {
+  background: $bg-surface;
+  border-right: 1px solid $border-color;
+  box-shadow: $shadow-sm;
+  transition: $transition-base;
+
+  &-nav {
+    padding: $space-4 0;
+  }
 }
 
 // ==========================================================================
-// 3. NAVİGASYON VE HEADER (Navbar, Nav, Tabs)
+// 5. NAVİGASYON — Navbar, Top Bar
 // ==========================================================================
 
 .rs-navbar {
-  background-color: $bg-surface;
-  box-shadow: $shadow-sm;
-  padding: 0 24px;
+  background: $bg-surface;
   border-bottom: 1px solid $border-color;
+  box-shadow: $shadow-xs;
+  padding: 0 $space-6;
+  height: 60px;
+  @include flex(row, center, space-between);
+  position: sticky;
+  top: 0;
+  z-index: $z-sticky;
 
-  .rs-nav-item {
-    font-weight: 500;
-    color: $text-muted;
-    transition: all 0.2s;
+  @include respond-to(md) { padding: 0 $space-4; }
 
-    &:hover {
-      color: $color-primary;
-      background-color: transparent;
-    }
+  // Logo alanı
+  &-brand {
+    @include flex(row, center, flex-start, $space-3);
+    font-size: $font-xl;
+    font-weight: $weight-bold;
+    color: $color-primary;
+    text-decoration: none;
 
-    &.rs-nav-item-active {
-      color: $color-primary;
-      border-bottom: 2px solid $color-primary;
+    .brand-icon {
+      width: 32px;
+      height: 32px;
+      @include gradient-bg;
+      border-radius: $radius-sm;
     }
   }
-}
 
-// Tabs Tasarımı
-.rs-nav-tabs {
-  border-bottom: 2px solid $border-color;
-  margin-bottom: 20px;
+  // Sağ alan — butonlar, avatar vb.
+  &-right {
+    @include flex(row, center, flex-end, $space-3);
+  }
 
+  // Nav linkleri
   .rs-nav-item {
-    font-size: 15px;
-    font-weight: 500;
-    padding: 12px 20px;
-    color: $text-muted;
+    height: 60px;
+    padding: 0 $space-4;
+    @include flex(row, center, center);
+    font-size: $font-base;
+    font-weight: $weight-medium;
+    color: $text-secondary;
+    border-bottom: 2px solid transparent;
+    transition: $transition-color;
+    cursor: pointer;
+    white-space: nowrap;
+    position: relative;
+
+    > a { color: inherit; text-decoration: none; }
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 8px $space-2;
+      border-radius: $radius-sm;
+      background: transparent;
+      transition: $transition-fast;
+    }
 
     &:hover {
       color: $color-primary;
+      &::before { background: $color-primary-50; }
     }
 
     &.rs-nav-item-active {
       color: $color-primary;
-      border-bottom: 2px solid $color-primary;
-      margin-bottom: -2px; // Çizgiyi border'ın üstüne oturtmak için
+      border-bottom-color: $color-primary;
+      font-weight: $weight-semibold;
+    }
+  }
+
+  // Arama çubuğu - navbar içi
+  .navbar-search {
+    @include flex(row, center, center, $space-2);
+    background: $bg-surface-2;
+    border: 1px solid $border-color;
+    border-radius: $radius-full;
+    padding: $space-2 $space-4;
+    min-width: 240px;
+    transition: $transition-base;
+    cursor: text;
+
+    .search-icon { color: $text-muted; font-size: $font-lg; }
+
+    input {
+      border: none;
+      background: transparent;
+      outline: none;
+      font-size: $font-sm;
+      color: $text-primary;
+      width: 100%;
+
+      &::placeholder { color: $text-muted; }
+    }
+
+    &:focus-within {
+      border-color: $color-primary;
+      box-shadow: $shadow-focus;
+      background: $bg-surface;
+    }
+  }
+
+  // Avatar butonu
+  .navbar-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: $radius-full;
+    border: 2px solid $border-color;
+    cursor: pointer;
+    transition: $transition-base;
+    overflow: hidden;
+
+    &:hover {
+      border-color: $color-primary;
+      box-shadow: 0 0 0 3px $color-primary-ring;
+    }
+  }
+
+  // Bildirim butonu
+  .navbar-notification {
+    position: relative;
+    width: 36px;
+    height: 36px;
+    border-radius: $radius-full;
+    @include flex(row, center, center);
+    color: $text-secondary;
+    cursor: pointer;
+    transition: $transition-fast;
+
+    &:hover { background: $bg-surface-2; color: $color-primary; }
+
+    .badge {
+      position: absolute;
+      top: 4px;
+      right: 4px;
+      width: 8px;
+      height: 8px;
+      background: $color-danger;
+      border-radius: $radius-full;
+      border: 2px solid $bg-surface;
     }
   }
 }
 
 // ==========================================================================
-// 4. BUTONLAR VE İKONLAR (Button, IconButton)
+// 6. TABS (Sekmeler)
+// ==========================================================================
+
+.rs-nav-tabs {
+  @include flex(row, flex-end, flex-start, 0);
+  border-bottom: 1px solid $border-color;
+  margin-bottom: $space-5;
+  gap: $space-1;
+
+  .rs-nav-item {
+    position: relative;
+    padding: $space-3 $space-5;
+    font-size: $font-md;
+    font-weight: $weight-medium;
+    color: $text-muted;
+    border-radius: $radius-sm $radius-sm 0 0;
+    transition: $transition-color;
+    cursor: pointer;
+    white-space: nowrap;
+    border: 1px solid transparent;
+    border-bottom: none;
+    margin-bottom: -1px;
+
+    > a { color: inherit; text-decoration: none; }
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 0; right: 0;
+      height: 2px;
+      background: transparent;
+      transition: $transition-fast;
+    }
+
+    &:hover {
+      color: $color-primary;
+      background: $color-primary-50;
+    }
+
+    &.rs-nav-item-active {
+      color: $color-primary;
+      background: $bg-surface;
+      border-color: $border-color;
+      font-weight: $weight-semibold;
+
+      &::after { background: $color-primary; }
+    }
+
+    // Sekme ikonu
+    .tab-icon {
+      margin-right: $space-2;
+      font-size: $font-lg;
+      vertical-align: middle;
+    }
+
+    // Sekme rozet sayacı
+    .tab-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 20px;
+      height: 20px;
+      padding: 0 6px;
+      margin-left: $space-2;
+      background: $color-primary-100;
+      color: $color-primary;
+      font-size: $font-xs;
+      font-weight: $weight-semibold;
+      border-radius: $radius-full;
+      line-height: 1;
+
+      .rs-nav-item-active & {
+        background: $color-primary;
+        color: $text-inverse;
+      }
+    }
+  }
+
+  // Pill varyantı (.rs-nav-tabs.pill)
+  &.pill {
+    border-bottom: none;
+    background: $bg-surface-2;
+    padding: $space-1;
+    border-radius: $radius-lg;
+    margin-bottom: $space-5;
+
+    .rs-nav-item {
+      border-radius: $radius-md;
+      border: none;
+      margin-bottom: 0;
+
+      &::after { display: none; }
+
+      &.rs-nav-item-active {
+        background: $bg-surface;
+        box-shadow: $shadow-sm;
+        color: $color-primary;
+      }
+    }
+  }
+}
+
+// ==========================================================================
+// 7. BUTONLAR
 // ==========================================================================
 
 .rs-btn {
-  border-radius: $border-radius-sm;
-  font-weight: 500;
-  transition: all 0.2s ease;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: $space-2;
+  padding: $space-2 $space-5;
+  font-size: $font-base;
+  font-weight: $weight-medium;
+  line-height: $line-tight;
+  border-radius: $radius-sm;
+  border: 1px solid transparent;
+  cursor: pointer;
+  white-space: nowrap;
+  user-select: none;
+  transition: $transition-base;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
 
+  // Ripple efekti
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: rgba(255,255,255,0);
+    transition: background 0.3s ease;
+  }
+  &:active::after { background: rgba(255,255,255,0.15); }
+
+  // ── Birincil buton
   &-primary {
-    background-color: $color-primary;
-    
+    @include gradient-bg($color-primary-500, $color-primary-700);
+    color: $text-inverse;
+    box-shadow: 0 2px 4px rgba($color-primary, 0.3);
+
     &:hover, &:focus {
-      background-color: $color-primary-hover;
-      box-shadow: 0 4px 12px rgba(67, 56, 202, 0.2);
+      @include gradient-bg($color-primary-600, $color-primary-800);
+      box-shadow: 0 4px 12px rgba($color-primary, 0.35);
+      transform: translateY(-1px);
+    }
+    &:active { transform: translateY(0); box-shadow: none; }
+    &:focus-visible { @include focus-ring; }
+  }
+
+  // ── İkincil / Outline
+  &-default {
+    background: $bg-surface;
+    border-color: $border-color;
+    color: $text-primary;
+    box-shadow: $shadow-xs;
+
+    &:hover, &:focus {
+      border-color: $color-primary;
+      color: $color-primary;
+      background: $color-primary-50;
+      box-shadow: $shadow-sm;
     }
   }
 
-  // Edit, Trash, Eye gibi IconButton'lar için özel stiller
+  // ── Subtle (arkaplan yok)
+  &-subtle {
+    background: transparent;
+    color: $text-secondary;
+
+    &:hover, &:focus {
+      background: $bg-surface-2;
+      color: $text-primary;
+    }
+  }
+
+  // ── Ghost
+  &-ghost {
+    background: transparent;
+    border-color: $color-primary;
+    color: $color-primary;
+
+    &:hover, &:focus {
+      background: $color-primary-50;
+      box-shadow: 0 4px 12px rgba($color-primary, 0.15);
+    }
+  }
+
+  // ── Semantic renkler
+  &-green {
+    background: $color-success;
+    color: $text-inverse;
+    box-shadow: 0 2px 4px rgba($color-success, 0.3);
+    &:hover { filter: brightness(1.05); box-shadow: 0 4px 12px rgba($color-success, 0.35); }
+  }
+
+  &-red {
+    background: $color-danger;
+    color: $text-inverse;
+    box-shadow: 0 2px 4px rgba($color-danger, 0.3);
+    &:hover { filter: brightness(1.05); box-shadow: 0 4px 12px rgba($color-danger, 0.35); }
+  }
+
+  &-yellow {
+    background: $color-warning;
+    color: $slate-900;
+    box-shadow: 0 2px 4px rgba($color-warning, 0.3);
+    &:hover { filter: brightness(1.05); }
+  }
+
+  &-cyan {
+    background: $color-info;
+    color: $text-inverse;
+    &:hover { filter: brightness(1.05); }
+  }
+
+  // ── Boyutlar
+  &-xs { padding: 3px $space-2; font-size: $font-xs; border-radius: $radius-xs; gap: $space-1; }
+  &-sm { padding: 5px $space-3; font-size: $font-sm; border-radius: $radius-xs; gap: 6px; }
+  &-lg { padding: $space-3 $space-8; font-size: $font-lg; border-radius: $radius-md; gap: $space-2; }
+
+  // ── Devre dışı
+  &[disabled], &.rs-btn-disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+    box-shadow: none;
+    transform: none !important;
+  }
+
+  // ── Yükleniyor
+  &.rs-btn-loading {
+    pointer-events: none;
+    .rs-btn-spin { animation: btn-spin 0.75s linear infinite; }
+  }
+
+  // ── İkon butonu
   &-icon {
-    border-radius: $border-radius-sm;
-    
-    // Göz ikonlu buton (Görüntüleme)
-    &.rs-btn-subtle {
-      color: $color-secondary;
-      &:hover {
-        color: $color-primary;
-        background-color: rgba($color-primary, 0.1);
-      }
-    }
+    padding: $space-2;
+    border-radius: $radius-sm;
+    width: 36px;
+    height: 36px;
+    gap: 0;
 
-    // Çöp Kutusu (Silme)
-    &.rs-btn-red {
-      color: $color-danger;
-      &:hover {
-        background-color: rgba($color-danger, 0.1);
-      }
-    }
+    &.rs-btn-xs { width: 28px; height: 28px; padding: $space-1; }
+    &.rs-btn-sm { width: 32px; height: 32px; padding: 6px; }
+    &.rs-btn-lg { width: 44px; height: 44px; padding: $space-3; }
+
+    // Görüntüleme ikonu
+    &.rs-btn-subtle { color: $text-muted; &:hover { color: $color-primary; background: $color-primary-50; } }
+
+    // Silme ikonu
+    &.rs-btn-red { background: transparent; color: $color-danger; &:hover { background: $color-danger-light; } }
+
+    // Düzenleme ikonu
+    &.btn-edit { color: $text-muted; &:hover { color: $color-primary; background: $color-primary-50; } }
   }
+
+  // ── Tam genişlik
+  &-block { width: 100%; }
+}
+
+@keyframes btn-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
 }
 
 // ==========================================================================
-// 5. FORMLAR VE GİRDİLER (Input, InputGroup, AutoComplete, Form)
+// 8. FORM ELEMENTLERİ — Input, Textarea, Select, Checkbox, Radio
 // ==========================================================================
 
+// Form grubu
 .rs-form-group {
-  margin-bottom: 20px;
+  margin-bottom: $space-5;
 
   .rs-form-control-label {
-    font-weight: 500;
-    color: $text-main;
-    margin-bottom: 8px;
     display: block;
+    font-size: $font-sm;
+    font-weight: $weight-semibold;
+    color: $text-primary;
+    margin-bottom: $space-2;
+    letter-spacing: 0.01em;
+  }
+
+  .rs-form-control-wrapper { position: relative; }
+
+  // Hata / Başarı mesajları
+  .rs-form-error-message {
+    display: flex;
+    align-items: center;
+    gap: $space-1;
+    margin-top: $space-1;
+    font-size: $font-xs;
+    color: $color-danger;
+    &-wrapper { font-size: $font-xs; }
+  }
+
+  .rs-form-help-text {
+    margin-top: $space-1;
+    font-size: $font-xs;
+    color: $text-muted;
   }
 }
 
-.rs-input, .rs-input-number, .rs-auto-complete {
-  border-radius: $border-radius-sm;
+// Temel input stili (mixin olarak)
+%input-base {
+  width: 100%;
+  height: 40px;
+  padding: $space-2 $space-3;
+  font-size: $font-base;
+  font-family: $font-family;
+  color: $text-primary;
+  background: $bg-surface;
   border: 1px solid $border-color;
-  background-color: $bg-surface;
-  padding: 8px 12px;
-  font-size: 14px;
-  color: $text-main;
-  transition: all 0.2s;
+  border-radius: $radius-sm;
+  outline: none;
+  transition: $transition-base;
+  box-shadow: $shadow-inset;
+  appearance: none;
 
-  &:hover {
-    border-color: $color-secondary;
-  }
+  &::placeholder { color: $text-muted; }
+
+  &:hover:not([disabled]) { border-color: $border-color-hover; }
 
   &:focus, &-focus {
     border-color: $color-primary;
-    box-shadow: 0 0 0 3px rgba($color-primary, 0.15);
+    box-shadow: 0 0 0 3px $color-primary-ring;
+    background: $bg-surface;
+  }
+
+  &[disabled], &.rs-input-disabled {
+    background: $bg-surface-2;
+    color: $text-muted;
+    cursor: not-allowed;
+    border-color: $border-color;
+    box-shadow: none;
+  }
+
+  &.rs-input-error, &.has-error {
+    border-color: $color-danger;
+    &:focus { box-shadow: 0 0 0 3px rgba($color-danger, 0.15); }
+  }
+
+  &.rs-input-success {
+    border-color: $color-success;
+    &:focus { box-shadow: 0 0 0 3px rgba($color-success, 0.15); }
   }
 }
 
+.rs-input         { @extend %input-base; }
+.rs-input-number  { @extend %input-base; }
+
+// Textarea
+.rs-input[as="textarea"],
+textarea.rs-input {
+  height: auto;
+  min-height: 100px;
+  resize: vertical;
+  padding: $space-3;
+  line-height: $line-normal;
+}
+
+// InputGroup (prefix/suffix)
 .rs-input-group {
-  border-radius: $border-radius-sm;
-  overflow: hidden;
+  display: flex;
+  align-items: stretch;
   border: 1px solid $border-color;
+  border-radius: $radius-sm;
+  overflow: hidden;
+  background: $bg-surface;
+  transition: $transition-base;
+  box-shadow: $shadow-inset;
 
   &-addon {
-    background-color: $bg-surface-hover;
-    color: $text-muted;
+    @include flex(row, center, center);
+    padding: 0 $space-3;
+    background: $bg-surface-2;
     border: none;
+    border-right: 1px solid $border-color;
+    color: $text-muted;
+    font-size: $font-base;
+    white-space: nowrap;
+    flex-shrink: 0;
+
+    &:last-child { border-right: none; border-left: 1px solid $border-color; }
   }
+
+  .rs-input {
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    flex: 1;
+    height: 38px;
+
+    &:focus { box-shadow: none; }
+  }
+
+  &:hover:not(.rs-input-group-disabled) { border-color: $border-color-hover; }
 
   &.rs-input-group-focus {
     border-color: $color-primary;
-    box-shadow: 0 0 0 3px rgba($color-primary, 0.15);
+    box-shadow: 0 0 0 3px $color-primary-ring;
+
+    .rs-input-group-addon { background: $color-primary-50; color: $color-primary; }
+  }
+
+  &-disabled {
+    background: $bg-surface-2;
+    .rs-input { background: transparent; cursor: not-allowed; }
+  }
+
+  // Arama ikonu + input kombinasyonu için
+  &.search-group {
+    border-radius: $radius-full;
+    padding-left: $space-3;
+
+    .rs-input { border-radius: $radius-full; }
+    .rs-input-group-addon { background: transparent; border: none; padding-right: $space-2; }
   }
 }
 
-// ==========================================================================
-// 6. VERİ GÖSTERİMİ (Panel, Table, List, Tag)
-// ==========================================================================
+// Select / Picker genel
+.rs-picker,
+.rs-picker-select,
+.rs-picker-check,
+.rs-picker-date,
+.rs-picker-daterange,
+.rs-picker-tree,
+.rs-picker-cascader {
+  .rs-picker-toggle {
+    @extend %input-base;
+    @include flex(row, center, space-between);
+    cursor: pointer;
+    padding-right: $space-8;
 
-// Ürün Kartları için Panel
-.rs-panel {
-  background-color: $bg-surface;
-  border-radius: $border-radius-md;
-  box-shadow: $shadow-md;
-  border: 1px solid transparent;
-  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+    &-caret {
+      position: absolute;
+      right: $space-3;
+      top: 50%;
+      transform: translateY(-50%);
+      color: $text-muted;
+      transition: transform 0.2s;
+    }
 
-  &:hover {
-    transform: translateY(-2px);
+    &-placeholder { color: $text-muted; }
+    &-value       { color: $text-primary; }
+  }
+
+  &.rs-picker-has-value .rs-picker-toggle-value { color: $text-primary; }
+
+  &.rs-picker-focused .rs-picker-toggle {
+    border-color: $color-primary;
+    box-shadow: 0 0 0 3px $color-primary-ring;
+  }
+
+  &.rs-picker-disabled .rs-picker-toggle {
+    background: $bg-surface-2;
+    cursor: not-allowed;
+  }
+
+  // Seçili etiket (multi-select)
+  .rs-picker-tag {
+    background: $color-primary-100;
+    color: $color-primary-700;
+    border-radius: $radius-xs;
+    font-size: $font-xs;
+    font-weight: $weight-medium;
+    padding: 2px 6px;
+    margin: 2px;
+
+    &-close-btn { color: $color-primary-500; &:hover { color: $color-primary-800; } }
+  }
+
+  // Dropdown menü
+  .rs-picker-menu {
+    background: $bg-surface;
+    border: 1px solid $border-color;
+    border-radius: $radius-md;
     box-shadow: $shadow-lg;
+    padding: $space-1;
+    z-index: $z-dropdown;
+    animation: dropdown-in 0.15s ease;
+  }
+
+  // Menü öğeleri
+  .rs-picker-select-menu-item,
+  .rs-check-item {
+    padding: $space-2 $space-3;
+    border-radius: $radius-xs;
+    font-size: $font-sm;
+    color: $text-primary;
+    cursor: pointer;
+    transition: $transition-fast;
+    @include flex(row, center, flex-start, $space-2);
+
+    &:hover      { background: $bg-surface-2; }
+    &.rs-check-item-focus { background: $bg-surface-2; }
+
+    &.rs-picker-select-menu-item-active,
+    &.rs-check-item-checked {
+      background: $color-primary-50;
+      color: $color-primary;
+      font-weight: $weight-medium;
+
+      .rs-check-item-wrapper { color: $color-primary; }
+    }
+  }
+
+  // Menü arama inputu
+  .rs-picker-search-bar {
+    padding: $space-2;
+    border-bottom: 1px solid $border-color;
+    margin-bottom: $space-1;
+
+    .rs-picker-search-bar-input { @extend %input-base; height: 34px; }
+  }
+}
+
+@keyframes dropdown-in {
+  from { opacity: 0; transform: translateY(-6px) scale(0.98); }
+  to   { opacity: 1; transform: translateY(0)    scale(1); }
+}
+
+// Checkbox & Radio
+.rs-checkbox, .rs-radio {
+  @include flex(row, flex-start, flex-start, $space-2);
+  cursor: pointer;
+
+  &-wrapper {
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+    border: 2px solid $border-color;
+    border-radius: 4px;
+    background: $bg-surface;
+    transition: $transition-fast;
+    @include flex(row, center, center);
+    margin-top: 1px;
+  }
+
+  // Seçili durum
+  &.rs-checkbox-checked .rs-checkbox-wrapper,
+  &.rs-radio-checked .rs-radio-wrapper {
+    background: $color-primary;
     border-color: $color-primary;
   }
 
-  &-header {
-    border-bottom: 1px solid $border-color;
-    padding: 16px 20px;
-    font-weight: 600;
-    font-size: 16px;
+  // Radio yuvarlak
+  &.rs-radio .rs-radio-wrapper { border-radius: $radius-full; }
+
+  &:hover .rs-checkbox-wrapper,
+  &:hover .rs-radio-wrapper {
+    border-color: $color-primary;
   }
 
-  &-body {
-    padding: 20px;
+  &-label {
+    font-size: $font-base;
+    color: $text-primary;
+    line-height: $line-normal;
+  }
+
+  &.rs-checkbox-disabled, &.rs-radio-disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
   }
 }
 
-// Ürün Tablosu (ProductTable)
-.rs-table {
-  border-radius: $border-radius-md;
-  box-shadow: $shadow-sm;
-  border: 1px solid $border-color;
-  background-color: $bg-surface;
+// Toggle / Switch
+.rs-toggle {
+  cursor: pointer;
 
-  &-cell-header {
-    background-color: $bg-surface-hover;
-    font-weight: 600;
+  &-presentation {
+    background: $slate-300;
+    border-radius: $radius-full;
+    transition: $transition-base;
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      border-radius: $radius-full;
+      background: $bg-surface;
+      box-shadow: $shadow-sm;
+      transition: $transition-spring;
+    }
+  }
+
+  &.rs-toggle-checked .rs-toggle-presentation {
+    background: $color-primary;
+  }
+
+  &.rs-toggle-disabled { opacity: 0.5; cursor: not-allowed; }
+}
+
+// Slider
+.rs-slider {
+  &-track {
+    background: $slate-200;
+    border-radius: $radius-full;
+  }
+
+  &-progress-bar {
+    background: $color-primary;
+    border-radius: $radius-full;
+  }
+
+  &-handle {
+    width: 18px;
+    height: 18px;
+    border: 2px solid $color-primary;
+    background: $bg-surface;
+    border-radius: $radius-full;
+    box-shadow: $shadow-sm;
+    transition: $transition-fast;
+    cursor: grab;
+
+    &:hover  { transform: scale(1.2); box-shadow: 0 0 0 6px $color-primary-ring; }
+    &:active { cursor: grabbing; }
+  }
+
+  &-mark-content { font-size: $font-xs; color: $text-muted; }
+}
+
+// Upload
+.rs-uploader {
+  &-trigger {
+    .rs-btn { border-style: dashed; }
+  }
+
+  &-file-items {
+    margin-top: $space-3;
+  }
+
+  &-file-item {
+    @include flex(row, center, space-between, $space-3);
+    padding: $space-2 $space-3;
+    background: $bg-surface-2;
+    border: 1px solid $border-color;
+    border-radius: $radius-sm;
+    margin-bottom: $space-2;
+    font-size: $font-sm;
+
+    &-icon { color: $color-primary; }
+    &-status .rs-uploader-file-item-btn-remove { color: $color-danger; }
+  }
+
+  // Drag & Drop alanı
+  &-draggable {
+    border: 2px dashed $border-color;
+    border-radius: $radius-md;
+    padding: $space-10;
+    text-align: center;
+    transition: $transition-base;
+    cursor: pointer;
     color: $text-muted;
-    border-bottom: 2px solid $border-color;
-  }
 
-  &-row {
-    transition: background-color 0.15s;
-
-    &:hover {
-      background-color: rgba($color-primary, 0.02);
+    &:hover, &.rs-uploader-dragging {
+      border-color: $color-primary;
+      background: $color-primary-50;
+      color: $color-primary;
     }
   }
+}
 
-  &-cell-content {
-    padding: 12px 16px;
-    font-size: 14px;
+// Date Picker
+.rs-picker-date, .rs-picker-daterange {
+  .rs-picker-toggle {
+    .rs-picker-toggle-textbox { @extend %input-base; border: none; box-shadow: none; padding: 0; }
+  }
+
+  .rs-calendar {
+    border-radius: $radius-md;
+
+    &-header { border-bottom: 1px solid $border-color; }
+    &-header-title { font-weight: $weight-semibold; color: $text-primary; }
+
+    &-table-cell {
+      &:hover .rs-calendar-table-cell-content { background: $color-primary-50; color: $color-primary; border-radius: $radius-sm; }
+      &-selected .rs-calendar-table-cell-content {
+        background: $color-primary;
+        color: $text-inverse;
+        border-radius: $radius-sm;
+        font-weight: $weight-semibold;
+      }
+      &-in-range .rs-calendar-table-cell-content {
+        background: $color-primary-100;
+        border-radius: 0;
+      }
+    }
   }
 }
 
-// Etiketler (Kategori / Durum bildiren Tag'ler)
-.rs-tag {
-  border-radius: 4px;
-  font-weight: 500;
-  padding: 4px 8px;
-  
-  &-green { background-color: rgba($color-success, 0.1); color: $color-success; }
-  &-red { background-color: rgba($color-danger, 0.1); color: $color-danger; }
-  &-blue { background-color: rgba($color-primary, 0.1); color: $color-primary; }
-  &-orange { background-color: rgba($color-warning, 0.1); color: $color-warning; }
+// AutoComplete
+.rs-auto-complete {
+  .rs-input { @extend %input-base; }
+
+  .rs-auto-complete-menu {
+    background: $bg-surface;
+    border: 1px solid $border-color;
+    border-radius: $radius-md;
+    box-shadow: $shadow-lg;
+    padding: $space-1;
+    z-index: $z-dropdown;
+
+    .rs-auto-complete-item {
+      padding: $space-2 $space-3;
+      border-radius: $radius-xs;
+      font-size: $font-sm;
+      cursor: pointer;
+      transition: $transition-fast;
+
+      &:hover, &.rs-auto-complete-item-focus {
+        background: $bg-surface-2;
+        color: $color-primary;
+      }
+    }
+  }
 }
 
-// Liste Görünümü
-.rs-list {
-  border-radius: $border-radius-md;
+// ==========================================================================
+// 9. PANEL & KART BİLEŞENLERİ
+// ==========================================================================
+
+.rs-panel {
+  background: $bg-surface;
   border: 1px solid $border-color;
-  
-  &-item {
-    padding: 16px;
-    transition: background-color 0.2s;
-    
-    &:hover {
-      background-color: $bg-surface-hover;
-    }
-  }
-}
+  border-radius: $radius-lg;
+  box-shadow: $shadow-sm;
+  overflow: hidden;
+  transition: $transition-base;
 
-// ==========================================================================
-// 7. MODAL VE ARAÇ İPUÇLARI (Modal, Tooltip, Whisper)
-// ==========================================================================
-
-// Modallar (ProductModal, FilterModal vb.)
-.rs-modal {
-  &-content {
-    border-radius: $border-radius-lg;
-    box-shadow: $shadow-modal;
-    background-color: $bg-surface;
-    border: none;
-  }
+  @include card-hover;
 
   &-header {
+    @include flex(row, center, space-between);
+    padding: $space-4 $space-5;
     border-bottom: 1px solid $border-color;
-    padding: 20px 24px;
-    
-    .rs-modal-title {
-      font-weight: 600;
-      font-size: 18px;
-      color: $text-main;
+    background: $bg-surface;
+
+    .rs-panel-title {
+      font-size: $font-lg;
+      font-weight: $weight-semibold;
+      color: $text-primary;
     }
+
+    .rs-panel-header-actions { @include flex(row, center, flex-end, $space-2); }
   }
 
   &-body {
-    padding: 24px;
+    padding: $space-5;
   }
 
   &-footer {
+    padding: $space-3 $space-5;
     border-top: 1px solid $border-color;
-    padding: 16px 24px;
-    background-color: $bg-surface-hover;
-    border-bottom-left-radius: $border-radius-lg;
-    border-bottom-right-radius: $border-radius-lg;
+    background: $bg-surface-2;
+    @include flex(row, center, flex-end, $space-3);
   }
-}
 
-// Araç İpuçları
-.rs-tooltip {
-  background-color: $text-main;
-  color: white;
-  border-radius: 4px;
-  font-size: 12px;
-  font-weight: 500;
-  padding: 6px 10px;
-  box-shadow: $shadow-sm;
+  // Collapsible panel ok ikonu
+  &-btn {
+    color: $text-muted;
+    transition: $transition-fast;
+    &:hover { color: $color-primary; }
+  }
+
+  // İstatistik kartı varyantı
+  &.stat-card {
+    padding: $space-5;
+
+    .stat-value {
+      font-size: $font-3xl;
+      font-weight: $weight-bold;
+      color: $text-primary;
+      line-height: $line-tight;
+    }
+
+    .stat-label {
+      font-size: $font-sm;
+      color: $text-muted;
+      margin-top: $space-1;
+    }
+
+    .stat-change {
+      display: inline-flex;
+      align-items: center;
+      gap: $space-1;
+      font-size: $font-xs;
+      font-weight: $weight-semibold;
+      margin-top: $space-2;
+      padding: 2px 8px;
+      border-radius: $radius-full;
+
+      &.up   { color: $color-success; background: $color-success-light; }
+      &.down { color: $color-danger;  background: $color-danger-light; }
+    }
+
+    .stat-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: $radius-md;
+      @include flex(row, center, center);
+      @include gradient-bg;
+      color: $text-inverse;
+      font-size: $font-xl;
+    }
+  }
+
+  // Renk aksentli üst kenarlık varyantı
+  &.accent-top { border-top: 3px solid $color-primary; }
+  &.accent-left { border-left: 3px solid $color-primary; border-radius: 0 $radius-lg $radius-lg 0; }
 }
 
 // ==========================================================================
-// 8. DİĞER YARDIMCILAR (Divider, Stack)
+// 10. TABLO (Table)
+// ==========================================================================
+
+.rs-table {
+  border: 1px solid $border-color;
+  border-radius: $radius-lg;
+  box-shadow: $shadow-sm;
+  overflow: hidden;
+  background: $bg-surface;
+  font-size: $font-sm;
+
+  // Başlık satırı
+  .rs-table-cell-header {
+    .rs-table-cell {
+      background: $bg-surface-2;
+      border-bottom: 1px solid $border-color;
+    }
+
+    .rs-table-cell-content {
+      font-size: $font-xs;
+      font-weight: $weight-semibold;
+      color: $text-muted;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: $space-3 $space-4;
+    }
+  }
+
+  // Veri satırları
+  .rs-table-row {
+    transition: background-color 0.12s;
+
+    &:hover .rs-table-cell {
+      background: $color-primary-50;
+    }
+
+    // Seçili satır
+    &.selected .rs-table-cell {
+      background: $color-primary-100;
+    }
+
+    // Çift renk (zebra)
+    &:nth-child(even) .rs-table-cell {
+      background: $slate-50;
+    }
+    &:nth-child(even):hover .rs-table-cell {
+      background: $color-primary-50;
+    }
+  }
+
+  .rs-table-cell {
+    border-bottom: 1px solid $border-color;
+    transition: $transition-fast;
+
+    &-content {
+      padding: $space-3 $space-4;
+      color: $text-primary;
+      line-height: $line-normal;
+      @include truncate;
+    }
+  }
+
+  // Expand satırı
+  .rs-table-row-expanded {
+    background: $color-primary-50;
+    .rs-table-cell-content { padding: $space-4; }
+  }
+
+  // Sort ikonları
+  .rs-table-cell-sort-wrapper {
+    display: inline-flex;
+    align-items: center;
+    gap: $space-1;
+    cursor: pointer;
+    user-select: none;
+
+    &:hover { color: $color-primary; }
+    &.sorting { color: $color-primary; }
+  }
+
+  // Sabit sütun gölgesi
+  .rs-table-cell-first.rs-table-cell-fixed { box-shadow: 2px 0 8px rgba($slate-900, 0.06); }
+
+  // Tablo içi butonlar / Aksiyonlar
+  .table-actions {
+    @include flex(row, center, flex-end, $space-1);
+    opacity: 0;
+    transition: $transition-fast;
+
+    .rs-table-row:hover & { opacity: 1; }
+  }
+
+  // Scrollbar
+  .rs-table-body { scrollbar-width: thin; scrollbar-color: $slate-300 transparent; }
+}
+
+// ==========================================================================
+// 11. LİSTE (List)
+// ==========================================================================
+
+.rs-list {
+  border: 1px solid $border-color;
+  border-radius: $radius-lg;
+  overflow: hidden;
+  background: $bg-surface;
+  box-shadow: $shadow-sm;
+
+  &-item {
+    @include flex(row, center, space-between, $space-4);
+    padding: $space-3 $space-5;
+    border-bottom: 1px solid $border-color;
+    transition: $transition-fast;
+    position: relative;
+
+    &:last-child { border-bottom: none; }
+
+    &:hover {
+      background: $color-primary-50;
+      padding-left: calc(#{$space-5} + 3px);
+
+      &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 3px;
+        background: $color-primary;
+        border-radius: 0 $radius-xs $radius-xs 0;
+      }
+    }
+
+    // Sürüklenebilir tutaç
+    .rs-list-item-holder { color: $text-muted; cursor: grab; &:active { cursor: grabbing; } }
+
+    // Sürükleniyor
+    &.rs-list-item-sorting {
+      box-shadow: $shadow-lg;
+      background: $bg-surface;
+      border-radius: $radius-md;
+      z-index: 10;
+    }
+  }
+}
+
+// ==========================================================================
+// 12. ETİKETLER (Tag, Badge, Status Indicator)
+// ==========================================================================
+
+.rs-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-1;
+  padding: 3px $space-2;
+  border-radius: $radius-xs;
+  font-size: $font-xs;
+  font-weight: $weight-semibold;
+  line-height: $line-tight;
+  letter-spacing: 0.01em;
+  border: 1px solid transparent;
+
+  // Renkler
+  &-green  { background: $color-success-light; color: hsl($hue-success, 84%, 31%); border-color: rgba($color-success, 0.2); }
+  &-red    { background: $color-danger-light;  color: hsl($hue-danger, 84%, 52%); border-color: rgba($color-danger,  0.2); }
+  &-blue   { background: $color-primary-100;   color: $color-primary-700;         border-color: rgba($color-primary, 0.2); }
+  &-orange { background: $color-warning-light; color: hsl($hue-warning, 91%, 40%); border-color: rgba($color-warning, 0.2); }
+  &-cyan   { background: $color-info-light;    color: hsl($hue-info, 82%, 37%);    border-color: rgba($color-info,    0.2); }
+  &-violet { background: rgba(139,92,246,0.1); color: #7c3aed; border-color: rgba(139,92,246,0.2); }
+  &-slate  { background: $slate-100;           color: $slate-600; border-color: $slate-200; }
+
+  // Pill varyantı
+  &.pill { border-radius: $radius-full; padding: 3px 10px; }
+
+  // Durum noktası
+  &.with-dot::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: $radius-full;
+    background: currentColor;
+  }
+
+  // Çıkarılabilir "x" butonu
+  .rs-tag-icon-close {
+    margin-left: $space-1;
+    cursor: pointer;
+    opacity: 0.6;
+    &:hover { opacity: 1; }
+  }
+}
+
+// Badge (sayısal)
+.rs-badge {
+  .rs-badge-content {
+    background: $color-danger;
+    color: $text-inverse;
+    font-size: $font-xs;
+    font-weight: $weight-bold;
+    border-radius: $radius-full;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 5px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid $bg-surface;
+    box-shadow: $shadow-xs;
+  }
+
+  &.rs-badge-independent .rs-badge-content { position: static; }
+}
+
+// ==========================================================================
+// 13. MODAL (Modal, Drawer)
+// ==========================================================================
+
+// Modal arka planı
+.rs-modal-backdrop, .rs-drawer-backdrop {
+  background: $bg-overlay;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  animation: fade-in 0.2s ease;
+}
+
+// Modal
+.rs-modal {
+  &-wrapper {
+    @include flex(row, center, center);
+    padding: $space-4;
+  }
+
+  &-dialog {
+    animation: modal-in 0.25s cubic-bezier(0.34, 1.2, 0.64, 1);
+    width: 100%;
+  }
+
+  &-content {
+    border-radius: $radius-xl;
+    box-shadow: $shadow-modal;
+    background: $bg-surface;
+    border: 1px solid $border-color;
+    overflow: hidden;
+  }
+
+  &-header {
+    @include flex(row, center, space-between);
+    padding: $space-5 $space-6;
+    border-bottom: 1px solid $border-color;
+
+    .rs-modal-title {
+      font-size: $font-xl;
+      font-weight: $weight-semibold;
+      color: $text-primary;
+    }
+
+    .rs-modal-header-close {
+      width: 32px;
+      height: 32px;
+      border-radius: $radius-full;
+      @include flex(row, center, center);
+      color: $text-muted;
+      cursor: pointer;
+      transition: $transition-fast;
+
+      &:hover { background: $bg-surface-2; color: $text-primary; }
+    }
+  }
+
+  &-body {
+    padding: $space-6;
+    max-height: 70vh;
+    overflow-y: auto;
+  }
+
+  &-footer {
+    @include flex(row, center, flex-end, $space-3);
+    padding: $space-4 $space-6;
+    border-top: 1px solid $border-color;
+    background: $bg-surface-2;
+    border-radius: 0 0 $radius-xl $radius-xl;
+  }
+}
+
+// Drawer
+.rs-drawer {
+  &-content {
+    background: $bg-surface;
+    box-shadow: $shadow-xl;
+  }
+
+  &-header {
+    @include flex(row, center, space-between);
+    padding: $space-5 $space-6;
+    border-bottom: 1px solid $border-color;
+
+    .rs-drawer-title {
+      font-size: $font-xl;
+      font-weight: $weight-semibold;
+    }
+
+    .rs-drawer-header-close {
+      width: 32px; height: 32px;
+      border-radius: $radius-full;
+      @include flex(row, center, center);
+      color: $text-muted;
+      cursor: pointer;
+      &:hover { background: $bg-surface-2; color: $text-primary; }
+    }
+  }
+
+  &-body  { padding: $space-6; flex: 1; overflow-y: auto; }
+  &-footer {
+    @include flex(row, center, flex-end, $space-3);
+    padding: $space-4 $space-6;
+    border-top: 1px solid $border-color;
+  }
+}
+
+@keyframes modal-in {
+  from { opacity: 0; transform: scale(0.94) translateY(20px); }
+  to   { opacity: 1; transform: scale(1)    translateY(0); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+// ==========================================================================
+// 14. TOOLTIP & POPOVER
+// ==========================================================================
+
+.rs-tooltip {
+  background: $slate-900;
+  color: $text-inverse;
+  border-radius: $radius-sm;
+  font-size: $font-xs;
+  font-weight: $weight-medium;
+  padding: $space-2 $space-3;
+  box-shadow: $shadow-lg;
+  max-width: 260px;
+  line-height: $line-normal;
+  pointer-events: none;
+  animation: tooltip-in 0.12s ease;
+
+  .rs-tooltip-arrow { border-color: $slate-900; }
+}
+
+.rs-popover {
+  background: $bg-surface;
+  border: 1px solid $border-color;
+  border-radius: $radius-md;
+  box-shadow: $shadow-lg;
+  padding: $space-4;
+  min-width: 200px;
+  animation: dropdown-in 0.15s ease;
+
+  &-title {
+    font-weight: $weight-semibold;
+    font-size: $font-base;
+    color: $text-primary;
+    margin-bottom: $space-2;
+    padding-bottom: $space-2;
+    border-bottom: 1px solid $border-color;
+  }
+
+  &-content { font-size: $font-sm; color: $text-secondary; }
+
+  .rs-popover-arrow { border-color: $border-color; }
+}
+
+@keyframes tooltip-in {
+  from { opacity: 0; transform: scale(0.9); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+// ==========================================================================
+// 15. BİLDİRİM & UYARI (Notification, Message, Alert)
+// ==========================================================================
+
+// Toast bildirimleri
+.rs-notification {
+  background: $bg-surface;
+  border: 1px solid $border-color;
+  border-radius: $radius-md;
+  box-shadow: $shadow-xl;
+  padding: $space-4 $space-5;
+  max-width: 360px;
+  animation: notification-in 0.3s cubic-bezier(0.34, 1.2, 0.64, 1);
+  position: relative;
+  overflow: hidden;
+
+  // Renkli sol kenarlık
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    border-radius: $radius-sm 0 0 $radius-sm;
+  }
+
+  &-title {
+    font-size: $font-base;
+    font-weight: $weight-semibold;
+    color: $text-primary;
+    margin-bottom: $space-1;
+  }
+
+  &-description { font-size: $font-sm; color: $text-secondary; }
+
+  &-close {
+    position: absolute;
+    top: $space-3; right: $space-3;
+    color: $text-muted;
+    cursor: pointer;
+    &:hover { color: $text-primary; }
+  }
+
+  // Durum varyantları
+  &.rs-notification-success { &::before { background: $color-success; } .rs-notification-icon { color: $color-success; } }
+  &.rs-notification-error   { &::before { background: $color-danger; }  .rs-notification-icon { color: $color-danger; }  }
+  &.rs-notification-warning { &::before { background: $color-warning; } .rs-notification-icon { color: $color-warning; } }
+  &.rs-notification-info    { &::before { background: $color-info; }    .rs-notification-icon { color: $color-info; }    }
+}
+
+// Inline mesaj (Message bileşeni)
+.rs-message {
+  border-radius: $radius-md;
+  padding: $space-3 $space-4;
+  @include flex(row, flex-start, flex-start, $space-3);
+  border: 1px solid;
+  font-size: $font-sm;
+
+  &-success { background: $color-success-light; border-color: rgba($color-success, 0.25); color: hsl($hue-success, 84%, 29%); }
+  &-error   { background: $color-danger-light;  border-color: rgba($color-danger,  0.25); color: hsl($hue-danger, 84%, 50%); }
+  &-warning { background: $color-warning-light; border-color: rgba($color-warning, 0.25); color: hsl($hue-warning, 91%, 35%); }
+  &-info    { background: $color-info-light;    border-color: rgba($color-info,    0.25); color: hsl($hue-info, 82%, 35%); }
+
+  .rs-message-icon { flex-shrink: 0; margin-top: 1px; }
+  .rs-message-content { flex: 1; }
+  .rs-message-header { font-weight: $weight-semibold; margin-bottom: 3px; }
+}
+
+// Alert (tam genişlik uyarı)
+.rs-alert-container .rs-notification {
+  background: $slate-900;
+  color: $text-inverse;
+  border-color: transparent;
+
+  .rs-notification-title, .rs-notification-description { color: $text-inverse; }
+  .rs-notification-close { color: $slate-400; }
+
+  &.rs-notification-success { background: $color-success; }
+  &.rs-notification-error   { background: $color-danger; }
+  &.rs-notification-warning { background: $color-warning; .rs-notification-title, .rs-notification-description { color: $slate-900; } }
+  &.rs-notification-info    { background: $color-info; }
+}
+
+@keyframes notification-in {
+  from { opacity: 0; transform: translateX(20px) scale(0.96); }
+  to   { opacity: 1; transform: translateX(0)    scale(1); }
+}
+
+// ==========================================================================
+// 16. YÜKLENİYOR (Loader, Spinner, Progress)
+// ==========================================================================
+
+.rs-loader {
+  @include flex(row, center, flex-start, $space-3);
+
+  &-spin {
+    width: 20px;
+    height: 20px;
+    border: 2px solid $slate-200;
+    border-top-color: $color-primary;
+    border-radius: $radius-full;
+    animation: spin 0.7s linear infinite;
+  }
+
+  &-lg .rs-loader-spin { width: 30px; height: 30px; border-width: 3px; }
+  &-sm .rs-loader-spin { width: 14px; height: 14px; }
+
+  &-content {
+    font-size: $font-sm;
+    color: $text-muted;
+  }
+
+  // Tam ekran yükleme
+  &-backdrop {
+    background: rgba($bg-surface, 0.85);
+    backdrop-filter: blur(4px);
+    border-radius: inherit;
+  }
+}
+
+// Progress bar
+.rs-progress {
+  &-line {
+    &-outer {
+      background: $slate-200;
+      border-radius: $radius-full;
+      overflow: hidden;
+      height: 8px;
+    }
+
+    &-inner {
+      background: linear-gradient(90deg, $color-primary-400, $color-primary-600);
+      border-radius: $radius-full;
+      height: 100%;
+      transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+
+      // Parlak efekt
+      &::after {
+        content: '';
+        position: absolute;
+        top: 0; bottom: 0; left: 0;
+        width: 60%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+        animation: shimmer 1.5s ease-in-out infinite;
+      }
+    }
+  }
+
+  &-status-success .rs-progress-line-inner { background: linear-gradient(90deg, hsl($hue-success, 84%, 49%), $color-success); }
+  &-status-fail    .rs-progress-line-inner { background: linear-gradient(90deg, hsl($hue-danger, 84%, 70%), $color-danger); }
+
+  // Daire progress
+  &-circle {
+    .rs-progress-circle-trail { stroke: $slate-200; }
+    .rs-progress-circle-path  {
+      stroke: $color-primary;
+      stroke-linecap: round;
+    }
+    &-status-success .rs-progress-circle-path { stroke: $color-success; }
+    &-status-fail    .rs-progress-circle-path { stroke: $color-danger; }
+  }
+
+  &-info { font-size: $font-sm; font-weight: $weight-semibold; color: $text-secondary; }
+}
+
+@keyframes spin    { to { transform: rotate(360deg); } }
+@keyframes shimmer { from { left: -60%; } to { left: 100%; } }
+
+// ==========================================================================
+// 17. PAGİNASYON
+// ==========================================================================
+
+.rs-pagination {
+  @include flex(row, center, center, $space-1);
+  margin-top: $space-5;
+
+  &-btn {
+    min-width: 36px;
+    height: 36px;
+    padding: 0 $space-2;
+    border: 1px solid $border-color;
+    border-radius: $radius-sm;
+    font-size: $font-sm;
+    font-weight: $weight-medium;
+    color: $text-primary;
+    background: $bg-surface;
+    cursor: pointer;
+    @include flex(row, center, center);
+    transition: $transition-fast;
+    text-decoration: none;
+
+    &:hover {
+      border-color: $color-primary;
+      color: $color-primary;
+      background: $color-primary-50;
+    }
+
+    &.rs-pagination-btn-active {
+      background: $color-primary;
+      border-color: $color-primary;
+      color: $text-inverse;
+      box-shadow: 0 2px 8px rgba($color-primary, 0.3);
+      font-weight: $weight-semibold;
+    }
+
+    &:disabled {
+      color: $text-disabled;
+      cursor: not-allowed;
+      background: $bg-surface-2;
+      border-color: $border-color;
+
+      &:hover { border-color: $border-color; background: $bg-surface-2; color: $text-disabled; }
+    }
+
+    // Üç nokta
+    &.rs-pagination-btn-ellipsis { border: none; color: $text-muted; background: transparent; &:hover { background: $bg-surface-2; } }
+  }
+
+  // Sayfa seçici
+  &-limit-picker { margin-left: $space-4; }
+}
+
+// ==========================================================================
+// 18. DROPDOWN MENÜ
+// ==========================================================================
+
+.rs-dropdown {
+  &-menu {
+    background: $bg-surface;
+    border: 1px solid $border-color;
+    border-radius: $radius-md;
+    box-shadow: $shadow-lg;
+    padding: $space-1;
+    min-width: 180px;
+    z-index: $z-dropdown;
+    animation: dropdown-in 0.15s ease;
+  }
+
+  &-item {
+    @include flex(row, center, flex-start, $space-2);
+    padding: $space-2 $space-3;
+    border-radius: $radius-xs;
+    font-size: $font-sm;
+    color: $text-primary;
+    cursor: pointer;
+    transition: $transition-fast;
+    text-decoration: none;
+
+    &:hover { background: $bg-surface-2; }
+
+    // Aktif / seçili
+    &.rs-dropdown-item-active {
+      background: $color-primary-50;
+      color: $color-primary;
+      font-weight: $weight-medium;
+    }
+
+    // Tehlikeli aksiyon
+    &.danger { color: $color-danger; &:hover { background: $color-danger-light; } }
+
+    // İkon
+    .dropdown-icon { color: $text-muted; font-size: $font-lg; flex-shrink: 0; }
+    &:hover .dropdown-icon { color: inherit; }
+
+    // Kısayol
+    .shortcut {
+      margin-left: auto;
+      font-size: $font-xs;
+      color: $text-muted;
+      background: $bg-surface-2;
+      padding: 2px 6px;
+      border-radius: $radius-xs;
+      border: 1px solid $border-color;
+    }
+  }
+
+  &-menu-title {
+    padding: $space-2 $space-3;
+    font-size: $font-xs;
+    font-weight: $weight-semibold;
+    color: $text-muted;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  &-item-divider {
+    height: 1px;
+    background: $border-color;
+    margin: $space-1 0;
+  }
+
+  // Alt menü oku
+  &-item-submenu-arrow { margin-left: auto; color: $text-muted; }
+
+  // Tetikleyici buton
+  &-toggle {
+    @extend .rs-btn;
+    @extend .rs-btn-default;
+
+    .rs-dropdown-toggle-caret { margin-left: $space-2; color: $text-muted; }
+  }
+}
+
+// ==========================================================================
+// 19. BREADCRUMB & STEPS (Adım İzleme)
+// ==========================================================================
+
+// Breadcrumb
+.rs-breadcrumb {
+  @include flex(row, center, flex-start, $space-2);
+  font-size: $font-sm;
+
+  &-item {
+    color: $text-muted;
+    text-decoration: none;
+    transition: $transition-fast;
+    &:hover { color: $color-primary; }
+
+    &.rs-breadcrumb-item-active {
+      color: $text-primary;
+      font-weight: $weight-medium;
+      pointer-events: none;
+    }
+  }
+
+  &-separator { color: $text-muted; }
+}
+
+// Steps
+.rs-steps {
+  @include flex(row, flex-start, flex-start);
+
+  &-item {
+    flex: 1;
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 16px;
+      left: calc(50% + 20px);
+      right: calc(-50% + 20px);
+      height: 1px;
+      background: $border-color;
+    }
+
+    &:last-child::before { display: none; }
+
+    &-status-finish::before { background: $color-primary; }
+
+    &-icon-wrapper {
+      width: 32px;
+      height: 32px;
+      border-radius: $radius-full;
+      border: 2px solid $border-color;
+      background: $bg-surface;
+      @include flex(row, center, center);
+      font-size: $font-sm;
+      font-weight: $weight-semibold;
+      color: $text-muted;
+      margin: 0 auto $space-2;
+      transition: $transition-base;
+    }
+
+    &-status-finish .rs-steps-item-icon-wrapper {
+      background: $color-primary;
+      border-color: $color-primary;
+      color: $text-inverse;
+    }
+
+    &-status-process .rs-steps-item-icon-wrapper {
+      border-color: $color-primary;
+      color: $color-primary;
+      box-shadow: 0 0 0 4px $color-primary-ring;
+    }
+
+    &-status-error .rs-steps-item-icon-wrapper {
+      border-color: $color-danger;
+      color: $color-danger;
+    }
+
+    &-content {
+      text-align: center;
+      .rs-steps-item-title { font-size: $font-sm; font-weight: $weight-medium; color: $text-primary; }
+      .rs-steps-item-description { font-size: $font-xs; color: $text-muted; margin-top: 2px; }
+    }
+  }
+}
+
+// ==========================================================================
+// 20. TREE, CASCADER & TRANSFER (Ağaç Yapıları)
+// ==========================================================================
+
+.rs-tree {
+  font-size: $font-sm;
+
+  &-node {
+    &-label {
+      @include flex(row, center, flex-start, $space-2);
+      padding: $space-2 $space-3;
+      border-radius: $radius-sm;
+      cursor: pointer;
+      transition: $transition-fast;
+
+      &:hover { background: $bg-surface-2; }
+    }
+
+    &.rs-tree-node-active > .rs-tree-node-label {
+      background: $color-primary-50;
+      color: $color-primary;
+      font-weight: $weight-medium;
+    }
+  }
+
+  &-node-expand-icon {
+    color: $text-muted;
+    transition: transform 0.2s;
+    .rs-tree-node-expanded & { transform: rotate(90deg); }
+  }
+}
+
+// ==========================================================================
+// 21. AVATAR & KULLANICI KARTLARI
+// ==========================================================================
+
+.rs-avatar {
+  border-radius: $radius-full;
+  font-weight: $weight-semibold;
+  @include flex(row, center, center);
+  background: $color-primary-100;
+  color: $color-primary-700;
+  overflow: hidden;
+  flex-shrink: 0;
+  border: 2px solid $bg-surface;
+  box-shadow: $shadow-xs;
+
+  &-xs  { width: 24px; height: 24px; font-size: $font-xs; }
+  &-sm  { width: 32px; height: 32px; font-size: $font-xs; }
+  &-md  { width: 40px; height: 40px; font-size: $font-sm; }
+  &-lg  { width: 48px; height: 48px; font-size: $font-base; }
+  &-xl  { width: 64px; height: 64px; font-size: $font-xl; }
+
+  img   { width: 100%; height: 100%; object-fit: cover; }
+
+  // Grup
+  &-group {
+    @include flex(row, center, flex-start);
+    .rs-avatar { margin-left: -8px; &:first-child { margin-left: 0; } }
+  }
+}
+
+// ==========================================================================
+// 22. DIVIDER (Ayraç)
 // ==========================================================================
 
 .rs-divider {
   background-color: $border-color;
-  
+
+  &-horizontal { height: 1px; margin: $space-5 0; }
+  &-vertical   { width: 1px; margin: 0 $space-3; align-self: stretch; }
+
   &-text {
+    display: flex;
+    align-items: center;
+    gap: $space-3;
     color: $text-muted;
-    font-size: 13px;
-    font-weight: 500;
+    font-size: $font-xs;
+    font-weight: $weight-medium;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+
+    &::before, &::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: $border-color;
+    }
   }
 }
 
-// Pagination Tasarımı
-.rs-pagination {
-  margin-top: 20px;
-  
-  .rs-pagination-btn {
-    border-radius: $border-radius-sm;
-    color: $text-main;
-    
-    &:hover {
-      background-color: $bg-surface-hover;
-      color: $color-primary;
+// ==========================================================================
+// 23. ACCORDION (Katlanabilir İçerik)
+// ==========================================================================
+
+.rs-panel-group {
+  .rs-panel {
+    border-radius: 0;
+    border-bottom: 1px solid $border-color;
+
+    &:first-child { border-radius: $radius-lg $radius-lg 0 0; }
+    &:last-child  { border-radius: 0 0 $radius-lg $radius-lg; border-bottom: none; }
+
+    &-header {
+      cursor: pointer;
+      user-select: none;
+      background: $bg-surface;
+      transition: $transition-fast;
+
+      &:hover { background: $bg-surface-2; }
     }
-    
-    &.rs-pagination-btn-active {
-      background-color: $color-primary;
-      color: white;
+
+    &-collapse-in .rs-panel-header { border-bottom: 1px solid $border-color; }
+
+    &-in:not(.rs-panel-collapse-in) .rs-panel-body {
+      animation: slide-down 0.2s ease;
     }
   }
+}
+
+@keyframes slide-down {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+// ==========================================================================
+// 24. YARDIMCI SINIFLAR (Utilities)
+// ==========================================================================
+
+// Boşluk
+.mt-0 { margin-top: 0; } .mt-1 { margin-top: $space-1; } .mt-2 { margin-top: $space-2; }
+.mt-3 { margin-top: $space-3; } .mt-4 { margin-top: $space-4; } .mt-5 { margin-top: $space-5; }
+.mb-0 { margin-bottom: 0; } .mb-4 { margin-bottom: $space-4; } .mb-5 { margin-bottom: $space-5; }
+
+// Flex
+.d-flex  { display: flex; }
+.flex-center  { display: flex; align-items: center; justify-content: center; }
+.flex-between { display: flex; align-items: center; justify-content: space-between; }
+.flex-1  { flex: 1; }
+.gap-2   { gap: $space-2; } .gap-3 { gap: $space-3; } .gap-4 { gap: $space-4; }
+
+// Metin
+.text-primary   { color: $text-primary; }
+.text-secondary { color: $text-secondary; }
+.text-muted     { color: $text-muted; }
+.text-success   { color: $color-success; }
+.text-danger    { color: $color-danger; }
+.text-warning   { color: $color-warning; }
+.font-medium    { font-weight: $weight-medium; }
+.font-semibold  { font-weight: $weight-semibold; }
+.font-bold      { font-weight: $weight-bold; }
+.text-sm        { font-size: $font-sm; }
+.text-xs        { font-size: $font-xs; }
+.truncate       { @include truncate; }
+
+// Kod bloğu
+.code-block {
+  font-family: $font-family-mono;
+  font-size: $font-sm;
+  background: $slate-900;
+  color: #e2e8f0;
+  padding: $space-4;
+  border-radius: $radius-md;
+  overflow-x: auto;
+  line-height: $line-relaxed;
+}
+
+// Cam efektli kart
+.glass-card {
+  @include glass(16px, rgba(255,255,255,0.75));
+  border: 1px solid rgba(255,255,255,0.6);
+  border-radius: $radius-lg;
+  box-shadow: $shadow-md;
+}
+
+// Gradyan metin
+.gradient-text {
+  @include gradient-bg($color-primary-400, $color-primary-700, 135deg);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: $weight-bold;
+}
+
+// Iskelet yükleme animasyonu
+.skeleton {
+  background: linear-gradient(90deg, $slate-100 25%, $slate-200 50%, $slate-100 75%);
+  background-size: 200% 100%;
+  animation: skeleton-wave 1.4s ease-in-out infinite;
+  border-radius: $radius-sm;
+}
+
+@keyframes skeleton-wave {
+  from { background-position: 200% 0; }
+  to   { background-position: -200% 0; }
+}
+
+// ==========================================================================
+// 25. RESPONSIVE (Mobil Uyarlamalar)
+// ==========================================================================
+
+@include respond-to(md) {
+  .rs-navbar {
+    height: auto;
+    padding: $space-3 $space-4;
+    flex-wrap: wrap;
+    gap: $space-3;
+  }
+
+  .rs-table { font-size: $font-xs; }
+
+  .rs-modal-body { max-height: 80vh; padding: $space-4; }
+
+  .rs-content { padding: $space-4; }
+
+  .rs-steps { flex-direction: column; }
+}
+
+@include respond-to(sm) {
+  .rs-modal-dialog { margin: $space-3; }
+  .rs-nav-tabs .rs-nav-item { padding: $space-2 $space-3; font-size: $font-sm; }
+  .rs-pagination-btn { min-width: 32px; height: 32px; font-size: $font-xs; }
 }
