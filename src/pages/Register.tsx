@@ -19,8 +19,8 @@ export default function Register() {
     const at = value.match(/@[\S]*/)
     const nextData = at
       ? suffixes
-          .filter(item => item.indexOf(at[0]) >= 0)
-          .map(item => `${value}${item.replace(at[0], '')}`)
+        .filter(item => item.indexOf(at[0]) >= 0)
+        .map(item => `${value}${item.replace(at[0], '')}`)
       : suffixes.map(item => `${value}${item}`)
     setEmailData(value ? nextData : [])
   }
