@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { Panel, Form, Button, Message, useToaster } from 'rsuite'
+import { Panel, Form, Button, Message, useToaster, AutoComplete } from 'rsuite'
 // import Header from '../components/Header'
 import Footer from '../components/Footer'
 
@@ -8,8 +8,22 @@ export default function Register() {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [emailData, setEmailData] = useState<string[]>([])
   const navigate = useNavigate()
   const toaster = useToaster()
+
+  const suffixes = ['@gmail.com', '@outlook.com']
+
+  const handleEmailChange = (value: string) => {
+    setEmail(value)
+    const at = value.match(/@[\S]*/)
+    const nextData = at
+      ? suffixes
+          .filter(item => item.indexOf(at[0]) >= 0)
+          .map(item => `${value}${item.replace(at[0], '')}`)
+      : suffixes.map(item => `${value}${item}`)
+    setEmailData(value ? nextData : [])
+  }
 
   function handleSubmit() {
     if (name && email && password) {
@@ -57,11 +71,10 @@ export default function Register() {
             </Form.Group>
             <Form.Group>
               <Form.Label>E-posta</Form.Label>
-              <Form.Control
-                name="email"
-                type="email"
+              <AutoComplete
+                data={emailData}
                 value={email}
-                onChange={v => setEmail(v)}
+                onChange={handleEmailChange}
                 placeholder="ornek@sirket.com"
               />
             </Form.Group>

@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { Panel, Form, Button, Checkbox } from 'rsuite'
 //import Header from '../components/Header' 
 import Footer from '../components/Footer'
+import { AutoComplete } from 'rsuite';
 
 interface LoginProps {
   onLogin: () => void
@@ -12,7 +13,21 @@ export default function Login({ onLogin }: LoginProps) {
   const [email, setEmail] = useState(() => localStorage.getItem('rememberedEmail') || '')
   const [password, setPassword] = useState('')
   const [rememberMe, setRememberMe] = useState(() => localStorage.getItem('rememberMe') === 'true')
+  const [emailData, setEmailData] = useState<string[]>([])
   const navigate = useNavigate()
+
+  const suffixes = ['@gmail.com', '@outlook.com']
+
+  const handleEmailChange = (value: string) => {
+    setEmail(value)
+    const at = value.match(/@[\S]*/)
+    const nextData = at
+      ? suffixes
+          .filter(item => item.indexOf(at[0]) >= 0)
+          .map(item => `${value}${item.replace(at[0], '')}`)
+      : suffixes.map(item => `${value}${item}`)
+    setEmailData(value ? nextData : [])
+  }
 
   function handleSubmit() {
     if (email && password) {
@@ -52,11 +67,10 @@ export default function Login({ onLogin }: LoginProps) {
           <Form onSubmit={handleSubmit} fluid>
             <Form.Group>
               <Form.Label>E-posta</Form.Label>
-              <Form.Control
-                name="email"
-                type="email"
+              <AutoComplete
+                data={emailData}
                 value={email}
-                onChange={v => setEmail(v)}
+                onChange={handleEmailChange}
                 placeholder="ornek@mail.com"
               />
             </Form.Group>
