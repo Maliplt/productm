@@ -8,10 +8,11 @@ interface ProductCardProps {
 
 export default function ProductCard({ product, onClick }: ProductCardProps) {
   return (
-    <Panel 
-      bordered 
-      bodyFill 
-      className="flex flex-col cursor-pointer transition-all duration-300 hover:shadow-xl hover:ring-2 hover:ring-blue-500 hover:-translate-y-1 bg-white"
+    <Panel
+      bordered
+      bodyFill
+      className="flex flex-col cursor-pointer transition-all duration-300 hover:shadow-xl hover:-translate-y-1 bg-white"
+      style={{ '--tw-ring-color': '#f97316' } as React.CSSProperties}
       onClick={onClick}
     >
       <div className="w-full h-40 bg-slate-50 border-b border-slate-200 flex items-center justify-center">
@@ -24,9 +25,9 @@ export default function ProductCard({ product, onClick }: ProductCardProps) {
       <Panel>
         <Stack justifyContent="space-between" alignItems="flex-start" className="mb-2">
           <h6 className="m-0 text-sm font-bold text-slate-900">{product.name}</h6>
-          <span className="text-blue-600 font-bold text-sm">{product.price.toLocaleString('tr-TR')}₺</span>
+          <span style={{ color: '#f97316', fontWeight: 700, fontSize: '14px' }}>{product.price.toLocaleString('tr-TR')}₺</span>
         </Stack>
-        <p className="text-slate-500 text-xs mb-4">{product.category}</p>
+        <p className="text-slate-500 text-xs mb-1">{product.category}{product.brand ? ` · ${product.brand}` : ''}</p>
         <Stack justifyContent="space-between" className="pt-3 border-t border-slate-100">
           <span className="text-slate-500 text-xs">Stok Durumu</span>
           <Tag color={product.quantity < 5 ? 'red' : 'green'}>

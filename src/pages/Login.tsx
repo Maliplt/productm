@@ -1,46 +1,44 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { Panel, Form, Button, Checkbox } from 'rsuite'
-//import Header from '../components/Header' 
+import { Panel, Form, Checkbox, type FormInstance } from 'rsuite'
+import { SchemaModel, StringType } from 'schema-typed'
 import Footer from '../components/Footer'
-import { AutoComplete } from 'rsuite';
+import { LogIn } from 'lucide-react'
 
 interface LoginProps {
   onLogin: () => void
 }
 
+const model = SchemaModel({
+  email: StringType()
+    .isEmail('Geçerli bir e-posta adresi giriniz.')
+    .isRequired('E-posta adresi zorunludur.'),
+  password: StringType()
+    .minLength(6, 'Şifre en az 6 karakter olmalıdır.')
+    .isRequired('Şifre zorunludur.'),
+})
+
 export default function Login({ onLogin }: LoginProps) {
-  const [email, setEmail] = useState(() => localStorage.getItem('rememberedEmail') || '')
-  const [password, setPassword] = useState('')
+  const formRef = useRef<FormInstance>(null)
+  const [formValue, setFormValue] = useState({
+    email: localStorage.getItem('rememberedEmail') || '',
+    password: '',
+  })
+  const [formError, setFormError] = useState<Record<string, string>>({})
   const [rememberMe, setRememberMe] = useState(() => localStorage.getItem('rememberMe') === 'true')
-  const [emailData, setEmailData] = useState<string[]>([])
   const navigate = useNavigate()
 
-  const suffixes = ['@gmail.com', '@outlook.com']
-
-  const handleEmailChange = (value: string) => {
-    setEmail(value)
-    const at = value.match(/@[\S]*/)
-    const nextData = at
-      ? suffixes
-        .filter(item => item.indexOf(at[0]) >= 0)
-        .map(item => `${value}${item.replace(at[0], '')}`)
-      : suffixes.map(item => `${value}${item}`)
-    setEmailData(value ? nextData : [])
-  }
-
   function handleSubmit() {
-    if (email && password) {
-      if (rememberMe) {
-        localStorage.setItem('rememberedEmail', email)
-        localStorage.setItem('rememberMe', 'true')
-      } else {
-        localStorage.removeItem('rememberedEmail')
-        localStorage.removeItem('rememberMe')
-      }
-      onLogin()
-      navigate('/')
+    if (!formRef.current?.check()) return
+    if (rememberMe) {
+      localStorage.setItem('rememberedEmail', formValue.email)
+      localStorage.setItem('rememberMe', 'true')
+    } else {
+      localStorage.removeItem('rememberedEmail')
+      localStorage.removeItem('rememberMe')
     }
+    onLogin()
+    navigate('/')
   }
 
   const panelHeader = (
@@ -49,40 +47,33 @@ export default function Login({ onLogin }: LoginProps) {
         <span className="text-slate-900">product</span>
         <span className="text-orange-500">m</span>
       </h1>
-      <p className="text-slate-500 mt-2 font-medium">Giriş Yap</p>
+      <p className="text-slate-500 mt-2 font-medium">Hesabınıza giriş yapın</p>
     </div>
   )
 
   return (
     <div
       className="flex flex-col min-h-screen bg-cover bg-center relative"
-      style={{
-        backgroundImage: `url("https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=2000&q=80")`
-      }}
+      style={{ backgroundImage: `url("https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=2000&q=80")` }}
     >
       <div className="absolute inset-0 bg-slate-950/40 backdrop-blur-[3px] z-0" />
-
       <main className="flex-1 flex flex-col items-center justify-center p-4 z-10">
         <Panel bordered className="bg-white/95 backdrop-blur-md w-full max-w-sm shadow-2xl rounded-2xl border border-white/20" header={panelHeader}>
-          <Form onSubmit={handleSubmit} fluid>
-            <Form.Group>
+          <Form
+            ref={formRef}
+            model={model}
+            formValue={formValue}
+            onChange={val => setFormValue(val as typeof formValue)}
+            onCheck={setFormError}
+            fluid
+          >
+            <Form.Group controlId="email">
               <Form.Label>E-posta</Form.Label>
-              <AutoComplete
-                data={emailData}
-                value={email}
-                onChange={handleEmailChange}
-                placeholder="ornek@mail.com"
-              />
+              <Form.Control name="email" type="email" placeholder="ornek@mail.com" errorMessage={formError.email} />
             </Form.Group>
-            <Form.Group>
+            <Form.Group controlId="password">
               <Form.Label>Şifre</Form.Label>
-              <Form.Control
-                name="password"
-                type="password"
-                value={password}
-                onChange={v => setPassword(v)}
-                placeholder="********"
-              />
+              <Form.Control name="password" type="password" placeholder="••••••••" errorMessage={formError.password} />
             </Form.Group>
             <Form.Group>
               <Checkbox checked={rememberMe} onChange={(_, checked) => setRememberMe(checked)}>
@@ -90,14 +81,15 @@ export default function Login({ onLogin }: LoginProps) {
               </Checkbox>
             </Form.Group>
             <Form.Group style={{ marginTop: '20px' }}>
-              <Button appearance="primary" color="blue" type="submit" block>
+              <button type="button" className="btn btn-primary btn-block" onClick={handleSubmit}>
+                <LogIn size={18} />
                 Giriş Yap
-              </Button>
+              </button>
             </Form.Group>
           </Form>
           <div className="text-center mt-4">
             <span className="text-slate-500 text-sm">Hesabınız yok mu? </span>
-            <Link to="/register" className="text-blue-600 outline-none hover:underline text-sm font-medium">Kayıt Ol</Link>
+            <Link to="/register" className="text-orange-500 outline-none hover:underline text-sm font-medium">Kayıt Ol</Link>
           </div>
         </Panel>
       </main>

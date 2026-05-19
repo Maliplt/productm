@@ -14,6 +14,14 @@ $hue-warning:    38;
 $hue-danger:      4;
 $hue-info:       199;
 
+// — Turuncu (Marka rengi)
+$hue-orange:      25;
+$color-orange:         hsl($hue-orange, 95%, 53%);
+$color-orange-hover:   hsl($hue-orange, 95%, 46%);
+$color-orange-light:   hsl($hue-orange, 95%, 95%);
+$color-orange-dark:    hsl($hue-orange, 95%, 40%);
+$color-orange-ring:    rgba($color-orange, 0.20);
+
 // Primary — İndigo skalası
 $color-primary-50:   hsl($hue-primary, 87%, 97%);
 $color-primary-100:  hsl($hue-primary, 82%, 93%);
@@ -75,11 +83,11 @@ $border-color-focus: $color-primary;
 
 // — Köşe Yarıçapları
 $radius-xs:   4px;
-$radius-sm:   6px;
-$radius-md:   10px;
-$radius-lg:   14px;
-$radius-xl:   20px;
-$radius-2xl:  28px;
+$radius-sm:   4px;
+$radius-md:   8px;
+$radius-lg:   12px;
+$radius-xl:   16px;
+$radius-2xl:  24px;
 $radius-full: 9999px;
 
 // — Gölgeler
@@ -336,12 +344,10 @@ body {
     }
   }
 
-  // Sağ alan — butonlar, avatar vb.
   &-right {
     @include flex(row, center, flex-end, $space-3);
   }
 
-  // Nav linkleri
   .rs-nav-item {
     height: 60px;
     padding: 0 $space-4;
@@ -556,9 +562,232 @@ body {
 }
 
 // ==========================================================================
-// 7. BUTONLAR
+// 7. BUTONLAR — Kapsamlı Özel Buton Sistemi
 // ==========================================================================
 
+// ── Genel .btn sınıfı (projemizin özel buton sistemi)
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 9px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.3;
+  border-radius: $radius-sm;
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  white-space: nowrap;
+  user-select: none;
+  transition: $transition-base;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  font-family: $font-family;
+  outline: none;
+  background: none;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: rgba(255,255,255,0);
+    transition: background 0.25s ease;
+  }
+  &:active::after { background: rgba(255,255,255,0.15); }
+
+  // ── Ana turuncu buton
+  &.btn-primary, &-primary {
+    background: linear-gradient(135deg, $color-orange 0%, $color-orange-hover 100%);
+    color: #ffffff;
+    border-color: transparent;
+    box-shadow: 0 2px 8px rgba($color-orange, 0.30);
+
+    &:hover {
+      background: linear-gradient(135deg, $color-orange-hover 0%, $color-orange-dark 100%);
+      box-shadow: 0 4px 16px rgba($color-orange, 0.40);
+      transform: translateY(-1px);
+    }
+    &:active { transform: translateY(0); box-shadow: none; }
+  }
+
+  // ── Turuncu dolu (alias)
+  &.btn-orange {
+    background: linear-gradient(135deg, $color-orange 0%, $color-orange-hover 100%);
+    color: #ffffff;
+    border-color: transparent;
+    box-shadow: 0 2px 8px rgba($color-orange, 0.30);
+
+    &:hover {
+      background: linear-gradient(135deg, $color-orange-hover 0%, $color-orange-dark 100%);
+      box-shadow: 0 4px 16px rgba($color-orange, 0.40);
+      transform: translateY(-1px);
+    }
+    &:active { transform: translateY(0); }
+  }
+
+  // ── Ghost (saydam, kenarlıklı)
+  &.btn-ghost {
+    background: transparent;
+    border-color: $border-color;
+    color: $text-secondary;
+
+    &:hover {
+      border-color: $color-orange;
+      color: $color-orange;
+      background: $color-orange-light;
+    }
+  }
+
+  // ── Tehlike (kırmızı outline)
+  &.btn-danger-outline {
+    background: transparent;
+    border-color: $color-danger;
+    color: $color-danger;
+
+    &:hover {
+      background: $color-danger-light;
+      box-shadow: 0 2px 8px rgba($color-danger, 0.20);
+    }
+  }
+
+  // ── Tehlike dolu
+  &.btn-danger {
+    background: $color-danger;
+    color: #ffffff;
+    border-color: transparent;
+    box-shadow: 0 2px 6px rgba($color-danger, 0.30);
+
+    &:hover {
+      filter: brightness(1.08);
+      box-shadow: 0 4px 14px rgba($color-danger, 0.40);
+      transform: translateY(-1px);
+    }
+  }
+
+  // ── Başarı (yeşil)
+  &.btn-success {
+    background: $color-success;
+    color: #ffffff;
+    border-color: transparent;
+    box-shadow: 0 2px 6px rgba($color-success, 0.30);
+
+    &:hover {
+      filter: brightness(1.06);
+      box-shadow: 0 4px 14px rgba($color-success, 0.40);
+      transform: translateY(-1px);
+    }
+  }
+
+  // ── Bilgi (mavi)
+  &.btn-info {
+    background: $color-info;
+    color: #ffffff;
+    border-color: transparent;
+    box-shadow: 0 2px 6px rgba($color-info, 0.25);
+
+    &:hover {
+      filter: brightness(1.06);
+      transform: translateY(-1px);
+    }
+  }
+
+  // ── Nötr / Varsayılan
+  &.btn-default {
+    background: $bg-surface;
+    border-color: $border-color;
+    color: $text-primary;
+    box-shadow: $shadow-xs;
+
+    &:hover {
+      border-color: $color-orange;
+      color: $color-orange;
+      background: $color-orange-light;
+    }
+  }
+
+  // ── Filtre butonu (özel görünüm)
+  &.btn-filter {
+    background: $bg-surface;
+    border-color: $border-color;
+    color: $text-secondary;
+    box-shadow: $shadow-xs;
+    padding: 9px 18px;
+
+    &:hover {
+      border-color: $color-orange;
+      color: $color-orange;
+      background: $color-orange-light;
+      box-shadow: 0 2px 8px rgba($color-orange, 0.15);
+    }
+
+    &:active {
+      background: $color-orange;
+      color: #ffffff;
+      border-color: $color-orange;
+    }
+  }
+
+  // ── Tam genişlik
+  &.btn-block, &-block { width: 100%; }
+
+  // ── Küçük
+  &.btn-sm { padding: 6px 14px; font-size: 13px; }
+
+  // ── Büyük
+  &.btn-lg { padding: 12px 28px; font-size: 16px; border-radius: $radius-md; }
+
+  // ── Devre dışı
+  &[disabled], &.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+    box-shadow: none;
+    transform: none !important;
+  }
+}
+
+// ── İkon butonları (tablo, modal liste)
+.btn-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: $radius-sm;
+  border: none;
+  cursor: pointer;
+  transition: $transition-fast;
+  background: transparent;
+  color: $text-muted;
+  padding: 0;
+  outline: none;
+
+  &.btn-icon-view {
+    &:hover {
+      background: $color-primary-50;
+      color: $color-primary;
+    }
+  }
+
+  &.btn-icon-edit {
+    &:hover {
+      background: $color-orange-light;
+      color: $color-orange;
+    }
+  }
+
+  &.btn-icon-delete {
+    &:hover {
+      background: $color-danger-light;
+      color: $color-danger;
+    }
+  }
+}
+
+// ── RSuite .rs-btn override (eski kod uyumluluğu)
 .rs-btn {
   display: inline-flex;
   align-items: center;
@@ -1517,30 +1746,46 @@ textarea.rs-input {
   &-header {
     @include flex(row, center, space-between);
     padding: $space-5 $space-6;
-    border-bottom: 1px solid $border-color;
+    border-bottom: 2px solid $border-color;
+    background: linear-gradient(135deg, $slate-50 0%, $bg-surface 100%);
 
     .rs-modal-title {
       font-size: $font-xl;
-      font-weight: $weight-semibold;
+      font-weight: $weight-bold;
       color: $text-primary;
+
+      // İkon + metin düzeni
+      span {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: $text-primary;
+
+        svg { color: $color-orange; }
+      }
     }
 
     .rs-modal-header-close {
-      width: 32px;
-      height: 32px;
+      width: 34px;
+      height: 34px;
       border-radius: $radius-full;
       @include flex(row, center, center);
       color: $text-muted;
       cursor: pointer;
       transition: $transition-fast;
+      border: 1px solid transparent;
 
-      &:hover { background: $bg-surface-2; color: $text-primary; }
+      &:hover {
+        background: $color-danger-light;
+        color: $color-danger;
+        border-color: rgba($color-danger, 0.2);
+      }
     }
   }
 
   &-body {
     padding: $space-6;
-    max-height: 70vh;
+    max-height: 72vh;
     overflow-y: auto;
   }
 
@@ -1550,6 +1795,113 @@ textarea.rs-input {
     border-top: 1px solid $border-color;
     background: $bg-surface-2;
     border-radius: 0 0 $radius-xl $radius-xl;
+  }
+}
+
+// ── Filtre Modal özel stilleri
+.filter-search-wrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  .filter-search-box {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: $bg-surface-2;
+    border: 1.5px solid $border-color;
+    border-radius: $radius-sm;
+    padding: 10px 14px;
+    transition: $transition-base;
+
+    &:focus-within {
+      border-color: $color-orange;
+      background: $bg-surface;
+      box-shadow: 0 0 0 3px $color-orange-ring;
+    }
+
+    .filter-search-icon { color: $text-muted; flex-shrink: 0; }
+
+    .filter-search-input {
+      border: none;
+      background: transparent;
+      outline: none;
+      font-size: $font-base;
+      color: $text-primary;
+      width: 100%;
+      font-family: $font-family;
+
+      &::placeholder { color: $text-muted; }
+    }
+  }
+
+  .filter-count-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 14px;
+    background: $color-orange-light;
+    color: $color-orange;
+    border-radius: $radius-full;
+    font-size: $font-xs;
+    font-weight: $weight-bold;
+    white-space: nowrap;
+    border: 1px solid rgba($color-orange, 0.25);
+  }
+}
+
+// ── Ürün detay modal satırları
+.product-detail-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 0;
+
+  .product-detail-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: $font-sm;
+    color: $text-muted;
+    font-weight: $weight-medium;
+
+    svg { color: $text-muted; }
+  }
+
+  .product-detail-value {
+    font-size: $font-base;
+    font-weight: $weight-semibold;
+    color: $text-primary;
+  }
+
+  .category-badge {
+    background: $slate-100;
+    color: $slate-600;
+    padding: 3px 12px;
+    border-radius: $radius-full;
+    font-size: $font-sm;
+    font-weight: $weight-medium;
+  }
+
+  .price-value {
+    color: $color-orange;
+    font-size: $font-lg;
+    font-weight: $weight-bold;
+  }
+
+  .stock-ok { color: $color-success; }
+  .stock-low { color: $color-danger; }
+
+  .stock-warning-badge {
+    display: inline-block;
+    margin-left: 8px;
+    padding: 2px 8px;
+    background: $color-danger-light;
+    color: $color-danger;
+    border-radius: $radius-full;
+    font-size: $font-xs;
+    font-weight: $weight-bold;
   }
 }
 

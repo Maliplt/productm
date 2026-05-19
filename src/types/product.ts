@@ -7,4 +7,8 @@ export interface Product {
   description: string
   image: string
   createdAt: string
+  brand?: string
+  sku?: string
+  weight?: string
+  warranty?: string
 }
