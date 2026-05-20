@@ -82,12 +82,12 @@ $border-color-hover: $slate-300;
 $border-color-focus: $color-primary;
 
 // — Köşe Yarıçapları
-$radius-xs:   4px;
-$radius-sm:   4px;
-$radius-md:   8px;
-$radius-lg:   12px;
-$radius-xl:   16px;
-$radius-2xl:  24px;
+$radius-xs:   2px;
+$radius-sm:   3px;
+$radius-md:   3px;
+$radius-lg:   3px;
+$radius-xl:   3px;
+$radius-2xl:  3px;
 $radius-full: 9999px;
 
 // — Gölgeler
@@ -1411,7 +1411,7 @@ textarea.rs-input {
 .rs-panel {
   background: $bg-surface;
   border: 1px solid $border-color;
-  border-radius: $radius-lg;
+  border-radius: 3px;
   box-shadow: $shadow-sm;
   overflow: hidden;
   transition: $transition-base;
@@ -1504,7 +1504,7 @@ textarea.rs-input {
 
 .rs-table {
   border: 1px solid $border-color;
-  border-radius: $radius-lg;
+  border-radius: 3px;
   box-shadow: $shadow-sm;
   overflow: hidden;
   background: $bg-surface;
@@ -1601,7 +1601,7 @@ textarea.rs-input {
 
 .rs-list {
   border: 1px solid $border-color;
-  border-radius: $radius-lg;
+  border-radius: 3px;
   overflow: hidden;
   background: $bg-surface;
   box-shadow: $shadow-sm;
@@ -1736,7 +1736,7 @@ textarea.rs-input {
   }
 
   &-content {
-    border-radius: $radius-xl;
+    border-radius: 3px;
     box-shadow: $shadow-modal;
     background: $bg-surface;
     border: 1px solid $border-color;
@@ -1794,7 +1794,7 @@ textarea.rs-input {
     padding: $space-4 $space-6;
     border-top: 1px solid $border-color;
     background: $bg-surface-2;
-    border-radius: 0 0 $radius-xl $radius-xl;
+    border-radius: 0 0 3px 3px;
   }
 }
 

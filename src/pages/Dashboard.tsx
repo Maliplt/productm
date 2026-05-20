@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Container, Content, Input, InputGroup, Grid, Row, Col, Panel, Tabs } from 'rsuite'
-import { Search, Plus, List as ListIcon, LayoutGrid, Filter, Package, Boxes, AlertTriangle, TrendingUp } from 'lucide-react'
+import { Search, Plus, List as ListIcon, LayoutGrid, Filter, Package, Boxes, AlertTriangle, TrendingUp, Eye as EyeIcon, X } from 'lucide-react'
 import type { Product } from '../types/product'
 import initialProducts from '../data/products.json'
 import ProductCard from '../components/ProductCard'
@@ -24,10 +24,13 @@ export default function Dashboard({ onLogout }: DashboardProps) {
   const [isFormOpen, setIsFormOpen] = useState(false)
   const [editingProduct, setEditingProduct] = useState<Product | null>(null)
   const [isFilterModalOpen, setIsFilterModalOpen] = useState(false)
+  const [lowStockOnly, setLowStockOnly] = useState(false)
 
   const filteredProducts = products.filter(p => {
     const q = search.toLowerCase()
-    return p.name.toLowerCase().includes(q) || p.category.toLowerCase().includes(q)
+    const matchSearch = p.name.toLowerCase().includes(q) || p.category.toLowerCase().includes(q)
+    const matchLowStock = lowStockOnly ? p.quantity < 5 : true
+    return matchSearch && matchLowStock
   })
 
   function handleSave(data: Omit<Product, 'id' | 'createdAt'>) {
@@ -66,7 +69,12 @@ export default function Dashboard({ onLogout }: DashboardProps) {
   const statCards = [
     { label: 'Toplam Ürün', value: products.length, icon: <Package size={22} />, gradient: 'linear-gradient(135deg, #f97316, #ea580c)' },
     { label: 'Toplam Stok', value: totalStock, icon: <Boxes size={22} />, gradient: 'linear-gradient(135deg, #10b981, #059669)' },
-    { label: 'Düşük Stok', value: lowStockCount, icon: <AlertTriangle size={22} />, gradient: lowStockCount > 0 ? 'linear-gradient(135deg, #ef4444, #dc2626)' : 'linear-gradient(135deg, #94a3b8, #64748b)', valueColor: lowStockCount > 0 ? '#dc2626' : '#0f172a' },
+    {
+      label: 'Düşük Stok', value: lowStockCount, icon: <AlertTriangle size={22} />,
+      gradient: lowStockCount > 0 ? 'linear-gradient(135deg, #ef4444, #dc2626)' : 'linear-gradient(135deg, #94a3b8, #64748b)',
+      valueColor: lowStockCount > 0 ? '#dc2626' : '#0f172a',
+      hasEyeFilter: true,
+    },
     { label: 'Toplam Değer', value: `${totalValue.toLocaleString('tr-TR')}₺`, icon: <TrendingUp size={22} />, gradient: 'linear-gradient(135deg, #3b82f6, #2563eb)', fontSize: '20px' },
   ]
 
@@ -74,21 +82,31 @@ export default function Dashboard({ onLogout }: DashboardProps) {
     <Container className="min-h-screen bg-slate-50 flex flex-col">
       <Header onLogout={onLogout} />
       <Content style={{ padding: '32px 24px', flex: 1 }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+        <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
 
           <Grid fluid style={{ marginBottom: '32px' }}>
             <Row gutter={16}>
               {statCards.map((card, i) => (
                 <Col xs={12} sm={6} key={i}>
-                  <Panel bordered style={{ background: '#fff' }}>
+                  <Panel bordered style={{ background: '#fff', borderRadius: '3px', position: 'relative', overflow: 'hidden' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                      <div style={{ width: '44px', height: '44px', borderRadius: '10px', background: card.gradient, display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', flexShrink: 0 }}>
+                      <div style={{ width: '44px', height: '44px', borderRadius: '3px', background: card.gradient, display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', flexShrink: 0 }}>
                         {card.icon}
                       </div>
-                      <div>
+                      <div style={{ flex: 1 }}>
                         <div style={{ color: '#64748b', fontSize: '12px', fontWeight: 500 }}>{card.label}</div>
-                        <div style={{ fontSize: card.fontSize ?? '24px', fontWeight: 'bold', color: card.valueColor ?? '#0f172a' }}>{card.value}</div>
+                        <div style={{ fontSize: (card as { fontSize?: string }).fontSize ?? '24px', fontWeight: 'bold', color: (card as { valueColor?: string }).valueColor ?? '#0f172a' }}>{card.value}</div>
                       </div>
+                      {(card as { hasEyeFilter?: boolean }).hasEyeFilter && (
+                        <button
+                          className="btn-icon"
+                          title={lowStockOnly ? 'Tüm ürünleri göster' : 'Yalnızca düşük stokları göster'}
+                          onClick={() => setLowStockOnly(v => !v)}
+                          style={{ borderRadius: '3px', border: lowStockOnly ? '1.5px solid #ef4444' : '1px solid #e2e8f0', color: lowStockOnly ? '#ef4444' : '#94a3b8', background: lowStockOnly ? '#fef2f2' : 'transparent' }}
+                        >
+                          {lowStockOnly ? <X size={16} /> : <EyeIcon size={16} />}
+                        </button>
+                      )}
                     </div>
                   </Panel>
                 </Col>

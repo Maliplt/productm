@@ -74,7 +74,7 @@ export default function ProductForm({ isOpen, onClose, onSave, onViewDetail, edi
   const isEditing = editProduct !== null
 
   return (
-    <Modal open={isOpen} onClose={onClose} size="sm">
+    <Modal open={isOpen} onClose={onClose} size="md">
       <Modal.Header>
         <Modal.Title>
           <span style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
