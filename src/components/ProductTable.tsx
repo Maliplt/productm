@@ -1,8 +1,9 @@
 import { useState, useRef, useEffect } from 'react'
 import { createPortal } from 'react-dom'
-import { Table, Pagination, useToaster, Message } from 'rsuite'
+import { Table, Pagination, Message, useToaster } from 'rsuite'
 import { MoreVertical, Eye, Pencil, Trash2, ArrowUpDown, ArrowUp, ArrowDown } from 'lucide-react'
 import type { Product } from '../types/product'
+import ConfirmDeleteModal from './ConfirmDeleteModal'
 
 const { Column, HeaderCell, Cell } = Table
 
@@ -50,24 +51,21 @@ function ActionMenu({ product, onView, onEdit, onDelete }: {
 
   useEffect(() => {
     if (!open) return
-    function handler(e: MouseEvent) {
+    function handleOutsideClick(e: MouseEvent) {
       if (
         menuRef.current && !menuRef.current.contains(e.target as Node) &&
         btnRef.current && !btnRef.current.contains(e.target as Node)
       ) setOpen(false)
     }
-    document.addEventListener('mousedown', handler)
-    return () => document.removeEventListener('mousedown', handler)
+    document.addEventListener('mousedown', handleOutsideClick)
+    return () => document.removeEventListener('mousedown', handleOutsideClick)
   }, [open])
 
   function handleToggle(e: React.MouseEvent) {
     e.stopPropagation()
     if (!open && btnRef.current) {
       const rect = btnRef.current.getBoundingClientRect()
-      setPos({
-        top: rect.bottom + window.scrollY + 4,
-        right: window.innerWidth - rect.right,
-      })
+      setPos({ top: rect.bottom + window.scrollY + 4, right: window.innerWidth - rect.right })
     }
     setOpen(o => !o)
   }
@@ -93,6 +91,8 @@ function ActionMenu({ product, onView, onEdit, onDelete }: {
     fontFamily: 'inherit', textAlign: 'left',
   }
 
+  function close() { setOpen(false) }
+
   return (
     <>
       <button
@@ -110,7 +110,7 @@ function ActionMenu({ product, onView, onEdit, onDelete }: {
             style={{ ...itemBase, color: '#334155' }}
             onMouseEnter={e => (e.currentTarget.style.background = '#f1f5f9')}
             onMouseLeave={e => (e.currentTarget.style.background = 'none')}
-            onClick={e => { e.stopPropagation(); setOpen(false); onView(product) }}
+            onClick={e => { e.stopPropagation(); close(); onView(product) }}
           >
             <Eye size={15} style={{ color: '#6366f1' }} /> Detay
           </button>
@@ -118,7 +118,7 @@ function ActionMenu({ product, onView, onEdit, onDelete }: {
             style={{ ...itemBase, color: '#334155' }}
             onMouseEnter={e => (e.currentTarget.style.background = '#f1f5f9')}
             onMouseLeave={e => (e.currentTarget.style.background = 'none')}
-            onClick={e => { e.stopPropagation(); setOpen(false); onEdit(product) }}
+            onClick={e => { e.stopPropagation(); close(); onEdit(product) }}
           >
             <Pencil size={15} style={{ color: '#f97316' }} /> Düzenle
           </button>
@@ -127,7 +127,7 @@ function ActionMenu({ product, onView, onEdit, onDelete }: {
             style={{ ...itemBase, color: '#ef4444' }}
             onMouseEnter={e => (e.currentTarget.style.background = '#fef2f2')}
             onMouseLeave={e => (e.currentTarget.style.background = 'none')}
-            onClick={e => { e.stopPropagation(); setOpen(false); onDelete(product) }}
+            onClick={e => { e.stopPropagation(); close(); onDelete(product) }}
           >
             <Trash2 size={15} /> Sil
           </button>
@@ -139,7 +139,11 @@ function ActionMenu({ product, onView, onEdit, onDelete }: {
 }
 
 function SortHeader({ label, column, sortCol, sortDir, onSort }: {
-  label: string; column: SortColumn; sortCol: SortColumn; sortDir: SortDir; onSort: (c: SortColumn) => void
+  label: string
+  column: SortColumn
+  sortCol: SortColumn
+  sortDir: SortDir
+  onSort: (c: SortColumn) => void
 }) {
   const active = sortCol === column
   return (
@@ -165,12 +169,27 @@ export default function ProductTable({ products, onEdit, onDelete, onView }: Pro
   const [page, setPage] = useState(1)
   const [sortCol, setSortCol] = useState<SortColumn>(null)
   const [sortDir, setSortDir] = useState<SortDir>('asc')
+  const [pendingDelete, setPendingDelete] = useState<Product | null>(null)
   const toaster = useToaster()
 
   function handleSort(col: SortColumn) {
     if (sortCol === col) setSortDir(d => d === 'asc' ? 'desc' : 'asc')
     else { setSortCol(col); setSortDir('asc') }
     setPage(1)
+  }
+
+  function handleDeleteRequest(product: Product) {
+    setPendingDelete(product)
+  }
+
+  function handleDeleteConfirm() {
+    if (!pendingDelete) return
+    onDelete(pendingDelete.id)
+    toaster.push(
+      <Message type="success" showIcon>{pendingDelete.name} başarıyla silindi.</Message>,
+      { placement: 'topEnd', duration: 3000 }
+    )
+    setPendingDelete(null)
   }
 
   const sorted = [...products].sort((a, b) => {
@@ -187,126 +206,124 @@ export default function ProductTable({ products, onEdit, onDelete, onView }: Pro
     return i >= start && i < start + limit
   })
 
-  function handleDelete(product: Product) {
-    if (confirm(`"${product.name}" silinecek. Onaylıyor musunuz?`)) {
-      onDelete(product.id)
-      toaster.push(
-        <Message type="success" showIcon duration={3000}>
-          "{product.name}" başarıyla silindi.
-        </Message>,
-        { placement: 'topEnd' }
-      )
-    }
-  }
-
   return (
-    <div style={{ background: '#fff', borderRadius: '3px', border: '1px solid #e2e8f0', boxShadow: '0 1px 3px rgba(15,23,42,0.06)', overflow: 'visible' }}>
-      <Table
-        autoHeight
-        data={data}
-        id="table"
-        rowHeight={80}
-        onRowClick={rowData => onView(rowData as Product)}
-        rowClassName={() => 'cursor-pointer hover:bg-slate-50 transition-colors'}
-        style={{ borderRadius: '3px' }}
-      >
-        <Column width={60} align="center" verticalAlign="middle">
-          <HeaderCell>ID</HeaderCell>
-          <Cell dataKey="id" className="text-slate-500 font-mono" />
-        </Column>
+    <>
+      <div style={{ background: '#fff', borderRadius: '3px', border: '1px solid #e2e8f0', boxShadow: '0 1px 3px rgba(15,23,42,0.06)', overflow: 'visible' }}>
+        <Table
+          autoHeight
+          data={data}
+          id="table"
+          rowHeight={80}
+          onRowClick={rowData => onView(rowData as Product)}
+          rowClassName={() => 'cursor-pointer hover:bg-slate-50 transition-colors'}
+          style={{ borderRadius: '3px' }}
+        >
+          <Column width={60} align="center" verticalAlign="middle">
+            <HeaderCell>ID</HeaderCell>
+            <Cell dataKey="id" className="text-slate-500 font-mono" />
+          </Column>
 
-        <Column width={80} align="center">
-          <HeaderCell>Görsel</HeaderCell>
-          <ImageCell dataKey="image" />
-        </Column>
+          <Column width={80} align="center">
+            <HeaderCell>Görsel</HeaderCell>
+            <ImageCell dataKey="image" />
+          </Column>
 
-        <Column flexGrow={2} verticalAlign="middle" minWidth={180}>
-          <HeaderCell>
-            <SortHeader label="Ürün Adı" column="name" sortCol={sortCol} sortDir={sortDir} onSort={handleSort} />
-          </HeaderCell>
-          <Cell dataKey="name" className="font-medium" />
-        </Column>
+          <Column flexGrow={2} verticalAlign="middle" minWidth={180}>
+            <HeaderCell>
+              <SortHeader label="Ürün Adı" column="name" sortCol={sortCol} sortDir={sortDir} onSort={handleSort} />
+            </HeaderCell>
+            <Cell dataKey="name" className="font-medium" />
+          </Column>
 
-        <Column flexGrow={1} verticalAlign="middle" minWidth={120}>
-          <HeaderCell>
-            <SortHeader label="Kategori" column="category" sortCol={sortCol} sortDir={sortDir} onSort={handleSort} />
-          </HeaderCell>
-          <Cell>
-            {rowData => (
-              <span style={{ background: '#f1f5f9', color: '#475569', padding: '3px 10px', borderRadius: '3px', fontSize: '12px', fontWeight: 500 }}>
-                {rowData.category}
-              </span>
-            )}
-          </Cell>
-        </Column>
+          <Column flexGrow={1} verticalAlign="middle" minWidth={120}>
+            <HeaderCell>
+              <SortHeader label="Kategori" column="category" sortCol={sortCol} sortDir={sortDir} onSort={handleSort} />
+            </HeaderCell>
+            <Cell>
+              {rowData => (
+                <span style={{ background: '#f1f5f9', color: '#475569', padding: '3px 10px', borderRadius: '3px', fontSize: '12px', fontWeight: 500 }}>
+                  {rowData.category}
+                </span>
+              )}
+            </Cell>
+          </Column>
 
-        <Column flexGrow={1} verticalAlign="middle" minWidth={110}>
-          <HeaderCell>
-            <SortHeader label="Fiyat" column="price" sortCol={sortCol} sortDir={sortDir} onSort={handleSort} />
-          </HeaderCell>
-          <Cell>
-            {rowData => <span style={{ fontWeight: 600, color: '#f97316' }}>{(rowData.price as number).toLocaleString('tr-TR')}₺</span>}
-          </Cell>
-        </Column>
+          <Column flexGrow={1} verticalAlign="middle" minWidth={110}>
+            <HeaderCell>
+              <SortHeader label="Fiyat" column="price" sortCol={sortCol} sortDir={sortDir} onSort={handleSort} />
+            </HeaderCell>
+            <Cell>
+              {rowData => <span style={{ fontWeight: 600, color: '#f97316' }}>{(rowData.price as number).toLocaleString('tr-TR')}₺</span>}
+            </Cell>
+          </Column>
 
-        <Column flexGrow={1} verticalAlign="middle" minWidth={100}>
-          <HeaderCell>
-            <SortHeader label="Stok" column="quantity" sortCol={sortCol} sortDir={sortDir} onSort={handleSort} />
-          </HeaderCell>
-          <Cell>
-            {rowData => (
-              <span style={{ color: (rowData.quantity as number) < 5 ? '#ef4444' : '#16a34a', fontWeight: (rowData.quantity as number) < 5 ? 700 : 500 }}>
-                {rowData.quantity} adet
-              </span>
-            )}
-          </Cell>
-        </Column>
+          <Column flexGrow={1} verticalAlign="middle" minWidth={100}>
+            <HeaderCell>
+              <SortHeader label="Stok" column="quantity" sortCol={sortCol} sortDir={sortDir} onSort={handleSort} />
+            </HeaderCell>
+            <Cell>
+              {rowData => (
+                <span style={{ color: (rowData.quantity as number) < 5 ? '#ef4444' : '#16a34a', fontWeight: (rowData.quantity as number) < 5 ? 700 : 500 }}>
+                  {rowData.quantity} adet
+                </span>
+              )}
+            </Cell>
+          </Column>
 
-        <Column flexGrow={1} verticalAlign="middle" minWidth={110}>
-          <HeaderCell>
-            <SortHeader label="Tarih" column="createdAt" sortCol={sortCol} sortDir={sortDir} onSort={handleSort} />
-          </HeaderCell>
-          <Cell dataKey="createdAt" className="text-slate-500 text-sm" />
-        </Column>
+          <Column flexGrow={1} verticalAlign="middle" minWidth={110}>
+            <HeaderCell>
+              <SortHeader label="Tarih" column="createdAt" sortCol={sortCol} sortDir={sortDir} onSort={handleSort} />
+            </HeaderCell>
+            <Cell dataKey="createdAt" className="text-slate-500 text-sm" />
+          </Column>
 
-        <Column width={72} align="center" verticalAlign="middle">
-          <HeaderCell>İşlem</HeaderCell>
-          <Cell style={{ padding: '22px 12px', overflow: 'visible' }}>
-            {rowData => (
-              <ActionMenu
-                product={rowData as Product}
-                onView={p => onView(p)}
-                onEdit={p => onEdit(p)}
-                onDelete={p => handleDelete(p)}
-              />
-            )}
-          </Cell>
-        </Column>
-      </Table>
+          <Column width={72} align="center" verticalAlign="middle">
+            <HeaderCell> </HeaderCell>
+            <Cell style={{ padding: '22px 12px', overflow: 'visible' }}>
+              {rowData => (
+                <ActionMenu
+                  product={rowData as Product}
+                  onView={onView}
+                  onEdit={onEdit}
+                  onDelete={handleDeleteRequest}
+                />
+              )}
+            </Cell>
+          </Column>
+        </Table>
 
-      <div style={{ padding: '14px 16px', borderTop: '1px solid #e2e8f0' }}>
-        <Pagination
-          prev next first last ellipsis boundaryLinks
-          maxButtons={5}
-          size="sm"
-          layout={['total', '-', 'limit', '|', 'pager', 'skip']}
-          total={products.length}
-          limitOptions={[5, 10, 20, 50]}
-          limit={limit}
-          activePage={page}
-          onChangePage={setPage}
-          onChangeLimit={dataLimit => { setPage(1); setLimit(dataLimit) }}
-          locale={{
-            total: 'Toplam {0} kayıt',
-            limit: '{0} / sayfa',
-            skip: 'Sayfaya git',
-            first: 'İlk',
-            last: 'Son',
-            prev: 'Önceki',
-            next: 'Sonraki',
-          }}
-        />
+        <div style={{ padding: '14px 16px', borderTop: '1px solid #e2e8f0' }}>
+          <Pagination
+            prev next first last ellipsis boundaryLinks
+            maxButtons={5}
+            size="sm"
+            layout={['total', '-', 'limit', '|', 'pager', 'skip']}
+            total={products.length}
+            limitOptions={[5, 10, 20, 50]}
+            limit={limit}
+            activePage={page}
+            onChangePage={setPage}
+            onChangeLimit={dataLimit => { setPage(1); setLimit(dataLimit) }}
+            locale={{
+              total: 'Toplam {0} kayıt',
+              limit: '{0} / sayfa',
+              skip: 'Sayfaya git',
+              first: 'İlk',
+              last: 'Son',
+              prev: 'Önceki',
+              next: 'Sonraki',
+            }}
+          />
+        </div>
       </div>
-    </div>
+
+      <ConfirmDeleteModal
+        isOpen={pendingDelete !== null}
+        productName={pendingDelete?.name ?? ''}
+        categoryName={pendingDelete?.category ?? ''}
+        onConfirm={handleDeleteConfirm}
+        onCancel={() => setPendingDelete(null)}
+      />
+    </>
   )
 }

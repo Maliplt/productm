@@ -27,23 +27,11 @@ export default function Register() {
   function handleSubmit() {
     if (!formRef.current?.check()) return
     toaster.push(
-      <Message type="success" showIcon duration={4000}>
-        Kayıt başarılı! Lütfen giriş yapınız.
-      </Message>,
-      { placement: 'topCenter' }
+      <Message type="success" showIcon>Kayıt başarılı! Lütfen giriş yapınız.</Message>,
+      { placement: 'topCenter', duration: 4000 }
     )
     navigate('/login')
   }
-
-  const panelHeader = (
-    <div className="text-center py-6 border-b border-slate-100">
-      <h1 className="text-3xl font-black tracking-tight m-0 select-none">
-        <span className="text-slate-900">product</span>
-        <span className="text-orange-500">m</span>
-      </h1>
-      <p className="text-slate-500 mt-2 font-medium">Yeni hesap oluşturun</p>
-    </div>
-  )
 
   return (
     <div
@@ -52,7 +40,19 @@ export default function Register() {
     >
       <div className="absolute inset-0 bg-slate-950/40 backdrop-blur-[3px] z-0" />
       <main className="flex-1 flex flex-col items-center justify-center p-4 z-10">
-        <Panel bordered className="bg-white/95 backdrop-blur-md w-full max-w-sm shadow-2xl rounded-2xl border border-white/20" header={panelHeader}>
+        <Panel
+          bordered
+          className="bg-white/95 backdrop-blur-md w-full max-w-sm shadow-2xl border border-white/20"
+          header={
+            <div className="text-center py-6 border-b border-slate-100">
+              <h1 className="text-3xl font-black tracking-tight m-0 select-none">
+                <span className="text-slate-900">product</span>
+                <span className="text-orange-500">m</span>
+              </h1>
+              <p className="text-slate-500 mt-2 font-medium">Yeni hesap oluşturun</p>
+            </div>
+          }
+        >
           <Form
             ref={formRef}
             model={model}
