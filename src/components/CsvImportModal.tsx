@@ -253,7 +253,7 @@ export default function CsvImportModal({ isOpen, onClose, onImport }: CsvImportM
   }
 
   return (
-    <Modal open={isOpen} onClose={handleClose} size="lg" backdrop="static" style={{ width: 1100 }}>
+    <Modal open={isOpen} onClose={handleClose} size="lg" dialogStyle={{ width: '95%', maxWidth: '1100px' }}>
       <Modal.Header>
         <Modal.Title>
           <span style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
@@ -262,7 +262,7 @@ export default function CsvImportModal({ isOpen, onClose, onImport }: CsvImportM
           </span>
         </Modal.Title>
       </Modal.Header>
-      <Modal.Body style={{ maxHeight: 'calc(100vh - 240px)', overflowY: 'auto', padding: '16px' }}>
+      <Modal.Body style={{ maxHeight: 'calc(100vh - 240px)', overflowX: 'hidden', overflowY: 'auto', padding: '16px' }}>
         {errorMsg && (
           <div style={{ display: 'flex', alignItems: 'center', gap: '10px', background: '#fef2f2', border: '1px solid #fee2e2', color: '#b91c1c', padding: '12px', borderRadius: '3px', marginBottom: '16px', fontSize: '13px' }}>
             <AlertTriangle size={18} style={{ flexShrink: 0 }} />
