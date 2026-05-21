@@ -1,5 +1,3 @@
-// ==========================================================================
-// RSUITE ULTRA THEME — Kapsamlı Override Sistemi
 // Versiyon: 3.0
 // ==========================================================================
 
@@ -8,148 +6,148 @@
 // ==========================================================================
 
 // — Renk Paleti (HSL tabanlı, kolay türetme için)
-$hue-primary:   237;
-$hue-success:   160;
-$hue-warning:    38;
-$hue-danger:      4;
-$hue-info:       199;
+$hue-primary: 237;
+$hue-success: 160;
+$hue-warning: 38;
+$hue-danger: 4;
+$hue-info: 199;
 
 // — Turuncu (Marka rengi)
-$hue-orange:      25;
-$color-orange:         hsl($hue-orange, 95%, 53%);
-$color-orange-hover:   hsl($hue-orange, 95%, 46%);
-$color-orange-light:   hsl($hue-orange, 95%, 95%);
-$color-orange-dark:    hsl($hue-orange, 95%, 40%);
-$color-orange-ring:    rgba($color-orange, 0.20);
+$hue-orange: 25;
+$color-orange: hsl($hue-orange, 95%, 53%);
+$color-orange-hover: hsl($hue-orange, 95%, 46%);
+$color-orange-light: hsl($hue-orange, 95%, 95%);
+$color-orange-dark: hsl($hue-orange, 95%, 40%);
+$color-orange-ring: rgba($color-orange, 0.20);
 
 // Primary — İndigo skalası
-$color-primary-50:   hsl($hue-primary, 87%, 97%);
-$color-primary-100:  hsl($hue-primary, 82%, 93%);
-$color-primary-200:  hsl($hue-primary, 79%, 85%);
-$color-primary-300:  hsl($hue-primary, 76%, 74%);
-$color-primary-400:  hsl($hue-primary, 73%, 63%);
-$color-primary-500:  hsl($hue-primary, 70%, 56%);
-$color-primary-600:  hsl($hue-primary, 66%, 48%);  // Ana renk
-$color-primary-700:  hsl($hue-primary, 65%, 40%);
-$color-primary-800:  hsl($hue-primary, 62%, 33%);
-$color-primary-900:  hsl($hue-primary, 60%, 25%);
+$color-primary-50: hsl($hue-primary, 87%, 97%);
+$color-primary-100: hsl($hue-primary, 82%, 93%);
+$color-primary-200: hsl($hue-primary, 79%, 85%);
+$color-primary-300: hsl($hue-primary, 76%, 74%);
+$color-primary-400: hsl($hue-primary, 73%, 63%);
+$color-primary-500: hsl($hue-primary, 70%, 56%);
+$color-primary-600: hsl($hue-primary, 66%, 48%); // Ana renk
+$color-primary-700: hsl($hue-primary, 65%, 40%);
+$color-primary-800: hsl($hue-primary, 62%, 33%);
+$color-primary-900: hsl($hue-primary, 60%, 25%);
 
-$color-primary:        $color-primary-600;
-$color-primary-hover:  $color-primary-700;
-$color-primary-light:  $color-primary-50;
-$color-primary-ring:   rgba($color-primary, 0.18);
+$color-primary: $color-primary-600;
+$color-primary-hover: $color-primary-700;
+$color-primary-light: $color-primary-50;
+$color-primary-ring: rgba($color-primary, 0.18);
 
 // Semantic renkler
-$color-success:  hsl($hue-success, 84%, 39%);
-$color-warning:  hsl($hue-warning,  91%, 55%);
-$color-danger:   hsl($hue-danger,   84%, 60%);
-$color-info:     hsl($hue-info,     82%, 45%);
+$color-success: hsl($hue-success, 84%, 39%);
+$color-warning: hsl($hue-warning, 91%, 55%);
+$color-danger: hsl($hue-danger, 84%, 60%);
+$color-info: hsl($hue-info, 82%, 45%);
 
 $color-success-light: hsl($hue-success, 84%, 95%);
-$color-warning-light: hsl($hue-warning,  91%, 95%);
-$color-danger-light:  hsl($hue-danger,   84%, 95%);
-$color-info-light:    hsl($hue-info,     82%, 95%);
+$color-warning-light: hsl($hue-warning, 91%, 95%);
+$color-danger-light: hsl($hue-danger, 84%, 95%);
+$color-info-light: hsl($hue-info, 82%, 95%);
 
 // Nötr / Slate skalası
-$slate-50:   #f8fafc;
-$slate-100:  #f1f5f9;
-$slate-200:  #e2e8f0;
-$slate-300:  #cbd5e1;
-$slate-400:  #94a3b8;
-$slate-500:  #64748b;
-$slate-600:  #475569;
-$slate-700:  #334155;
-$slate-800:  #1e293b;
-$slate-900:  #0f172a;
+$slate-50: #faf6ee; // Soft warm cream body background
+$slate-100: #f4eee1; // Slightly darker cream for hover/surface-2
+$slate-200: #e8dfcd; // Warm cream borders
+$slate-300: #cbd5e1;
+$slate-400: #94a3b8;
+$slate-500: #64748b;
+$slate-600: #475569;
+$slate-700: #334155;
+$slate-800: #1e293b;
+$slate-900: #0f172a;
 
 // Arka planlar & Yüzeyler
-$bg-body:          $slate-50;
-$bg-surface:       #ffffff;
-$bg-surface-2:     $slate-100;
+$bg-body: $slate-50;
+$bg-surface: #fdfbf7; // Cream/Eggshell surface
+$bg-surface-2: $slate-100;
 $bg-surface-hover: $slate-100;
-$bg-overlay:       rgba($slate-900, 0.45);
+$bg-overlay: rgba($slate-900, 0.45);
 
 // Metin
-$text-primary:   $slate-900;
+$text-primary: $slate-900;
 $text-secondary: $slate-600;
-$text-muted:     $slate-400;
-$text-disabled:  $slate-300;
-$text-inverse:   #ffffff;
+$text-muted: $slate-400;
+$text-disabled: $slate-300;
+$text-inverse: #ffffff;
 
 // Kenarlar
-$border-color:       $slate-200;
+$border-color: $slate-200;
 $border-color-hover: $slate-300;
 $border-color-focus: $color-primary;
 
 // — Köşe Yarıçapları
-$radius-xs:   2px;
-$radius-sm:   3px;
-$radius-md:   3px;
-$radius-lg:   3px;
-$radius-xl:   3px;
-$radius-2xl:  3px;
+$radius-xs: 2px;
+$radius-sm: 3px;
+$radius-md: 3px;
+$radius-lg: 3px;
+$radius-xl: 3px;
+$radius-2xl: 3px;
 $radius-full: 9999px;
 
 // — Gölgeler
-$shadow-xs:     0 1px 2px rgba($slate-900, 0.04);
-$shadow-sm:     0 1px 3px rgba($slate-900, 0.06), 0 1px 2px rgba($slate-900, 0.04);
-$shadow-md:     0 4px 8px rgba($slate-900, 0.07), 0 2px 4px rgba($slate-900, 0.05);
-$shadow-lg:     0 10px 20px rgba($slate-900, 0.08), 0 4px 8px rgba($slate-900, 0.04);
-$shadow-xl:     0 20px 40px rgba($slate-900, 0.10), 0 8px 16px rgba($slate-900, 0.06);
-$shadow-modal:  0 24px 48px rgba($slate-900, 0.14), 0 8px 24px rgba($slate-900, 0.08);
-$shadow-focus:  0 0 0 3px $color-primary-ring;
+$shadow-xs: 0 1px 2px rgba($slate-900, 0.04);
+$shadow-sm: 0 1px 3px rgba($slate-900, 0.06), 0 1px 2px rgba($slate-900, 0.04);
+$shadow-md: 0 4px 8px rgba($slate-900, 0.07), 0 2px 4px rgba($slate-900, 0.05);
+$shadow-lg: 0 10px 20px rgba($slate-900, 0.08), 0 4px 8px rgba($slate-900, 0.04);
+$shadow-xl: 0 20px 40px rgba($slate-900, 0.10), 0 8px 16px rgba($slate-900, 0.06);
+$shadow-modal: 0 24px 48px rgba($slate-900, 0.14), 0 8px 24px rgba($slate-900, 0.08);
+$shadow-focus: 0 0 0 3px $color-primary-ring;
 $shadow-card-hover: 0 12px 28px rgba($color-primary, 0.12), 0 4px 8px rgba($color-primary, 0.06);
-$shadow-inset:  inset 0 2px 4px rgba($slate-900, 0.04);
+$shadow-inset: inset 0 2px 4px rgba($slate-900, 0.04);
 
 // — Tipografi
-$font-family:      'Inter', 'SF Pro Display', system-ui, -apple-system, sans-serif;
+$font-family: 'Inter', 'SF Pro Display', system-ui, -apple-system, sans-serif;
 $font-family-mono: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
 
-$font-xs:    11px;
-$font-sm:    13px;
-$font-base:  14px;
-$font-md:    15px;
-$font-lg:    16px;
-$font-xl:    18px;
-$font-2xl:   20px;
-$font-3xl:   24px;
+$font-xs: 11px;
+$font-sm: 13px;
+$font-base: 14px;
+$font-md: 15px;
+$font-lg: 16px;
+$font-xl: 18px;
+$font-2xl: 20px;
+$font-3xl: 24px;
 
-$weight-regular:  400;
-$weight-medium:   500;
+$weight-regular: 400;
+$weight-medium: 500;
 $weight-semibold: 600;
-$weight-bold:     700;
+$weight-bold: 700;
 
-$line-tight:   1.25;
-$line-normal:  1.5;
+$line-tight: 1.25;
+$line-normal: 1.5;
 $line-relaxed: 1.625;
 
-// — Spacing
-$space-1:   4px;
-$space-2:   8px;
-$space-3:   12px;
-$space-4:   16px;
-$space-5:   20px;
-$space-6:   24px;
-$space-8:   32px;
-$space-10:  40px;
-$space-12:  48px;
+// — Spacing (Tightened)
+$space-1: 3px;
+$space-2: 6px;
+$space-3: 10px;
+$space-4: 12px;
+$space-5: 16px;
+$space-6: 20px;
+$space-8: 24px;
+$space-10: 32px;
+$space-12: 40px;
 
 // — Geçişler
-$transition-fast:    all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
-$transition-base:    all 0.2s  cubic-bezier(0.4, 0, 0.2, 1);
-$transition-slow:    all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-$transition-spring:  all 0.3s  cubic-bezier(0.34, 1.56, 0.64, 1);
-$transition-color:   color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
+$transition-fast: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+$transition-base: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+$transition-slow: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+$transition-spring: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+$transition-color: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
 
 // — Z-index katmanları
-$z-dropdown:    1000;
-$z-sticky:      1020;
-$z-fixed:       1030;
-$z-overlay:     1040;
-$z-modal:       1050;
-$z-popover:     1060;
-$z-tooltip:     1070;
-$z-toast:       1080;
+$z-dropdown: 1000;
+$z-sticky: 1020;
+$z-fixed: 1030;
+$z-overlay: 1040;
+$z-modal: 1050;
+$z-popover: 1060;
+$z-tooltip: 1070;
+$z-toast: 1080;
 
 // ==========================================================================
 // 2. MIXINLER & YARDIMCILAR
@@ -161,7 +159,10 @@ $z-toast:       1080;
   flex-direction: $dir;
   align-items: $align;
   justify-content: $justify;
-  @if $gap != 0 { gap: $gap; }
+
+  @if $gap !=0 {
+    gap: $gap;
+  }
 }
 
 // Focus ring (erişilebilirlik)
@@ -172,11 +173,13 @@ $z-toast:       1080;
 
 // Metin kırpma (ellipsis)
 @mixin truncate($lines: 1) {
-  @if $lines == 1 {
+  @if $lines ==1 {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-  } @else {
+  }
+
+  @else {
     display: -webkit-box;
     -webkit-line-clamp: $lines;
     -webkit-box-orient: vertical;
@@ -187,11 +190,13 @@ $z-toast:       1080;
 // Kart hover efekti
 @mixin card-hover {
   transition: $transition-base;
+
   &:hover {
     transform: translateY(-3px);
     box-shadow: $shadow-card-hover;
     border-color: rgba($color-primary, 0.4);
   }
+
   &:active {
     transform: translateY(-1px);
   }
@@ -203,7 +208,7 @@ $z-toast:       1080;
 }
 
 // Cam efekti (glassmorphism)
-@mixin glass($blur: 12px, $bg: rgba(255,255,255,0.8)) {
+@mixin glass($blur: 12px, $bg: rgba(255, 255, 255, 0.8)) {
   background: $bg;
   backdrop-filter: blur($blur);
   -webkit-backdrop-filter: blur($blur);
@@ -211,15 +216,35 @@ $z-toast:       1080;
 
 // Responsive kırılım noktaları
 @mixin respond-to($bp) {
-  @if $bp == sm     { @media (max-width: 640px)  { @content; } }
-  @else if $bp == md { @media (max-width: 768px)  { @content; } }
-  @else if $bp == lg { @media (max-width: 1024px) { @content; } }
-  @else if $bp == xl { @media (max-width: 1280px) { @content; } }
+  @if $bp ==sm {
+    @media (max-width: 640px) {
+      @content;
+    }
+  }
+
+  @else if $bp ==md {
+    @media (max-width: 768px) {
+      @content;
+    }
+  }
+
+  @else if $bp ==lg {
+    @media (max-width: 1024px) {
+      @content;
+    }
+  }
+
+  @else if $bp ==xl {
+    @media (max-width: 1280px) {
+      @content;
+    }
+  }
 }
 
 // Çizgi üstü dekorasyon (aktif sekme vb.)
 @mixin active-underline($color: $color-primary, $height: 2px) {
   position: relative;
+
   &::after {
     content: '';
     position: absolute;
@@ -236,7 +261,9 @@ $z-toast:       1080;
 // 3. GLOBAL SIFIRLAMALAR & TEMEL LAYOUT
 // ==========================================================================
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -262,11 +289,18 @@ body {
   width: 6px;
   height: 6px;
 }
-::-webkit-scrollbar-track { background: $slate-100; }
+
+::-webkit-scrollbar-track {
+  background: $slate-100;
+}
+
 ::-webkit-scrollbar-thumb {
   background: $slate-300;
   border-radius: $radius-full;
-  &:hover { background: $slate-400; }
+
+  &:hover {
+    background: $slate-400;
+  }
 }
 
 // Seçim rengi
@@ -290,13 +324,18 @@ body {
 }
 
 .rs-content {
-  padding: $space-6;
+  padding: $space-4 $space-5;
   max-width: 1440px;
   margin: 0 auto;
   width: 100%;
 
-  @include respond-to(lg) { padding: $space-5; }
-  @include respond-to(md) { padding: $space-4; }
+  @include respond-to(lg) {
+    padding: $space-5;
+  }
+
+  @include respond-to(md) {
+    padding: $space-4;
+  }
 }
 
 // Sidebar
@@ -326,7 +365,9 @@ body {
   top: 0;
   z-index: $z-sticky;
 
-  @include respond-to(md) { padding: 0 $space-4; }
+  @include respond-to(md) {
+    padding: 0 $space-4;
+  }
 
   // Logo alanı
   &-brand {
@@ -361,7 +402,10 @@ body {
     white-space: nowrap;
     position: relative;
 
-    > a { color: inherit; text-decoration: none; }
+    >a {
+      color: inherit;
+      text-decoration: none;
+    }
 
     &::before {
       content: '';
@@ -374,7 +418,10 @@ body {
 
     &:hover {
       color: $color-primary;
-      &::before { background: $color-primary-50; }
+
+      &::before {
+        background: $color-primary-50;
+      }
     }
 
     &.rs-nav-item-active {
@@ -395,7 +442,10 @@ body {
     transition: $transition-base;
     cursor: text;
 
-    .search-icon { color: $text-muted; font-size: $font-lg; }
+    .search-icon {
+      color: $text-muted;
+      font-size: $font-lg;
+    }
 
     input {
       border: none;
@@ -405,7 +455,9 @@ body {
       color: $text-primary;
       width: 100%;
 
-      &::placeholder { color: $text-muted; }
+      &::placeholder {
+        color: $text-muted;
+      }
     }
 
     &:focus-within {
@@ -431,6 +483,17 @@ body {
     }
   }
 
+  // Yeni Premium Profil Butonu
+  .header-profile-toggle {
+    transition: $transition-base;
+
+    &:hover {
+      background: $slate-100 !important; // Soft cream surface on hover
+      border-color: $color-orange !important;
+      box-shadow: 0 4px 12px rgba($color-orange, 0.08) !important;
+    }
+  }
+
   // Bildirim butonu
   .navbar-notification {
     position: relative;
@@ -442,7 +505,10 @@ body {
     cursor: pointer;
     transition: $transition-fast;
 
-    &:hover { background: $bg-surface-2; color: $color-primary; }
+    &:hover {
+      background: $bg-surface-2;
+      color: $color-primary;
+    }
 
     .badge {
       position: absolute;
@@ -481,13 +547,17 @@ body {
     border-bottom: none;
     margin-bottom: -1px;
 
-    > a { color: inherit; text-decoration: none; }
+    >a {
+      color: inherit;
+      text-decoration: none;
+    }
 
     &::after {
       content: '';
       position: absolute;
       bottom: -1px;
-      left: 0; right: 0;
+      left: 0;
+      right: 0;
       height: 2px;
       background: transparent;
       transition: $transition-fast;
@@ -504,7 +574,9 @@ body {
       border-color: $border-color;
       font-weight: $weight-semibold;
 
-      &::after { background: $color-primary; }
+      &::after {
+        background: $color-primary;
+      }
     }
 
     // Sekme ikonu
@@ -550,7 +622,9 @@ body {
       border: none;
       margin-bottom: 0;
 
-      &::after { display: none; }
+      &::after {
+        display: none;
+      }
 
       &.rs-nav-item-active {
         background: $bg-surface;
@@ -593,13 +667,17 @@ body {
     position: absolute;
     inset: 0;
     border-radius: inherit;
-    background: rgba(255,255,255,0);
+    background: rgba(255, 255, 255, 0);
     transition: background 0.25s ease;
   }
-  &:active::after { background: rgba(255,255,255,0.15); }
+
+  &:active::after {
+    background: rgba(255, 255, 255, 0.15);
+  }
 
   // ── Ana turuncu buton
-  &.btn-primary, &-primary {
+  &.btn-primary,
+  &-primary {
     background: linear-gradient(135deg, $color-orange 0%, $color-orange-hover 100%);
     color: #ffffff;
     border-color: transparent;
@@ -610,7 +688,11 @@ body {
       box-shadow: 0 4px 16px rgba($color-orange, 0.40);
       transform: translateY(-1px);
     }
-    &:active { transform: translateY(0); box-shadow: none; }
+
+    &:active {
+      transform: translateY(0);
+      box-shadow: none;
+    }
   }
 
   // ── Turuncu dolu (alias)
@@ -625,7 +707,10 @@ body {
       box-shadow: 0 4px 16px rgba($color-orange, 0.40);
       transform: translateY(-1px);
     }
-    &:active { transform: translateY(0); }
+
+    &:active {
+      transform: translateY(0);
+    }
   }
 
   // ── Ghost (saydam, kenarlıklı)
@@ -731,16 +816,27 @@ body {
   }
 
   // ── Tam genişlik
-  &.btn-block, &-block { width: 100%; }
+  &.btn-block,
+  &-block {
+    width: 100%;
+  }
 
   // ── Küçük
-  &.btn-sm { padding: 6px 14px; font-size: 13px; }
+  &.btn-sm {
+    padding: 6px 14px;
+    font-size: 13px;
+  }
 
   // ── Büyük
-  &.btn-lg { padding: 12px 28px; font-size: 16px; border-radius: $radius-md; }
+  &.btn-lg {
+    padding: 12px 28px;
+    font-size: 16px;
+    border-radius: $radius-md;
+  }
 
   // ── Devre dışı
-  &[disabled], &.disabled {
+  &[disabled],
+  &.disabled {
     opacity: 0.5;
     cursor: not-allowed;
     pointer-events: none;
@@ -813,10 +909,13 @@ body {
     position: absolute;
     inset: 0;
     border-radius: inherit;
-    background: rgba(255,255,255,0);
+    background: rgba(255, 255, 255, 0);
     transition: background 0.3s ease;
   }
-  &:active::after { background: rgba(255,255,255,0.15); }
+
+  &:active::after {
+    background: rgba(255, 255, 255, 0.15);
+  }
 
   // ── Birincil buton
   &-primary {
@@ -824,13 +923,21 @@ body {
     color: $text-inverse;
     box-shadow: 0 2px 4px rgba($color-primary, 0.3);
 
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
       @include gradient-bg($color-primary-600, $color-primary-800);
       box-shadow: 0 4px 12px rgba($color-primary, 0.35);
       transform: translateY(-1px);
     }
-    &:active { transform: translateY(0); box-shadow: none; }
-    &:focus-visible { @include focus-ring; }
+
+    &:active {
+      transform: translateY(0);
+      box-shadow: none;
+    }
+
+    &:focus-visible {
+      @include focus-ring;
+    }
   }
 
   // ── İkincil / Outline
@@ -840,7 +947,8 @@ body {
     color: $text-primary;
     box-shadow: $shadow-xs;
 
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
       border-color: $color-primary;
       color: $color-primary;
       background: $color-primary-50;
@@ -853,7 +961,8 @@ body {
     background: transparent;
     color: $text-secondary;
 
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
       background: $bg-surface-2;
       color: $text-primary;
     }
@@ -865,7 +974,8 @@ body {
     border-color: $color-primary;
     color: $color-primary;
 
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
       background: $color-primary-50;
       box-shadow: 0 4px 12px rgba($color-primary, 0.15);
     }
@@ -876,36 +986,68 @@ body {
     background: $color-success;
     color: $text-inverse;
     box-shadow: 0 2px 4px rgba($color-success, 0.3);
-    &:hover { filter: brightness(1.05); box-shadow: 0 4px 12px rgba($color-success, 0.35); }
+
+    &:hover {
+      filter: brightness(1.05);
+      box-shadow: 0 4px 12px rgba($color-success, 0.35);
+    }
   }
 
   &-red {
     background: $color-danger;
     color: $text-inverse;
     box-shadow: 0 2px 4px rgba($color-danger, 0.3);
-    &:hover { filter: brightness(1.05); box-shadow: 0 4px 12px rgba($color-danger, 0.35); }
+
+    &:hover {
+      filter: brightness(1.05);
+      box-shadow: 0 4px 12px rgba($color-danger, 0.35);
+    }
   }
 
   &-yellow {
     background: $color-warning;
     color: $slate-900;
     box-shadow: 0 2px 4px rgba($color-warning, 0.3);
-    &:hover { filter: brightness(1.05); }
+
+    &:hover {
+      filter: brightness(1.05);
+    }
   }
 
   &-cyan {
     background: $color-info;
     color: $text-inverse;
-    &:hover { filter: brightness(1.05); }
+
+    &:hover {
+      filter: brightness(1.05);
+    }
   }
 
   // ── Boyutlar
-  &-xs { padding: 3px $space-2; font-size: $font-xs; border-radius: $radius-xs; gap: $space-1; }
-  &-sm { padding: 5px $space-3; font-size: $font-sm; border-radius: $radius-xs; gap: 6px; }
-  &-lg { padding: $space-3 $space-8; font-size: $font-lg; border-radius: $radius-md; gap: $space-2; }
+  &-xs {
+    padding: 3px $space-2;
+    font-size: $font-xs;
+    border-radius: $radius-xs;
+    gap: $space-1;
+  }
+
+  &-sm {
+    padding: 5px $space-3;
+    font-size: $font-sm;
+    border-radius: $radius-xs;
+    gap: 6px;
+  }
+
+  &-lg {
+    padding: $space-3 $space-8;
+    font-size: $font-lg;
+    border-radius: $radius-md;
+    gap: $space-2;
+  }
 
   // ── Devre dışı
-  &[disabled], &.rs-btn-disabled {
+  &[disabled],
+  &.rs-btn-disabled {
     opacity: 0.5;
     cursor: not-allowed;
     pointer-events: none;
@@ -916,7 +1058,10 @@ body {
   // ── Yükleniyor
   &.rs-btn-loading {
     pointer-events: none;
-    .rs-btn-spin { animation: btn-spin 0.75s linear infinite; }
+
+    .rs-btn-spin {
+      animation: btn-spin 0.75s linear infinite;
+    }
   }
 
   // ── İkon butonu
@@ -927,27 +1072,69 @@ body {
     height: 36px;
     gap: 0;
 
-    &.rs-btn-xs { width: 28px; height: 28px; padding: $space-1; }
-    &.rs-btn-sm { width: 32px; height: 32px; padding: 6px; }
-    &.rs-btn-lg { width: 44px; height: 44px; padding: $space-3; }
+    &.rs-btn-xs {
+      width: 28px;
+      height: 28px;
+      padding: $space-1;
+    }
+
+    &.rs-btn-sm {
+      width: 32px;
+      height: 32px;
+      padding: 6px;
+    }
+
+    &.rs-btn-lg {
+      width: 44px;
+      height: 44px;
+      padding: $space-3;
+    }
 
     // Görüntüleme ikonu
-    &.rs-btn-subtle { color: $text-muted; &:hover { color: $color-primary; background: $color-primary-50; } }
+    &.rs-btn-subtle {
+      color: $text-muted;
+
+      &:hover {
+        color: $color-primary;
+        background: $color-primary-50;
+      }
+    }
 
     // Silme ikonu
-    &.rs-btn-red { background: transparent; color: $color-danger; &:hover { background: $color-danger-light; } }
+    &.rs-btn-red {
+      background: transparent;
+      color: $color-danger;
+
+      &:hover {
+        background: $color-danger-light;
+      }
+    }
 
     // Düzenleme ikonu
-    &.btn-edit { color: $text-muted; &:hover { color: $color-primary; background: $color-primary-50; } }
+    &.btn-edit {
+      color: $text-muted;
+
+      &:hover {
+        color: $color-primary;
+        background: $color-primary-50;
+      }
+    }
   }
 
   // ── Tam genişlik
-  &-block { width: 100%; }
+  &-block {
+    width: 100%;
+  }
 }
 
 @keyframes btn-spin {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 // ==========================================================================
@@ -967,7 +1154,9 @@ body {
     letter-spacing: 0.01em;
   }
 
-  .rs-form-control-wrapper { position: relative; }
+  .rs-form-control-wrapper {
+    position: relative;
+  }
 
   // Hata / Başarı mesajları
   .rs-form-error-message {
@@ -977,7 +1166,10 @@ body {
     margin-top: $space-1;
     font-size: $font-xs;
     color: $color-danger;
-    &-wrapper { font-size: $font-xs; }
+
+    &-wrapper {
+      font-size: $font-xs;
+    }
   }
 
   .rs-form-help-text {
@@ -1003,17 +1195,23 @@ body {
   box-shadow: $shadow-inset;
   appearance: none;
 
-  &::placeholder { color: $text-muted; }
+  &::placeholder {
+    color: $text-muted;
+  }
 
-  &:hover:not([disabled]) { border-color: $border-color-hover; }
+  &:hover:not([disabled]) {
+    border-color: $border-color-hover;
+  }
 
-  &:focus, &-focus {
+  &:focus,
+  &-focus {
     border-color: $color-primary;
     box-shadow: 0 0 0 3px $color-primary-ring;
     background: $bg-surface;
   }
 
-  &[disabled], &.rs-input-disabled {
+  &[disabled],
+  &.rs-input-disabled {
     background: $bg-surface-2;
     color: $text-muted;
     cursor: not-allowed;
@@ -1021,19 +1219,31 @@ body {
     box-shadow: none;
   }
 
-  &.rs-input-error, &.has-error {
+  &.rs-input-error,
+  &.has-error {
     border-color: $color-danger;
-    &:focus { box-shadow: 0 0 0 3px rgba($color-danger, 0.15); }
+
+    &:focus {
+      box-shadow: 0 0 0 3px rgba($color-danger, 0.15);
+    }
   }
 
   &.rs-input-success {
     border-color: $color-success;
-    &:focus { box-shadow: 0 0 0 3px rgba($color-success, 0.15); }
+
+    &:focus {
+      box-shadow: 0 0 0 3px rgba($color-success, 0.15);
+    }
   }
 }
 
-.rs-input         { @extend %input-base; }
-.rs-input-number  { @extend %input-base; }
+.rs-input {
+  @extend %input-base;
+}
+
+.rs-input-number {
+  @extend %input-base;
+}
 
 // Textarea
 .rs-input[as="textarea"],
@@ -1067,7 +1277,10 @@ textarea.rs-input {
     white-space: nowrap;
     flex-shrink: 0;
 
-    &:last-child { border-right: none; border-left: 1px solid $border-color; }
+    &:last-child {
+      border-right: none;
+      border-left: 1px solid $border-color;
+    }
   }
 
   .rs-input {
@@ -1077,21 +1290,32 @@ textarea.rs-input {
     flex: 1;
     height: 38px;
 
-    &:focus { box-shadow: none; }
+    &:focus {
+      box-shadow: none;
+    }
   }
 
-  &:hover:not(.rs-input-group-disabled) { border-color: $border-color-hover; }
+  &:hover:not(.rs-input-group-disabled) {
+    border-color: $border-color-hover;
+  }
 
   &.rs-input-group-focus {
     border-color: $color-primary;
     box-shadow: 0 0 0 3px $color-primary-ring;
 
-    .rs-input-group-addon { background: $color-primary-50; color: $color-primary; }
+    .rs-input-group-addon {
+      background: $color-primary-50;
+      color: $color-primary;
+    }
   }
 
   &-disabled {
     background: $bg-surface-2;
-    .rs-input { background: transparent; cursor: not-allowed; }
+
+    .rs-input {
+      background: transparent;
+      cursor: not-allowed;
+    }
   }
 
   // Arama ikonu + input kombinasyonu için
@@ -1099,8 +1323,15 @@ textarea.rs-input {
     border-radius: $radius-full;
     padding-left: $space-3;
 
-    .rs-input { border-radius: $radius-full; }
-    .rs-input-group-addon { background: transparent; border: none; padding-right: $space-2; }
+    .rs-input {
+      border-radius: $radius-full;
+    }
+
+    .rs-input-group-addon {
+      background: transparent;
+      border: none;
+      padding-right: $space-2;
+    }
   }
 }
 
@@ -1127,11 +1358,18 @@ textarea.rs-input {
       transition: transform 0.2s;
     }
 
-    &-placeholder { color: $text-muted; }
-    &-value       { color: $text-primary; }
+    &-placeholder {
+      color: $text-muted;
+    }
+
+    &-value {
+      color: $text-primary;
+    }
   }
 
-  &.rs-picker-has-value .rs-picker-toggle-value { color: $text-primary; }
+  &.rs-picker-has-value .rs-picker-toggle-value {
+    color: $text-primary;
+  }
 
   &.rs-picker-focused .rs-picker-toggle {
     border-color: $color-primary;
@@ -1153,7 +1391,13 @@ textarea.rs-input {
     padding: 2px 6px;
     margin: 2px;
 
-    &-close-btn { color: $color-primary-500; &:hover { color: $color-primary-800; } }
+    &-close-btn {
+      color: $color-primary-500;
+
+      &:hover {
+        color: $color-primary-800;
+      }
+    }
   }
 
   // Dropdown menü
@@ -1178,8 +1422,13 @@ textarea.rs-input {
     transition: $transition-fast;
     @include flex(row, center, flex-start, $space-2);
 
-    &:hover      { background: $bg-surface-2; }
-    &.rs-check-item-focus { background: $bg-surface-2; }
+    &:hover {
+      background: $bg-surface-2;
+    }
+
+    &.rs-check-item-focus {
+      background: $bg-surface-2;
+    }
 
     &.rs-picker-select-menu-item-active,
     &.rs-check-item-checked {
@@ -1187,7 +1436,9 @@ textarea.rs-input {
       color: $color-primary;
       font-weight: $weight-medium;
 
-      .rs-check-item-wrapper { color: $color-primary; }
+      .rs-check-item-wrapper {
+        color: $color-primary;
+      }
     }
   }
 
@@ -1197,17 +1448,28 @@ textarea.rs-input {
     border-bottom: 1px solid $border-color;
     margin-bottom: $space-1;
 
-    .rs-picker-search-bar-input { @extend %input-base; height: 34px; }
+    .rs-picker-search-bar-input {
+      @extend %input-base;
+      height: 34px;
+    }
   }
 }
 
 @keyframes dropdown-in {
-  from { opacity: 0; transform: translateY(-6px) scale(0.98); }
-  to   { opacity: 1; transform: translateY(0)    scale(1); }
+  from {
+    opacity: 0;
+    transform: translateY(-6px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 // Checkbox & Radio
-.rs-checkbox, .rs-radio {
+.rs-checkbox,
+.rs-radio {
   @include flex(row, flex-start, flex-start, $space-2);
   cursor: pointer;
 
@@ -1231,7 +1493,9 @@ textarea.rs-input {
   }
 
   // Radio yuvarlak
-  &.rs-radio .rs-radio-wrapper { border-radius: $radius-full; }
+  &.rs-radio .rs-radio-wrapper {
+    border-radius: $radius-full;
+  }
 
   &:hover .rs-checkbox-wrapper,
   &:hover .rs-radio-wrapper {
@@ -1244,7 +1508,8 @@ textarea.rs-input {
     line-height: $line-normal;
   }
 
-  &.rs-checkbox-disabled, &.rs-radio-disabled {
+  &.rs-checkbox-disabled,
+  &.rs-radio-disabled {
     cursor: not-allowed;
     opacity: 0.5;
   }
@@ -1276,7 +1541,10 @@ textarea.rs-input {
     background: $color-primary;
   }
 
-  &.rs-toggle-disabled { opacity: 0.5; cursor: not-allowed; }
+  &.rs-toggle-disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
 }
 
 // Slider
@@ -1301,17 +1569,28 @@ textarea.rs-input {
     transition: $transition-fast;
     cursor: grab;
 
-    &:hover  { transform: scale(1.2); box-shadow: 0 0 0 6px $color-primary-ring; }
-    &:active { cursor: grabbing; }
+    &:hover {
+      transform: scale(1.2);
+      box-shadow: 0 0 0 6px $color-primary-ring;
+    }
+
+    &:active {
+      cursor: grabbing;
+    }
   }
 
-  &-mark-content { font-size: $font-xs; color: $text-muted; }
+  &-mark-content {
+    font-size: $font-xs;
+    color: $text-muted;
+  }
 }
 
 // Upload
 .rs-uploader {
   &-trigger {
-    .rs-btn { border-style: dashed; }
+    .rs-btn {
+      border-style: dashed;
+    }
   }
 
   &-file-items {
@@ -1327,8 +1606,13 @@ textarea.rs-input {
     margin-bottom: $space-2;
     font-size: $font-sm;
 
-    &-icon { color: $color-primary; }
-    &-status .rs-uploader-file-item-btn-remove { color: $color-danger; }
+    &-icon {
+      color: $color-primary;
+    }
+
+    &-status .rs-uploader-file-item-btn-remove {
+      color: $color-danger;
+    }
   }
 
   // Drag & Drop alanı
@@ -1341,7 +1625,8 @@ textarea.rs-input {
     cursor: pointer;
     color: $text-muted;
 
-    &:hover, &.rs-uploader-dragging {
+    &:hover,
+    &.rs-uploader-dragging {
       border-color: $color-primary;
       background: $color-primary-50;
       color: $color-primary;
@@ -1350,25 +1635,43 @@ textarea.rs-input {
 }
 
 // Date Picker
-.rs-picker-date, .rs-picker-daterange {
+.rs-picker-date,
+.rs-picker-daterange {
   .rs-picker-toggle {
-    .rs-picker-toggle-textbox { @extend %input-base; border: none; box-shadow: none; padding: 0; }
+    .rs-picker-toggle-textbox {
+      @extend %input-base;
+      border: none;
+      box-shadow: none;
+      padding: 0;
+    }
   }
 
   .rs-calendar {
     border-radius: $radius-md;
 
-    &-header { border-bottom: 1px solid $border-color; }
-    &-header-title { font-weight: $weight-semibold; color: $text-primary; }
+    &-header {
+      border-bottom: 1px solid $border-color;
+    }
+
+    &-header-title {
+      font-weight: $weight-semibold;
+      color: $text-primary;
+    }
 
     &-table-cell {
-      &:hover .rs-calendar-table-cell-content { background: $color-primary-50; color: $color-primary; border-radius: $radius-sm; }
+      &:hover .rs-calendar-table-cell-content {
+        background: $color-primary-50;
+        color: $color-primary;
+        border-radius: $radius-sm;
+      }
+
       &-selected .rs-calendar-table-cell-content {
         background: $color-primary;
         color: $text-inverse;
         border-radius: $radius-sm;
         font-weight: $weight-semibold;
       }
+
       &-in-range .rs-calendar-table-cell-content {
         background: $color-primary-100;
         border-radius: 0;
@@ -1379,7 +1682,9 @@ textarea.rs-input {
 
 // AutoComplete
 .rs-auto-complete {
-  .rs-input { @extend %input-base; }
+  .rs-input {
+    @extend %input-base;
+  }
 
   .rs-auto-complete-menu {
     background: $bg-surface;
@@ -1396,7 +1701,8 @@ textarea.rs-input {
       cursor: pointer;
       transition: $transition-fast;
 
-      &:hover, &.rs-auto-complete-item-focus {
+      &:hover,
+      &.rs-auto-complete-item-focus {
         background: $bg-surface-2;
         color: $color-primary;
       }
@@ -1411,7 +1717,7 @@ textarea.rs-input {
 .rs-panel {
   background: $bg-surface;
   border: 1px solid $border-color;
-  border-radius: 3px;
+  border-radius: $radius-lg;
   box-shadow: $shadow-sm;
   overflow: hidden;
   transition: $transition-base;
@@ -1420,7 +1726,7 @@ textarea.rs-input {
 
   &-header {
     @include flex(row, center, space-between);
-    padding: $space-4 $space-5;
+    padding: 8px 12px;
     border-bottom: 1px solid $border-color;
     background: $bg-surface;
 
@@ -1430,11 +1736,26 @@ textarea.rs-input {
       color: $text-primary;
     }
 
-    .rs-panel-header-actions { @include flex(row, center, flex-end, $space-2); }
+    .rs-panel-header-actions {
+      @include flex(row, center, flex-end, $space-2);
+    }
   }
 
-  &-body {
-    padding: $space-5;
+  &-body,
+  &.rs-panel-bordered>.rs-panel-body,
+  .rs-panel-body,
+  .rs-panel-header+.rs-panel-body,
+  .rs-panel-header+.rs-panel-collapse>.rs-panel-body {
+    padding: 10px 12px !important; // Standardized premium padding for breathing room
+    padding-top: 10px !important; // Force top padding even when following a header
+  }
+
+  &.rs-panel-bordered>.rs-panel-body-fill,
+  &.rs-panel-bordered>.rs-panel-body.rs-panel-body-fill,
+  .rs-panel-body-fill,
+  .rs-panel-body.rs-panel-body-fill,
+  &-body-fill {
+    padding: 0 !important;
   }
 
   &-footer {
@@ -1448,7 +1769,10 @@ textarea.rs-input {
   &-btn {
     color: $text-muted;
     transition: $transition-fast;
-    &:hover { color: $color-primary; }
+
+    &:hover {
+      color: $color-primary;
+    }
   }
 
   // İstatistik kartı varyantı
@@ -1478,8 +1802,15 @@ textarea.rs-input {
       padding: 2px 8px;
       border-radius: $radius-full;
 
-      &.up   { color: $color-success; background: $color-success-light; }
-      &.down { color: $color-danger;  background: $color-danger-light; }
+      &.up {
+        color: $color-success;
+        background: $color-success-light;
+      }
+
+      &.down {
+        color: $color-danger;
+        background: $color-danger-light;
+      }
     }
 
     .stat-icon {
@@ -1494,8 +1825,14 @@ textarea.rs-input {
   }
 
   // Renk aksentli üst kenarlık varyantı
-  &.accent-top { border-top: 3px solid $color-primary; }
-  &.accent-left { border-left: 3px solid $color-primary; border-radius: 0 $radius-lg $radius-lg 0; }
+  &.accent-top {
+    border-top: 3px solid $color-primary;
+  }
+
+  &.accent-left {
+    border-left: 3px solid $color-primary;
+    border-radius: 0 $radius-lg $radius-lg 0;
+  }
 }
 
 // ==========================================================================
@@ -1503,9 +1840,9 @@ textarea.rs-input {
 // ==========================================================================
 
 .rs-table {
-  border: 1px solid $border-color;
-  border-radius: 3px;
-  box-shadow: $shadow-sm;
+  border: none;
+  border-radius: $radius-lg;
+  box-shadow: none;
   overflow: hidden;
   background: $bg-surface;
   font-size: $font-sm;
@@ -1544,6 +1881,7 @@ textarea.rs-input {
     &:nth-child(even) .rs-table-cell {
       background: $slate-50;
     }
+
     &:nth-child(even):hover .rs-table-cell {
       background: $color-primary-50;
     }
@@ -1564,7 +1902,10 @@ textarea.rs-input {
   // Expand satırı
   .rs-table-row-expanded {
     background: $color-primary-50;
-    .rs-table-cell-content { padding: $space-4; }
+
+    .rs-table-cell-content {
+      padding: $space-4;
+    }
   }
 
   // Sort ikonları
@@ -1575,12 +1916,19 @@ textarea.rs-input {
     cursor: pointer;
     user-select: none;
 
-    &:hover { color: $color-primary; }
-    &.sorting { color: $color-primary; }
+    &:hover {
+      color: $color-primary;
+    }
+
+    &.sorting {
+      color: $color-primary;
+    }
   }
 
   // Sabit sütun gölgesi
-  .rs-table-cell-first.rs-table-cell-fixed { box-shadow: 2px 0 8px rgba($slate-900, 0.06); }
+  .rs-table-cell-first.rs-table-cell-fixed {
+    box-shadow: 2px 0 8px rgba($slate-900, 0.06);
+  }
 
   // Tablo içi butonlar / Aksiyonlar
   .table-actions {
@@ -1588,11 +1936,16 @@ textarea.rs-input {
     opacity: 0;
     transition: $transition-fast;
 
-    .rs-table-row:hover & { opacity: 1; }
+    .rs-table-row:hover & {
+      opacity: 1;
+    }
   }
 
   // Scrollbar
-  .rs-table-body { scrollbar-width: thin; scrollbar-color: $slate-300 transparent; }
+  .rs-table-body {
+    scrollbar-width: thin;
+    scrollbar-color: $slate-300 transparent;
+  }
 }
 
 // ==========================================================================
@@ -1601,7 +1954,7 @@ textarea.rs-input {
 
 .rs-list {
   border: 1px solid $border-color;
-  border-radius: 3px;
+  border-radius: $radius-lg;
   overflow: hidden;
   background: $bg-surface;
   box-shadow: $shadow-sm;
@@ -1613,7 +1966,9 @@ textarea.rs-input {
     transition: $transition-fast;
     position: relative;
 
-    &:last-child { border-bottom: none; }
+    &:last-child {
+      border-bottom: none;
+    }
 
     &:hover {
       background: $color-primary-50;
@@ -1632,7 +1987,14 @@ textarea.rs-input {
     }
 
     // Sürüklenebilir tutaç
-    .rs-list-item-holder { color: $text-muted; cursor: grab; &:active { cursor: grabbing; } }
+    .rs-list-item-holder {
+      color: $text-muted;
+      cursor: grab;
+
+      &:active {
+        cursor: grabbing;
+      }
+    }
 
     // Sürükleniyor
     &.rs-list-item-sorting {
@@ -1661,16 +2023,53 @@ textarea.rs-input {
   border: 1px solid transparent;
 
   // Renkler
-  &-green  { background: $color-success-light; color: hsl($hue-success, 84%, 31%); border-color: rgba($color-success, 0.2); }
-  &-red    { background: $color-danger-light;  color: hsl($hue-danger, 84%, 52%); border-color: rgba($color-danger,  0.2); }
-  &-blue   { background: $color-primary-100;   color: $color-primary-700;         border-color: rgba($color-primary, 0.2); }
-  &-orange { background: $color-warning-light; color: hsl($hue-warning, 91%, 40%); border-color: rgba($color-warning, 0.2); }
-  &-cyan   { background: $color-info-light;    color: hsl($hue-info, 82%, 37%);    border-color: rgba($color-info,    0.2); }
-  &-violet { background: rgba(139,92,246,0.1); color: #7c3aed; border-color: rgba(139,92,246,0.2); }
-  &-slate  { background: $slate-100;           color: $slate-600; border-color: $slate-200; }
+  &-green {
+    background: $color-success-light;
+    color: hsl($hue-success, 84%, 31%);
+    border-color: rgba($color-success, 0.2);
+  }
+
+  &-red {
+    background: $color-danger-light;
+    color: hsl($hue-danger, 84%, 52%);
+    border-color: rgba($color-danger, 0.2);
+  }
+
+  &-blue {
+    background: $color-primary-100;
+    color: $color-primary-700;
+    border-color: rgba($color-primary, 0.2);
+  }
+
+  &-orange {
+    background: $color-warning-light;
+    color: hsl($hue-warning, 91%, 40%);
+    border-color: rgba($color-warning, 0.2);
+  }
+
+  &-cyan {
+    background: $color-info-light;
+    color: hsl($hue-info, 82%, 37%);
+    border-color: rgba($color-info, 0.2);
+  }
+
+  &-violet {
+    background: rgba(139, 92, 246, 0.1);
+    color: #7c3aed;
+    border-color: rgba(139, 92, 246, 0.2);
+  }
+
+  &-slate {
+    background: $slate-100;
+    color: $slate-600;
+    border-color: $slate-200;
+  }
 
   // Pill varyantı
-  &.pill { border-radius: $radius-full; padding: 3px 10px; }
+  &.pill {
+    border-radius: $radius-full;
+    padding: 3px 10px;
+  }
 
   // Durum noktası
   &.with-dot::before {
@@ -1686,7 +2085,10 @@ textarea.rs-input {
     margin-left: $space-1;
     cursor: pointer;
     opacity: 0.6;
-    &:hover { opacity: 1; }
+
+    &:hover {
+      opacity: 1;
+    }
   }
 }
 
@@ -1708,7 +2110,9 @@ textarea.rs-input {
     box-shadow: $shadow-xs;
   }
 
-  &.rs-badge-independent .rs-badge-content { position: static; }
+  &.rs-badge-independent .rs-badge-content {
+    position: static;
+  }
 }
 
 // ==========================================================================
@@ -1716,7 +2120,8 @@ textarea.rs-input {
 // ==========================================================================
 
 // Modal arka planı
-.rs-modal-backdrop, .rs-drawer-backdrop {
+.rs-modal-backdrop,
+.rs-drawer-backdrop {
   background: $bg-overlay;
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
@@ -1727,74 +2132,86 @@ textarea.rs-input {
 .rs-modal {
   &-wrapper {
     @include flex(row, center, center);
-    padding: $space-4;
+    padding: $space-3;
   }
 
   &-dialog {
     animation: modal-in 0.25s cubic-bezier(0.34, 1.2, 0.64, 1);
     width: 100%;
-  }
 
-  &-content {
-    border-radius: 3px;
-    box-shadow: $shadow-modal;
-    background: $bg-surface;
-    border: 1px solid $border-color;
-    overflow: hidden;
-  }
+    // Robust specific selector nested overrides to guarantee styling RSuite v5
+    .rs-modal-content {
+      border-radius: $radius-2xl;
+      box-shadow: $shadow-modal;
+      background: $bg-surface;
+      border: 1px solid $border-color;
+      overflow: hidden;
 
-  &-header {
-    @include flex(row, center, space-between);
-    padding: $space-5 $space-6;
-    border-bottom: 2px solid $border-color;
-    background: linear-gradient(135deg, $slate-50 0%, $bg-surface 100%);
+      .rs-modal-header {
+        @include flex(row, center, space-between);
+        padding: 12px 18px; // Balanced vertical and horizontal padding
+        border-bottom: 1.5px solid $border-color;
+        background: linear-gradient(135deg, $slate-50 0%, $bg-surface 100%);
 
-    .rs-modal-title {
-      font-size: $font-xl;
-      font-weight: $weight-bold;
-      color: $text-primary;
+        .rs-modal-title {
+          font-size: 15px; // Elegant premium header size
+          font-weight: $weight-bold;
+          color: $text-primary;
 
-      // İkon + metin düzeni
-      span {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        color: $text-primary;
+          // İkon + metin düzeni
+          span {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: $text-primary;
 
-        svg { color: $color-orange; }
+            svg {
+              color: $color-orange;
+            }
+          }
+        }
+
+        .rs-modal-header-close {
+          width: 32px;
+          height: 32px;
+          border-radius: $radius-full;
+          @include flex(row, center, center);
+          color: $text-muted;
+          cursor: pointer;
+          transition: $transition-fast;
+          border: 1px solid transparent;
+
+          &:hover {
+            background: $color-danger-light;
+            color: $color-danger;
+            border-color: rgba($color-danger, 0.2);
+          }
+        }
+      }
+
+      .rs-modal-body {
+        padding: 14px 18px; // Elegant tight padding
+        max-height: 72vh;
+        overflow-y: auto;
+
+        .rs-form-group {
+          margin-bottom: 10px; // Compact gap between form groups inside modals
+
+          .rs-form-control-label {
+            margin-bottom: 4px; // Compact gap between form label and input
+            font-size: 12px;
+          }
+        }
+      }
+
+      .rs-modal-footer {
+        @include flex(row, center, flex-end, 10px);
+        padding: 12px 18px; // Tighter footer padding
+        border-top: 1px solid $border-color;
+        background: $bg-surface-2;
+        border-radius: 0 0 $radius-2xl $radius-2xl;
       }
     }
-
-    .rs-modal-header-close {
-      width: 34px;
-      height: 34px;
-      border-radius: $radius-full;
-      @include flex(row, center, center);
-      color: $text-muted;
-      cursor: pointer;
-      transition: $transition-fast;
-      border: 1px solid transparent;
-
-      &:hover {
-        background: $color-danger-light;
-        color: $color-danger;
-        border-color: rgba($color-danger, 0.2);
-      }
-    }
-  }
-
-  &-body {
-    padding: $space-6;
-    max-height: 72vh;
-    overflow-y: auto;
-  }
-
-  &-footer {
-    @include flex(row, center, flex-end, $space-3);
-    padding: $space-4 $space-6;
-    border-top: 1px solid $border-color;
-    background: $bg-surface-2;
-    border-radius: 0 0 3px 3px;
   }
 }
 
@@ -1821,7 +2238,10 @@ textarea.rs-input {
       box-shadow: 0 0 0 3px $color-orange-ring;
     }
 
-    .filter-search-icon { color: $text-muted; flex-shrink: 0; }
+    .filter-search-icon {
+      color: $text-muted;
+      flex-shrink: 0;
+    }
 
     .filter-search-input {
       border: none;
@@ -1832,7 +2252,9 @@ textarea.rs-input {
       width: 100%;
       font-family: $font-family;
 
-      &::placeholder { color: $text-muted; }
+      &::placeholder {
+        color: $text-muted;
+      }
     }
   }
 
@@ -1866,7 +2288,9 @@ textarea.rs-input {
     color: $text-muted;
     font-weight: $weight-medium;
 
-    svg { color: $text-muted; }
+    svg {
+      color: $text-muted;
+    }
   }
 
   .product-detail-value {
@@ -1890,8 +2314,13 @@ textarea.rs-input {
     font-weight: $weight-bold;
   }
 
-  .stock-ok { color: $color-success; }
-  .stock-low { color: $color-danger; }
+  .stock-ok {
+    color: $color-success;
+  }
+
+  .stock-low {
+    color: $color-danger;
+  }
 
   .stock-warning-badge {
     display: inline-block;
@@ -1923,16 +2352,26 @@ textarea.rs-input {
     }
 
     .rs-drawer-header-close {
-      width: 32px; height: 32px;
+      width: 32px;
+      height: 32px;
       border-radius: $radius-full;
       @include flex(row, center, center);
       color: $text-muted;
       cursor: pointer;
-      &:hover { background: $bg-surface-2; color: $text-primary; }
+
+      &:hover {
+        background: $bg-surface-2;
+        color: $text-primary;
+      }
     }
   }
 
-  &-body  { padding: $space-6; flex: 1; overflow-y: auto; }
+  &-body {
+    padding: $space-6;
+    flex: 1;
+    overflow-y: auto;
+  }
+
   &-footer {
     @include flex(row, center, flex-end, $space-3);
     padding: $space-4 $space-6;
@@ -1941,13 +2380,25 @@ textarea.rs-input {
 }
 
 @keyframes modal-in {
-  from { opacity: 0; transform: scale(0.94) translateY(20px); }
-  to   { opacity: 1; transform: scale(1)    translateY(0); }
+  from {
+    opacity: 0;
+    transform: scale(0.94) translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
 }
 
 @keyframes fade-in {
-  from { opacity: 0; }
-  to   { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 // ==========================================================================
@@ -1967,7 +2418,9 @@ textarea.rs-input {
   pointer-events: none;
   animation: tooltip-in 0.12s ease;
 
-  .rs-tooltip-arrow { border-color: $slate-900; }
+  .rs-tooltip-arrow {
+    border-color: $slate-900;
+  }
 }
 
 .rs-popover {
@@ -1988,14 +2441,26 @@ textarea.rs-input {
     border-bottom: 1px solid $border-color;
   }
 
-  &-content { font-size: $font-sm; color: $text-secondary; }
+  &-content {
+    font-size: $font-sm;
+    color: $text-secondary;
+  }
 
-  .rs-popover-arrow { border-color: $border-color; }
+  .rs-popover-arrow {
+    border-color: $border-color;
+  }
 }
 
 @keyframes tooltip-in {
-  from { opacity: 0; transform: scale(0.9); }
-  to   { opacity: 1; transform: scale(1); }
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 // ==========================================================================
@@ -2018,7 +2483,9 @@ textarea.rs-input {
   &::before {
     content: '';
     position: absolute;
-    left: 0; top: 0; bottom: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
     width: 3px;
     border-radius: $radius-sm 0 0 $radius-sm;
   }
@@ -2030,21 +2497,63 @@ textarea.rs-input {
     margin-bottom: $space-1;
   }
 
-  &-description { font-size: $font-sm; color: $text-secondary; }
+  &-description {
+    font-size: $font-sm;
+    color: $text-secondary;
+  }
 
   &-close {
     position: absolute;
-    top: $space-3; right: $space-3;
+    top: $space-3;
+    right: $space-3;
     color: $text-muted;
     cursor: pointer;
-    &:hover { color: $text-primary; }
+
+    &:hover {
+      color: $text-primary;
+    }
   }
 
   // Durum varyantları
-  &.rs-notification-success { &::before { background: $color-success; } .rs-notification-icon { color: $color-success; } }
-  &.rs-notification-error   { &::before { background: $color-danger; }  .rs-notification-icon { color: $color-danger; }  }
-  &.rs-notification-warning { &::before { background: $color-warning; } .rs-notification-icon { color: $color-warning; } }
-  &.rs-notification-info    { &::before { background: $color-info; }    .rs-notification-icon { color: $color-info; }    }
+  &.rs-notification-success {
+    &::before {
+      background: $color-success;
+    }
+
+    .rs-notification-icon {
+      color: $color-success;
+    }
+  }
+
+  &.rs-notification-error {
+    &::before {
+      background: $color-danger;
+    }
+
+    .rs-notification-icon {
+      color: $color-danger;
+    }
+  }
+
+  &.rs-notification-warning {
+    &::before {
+      background: $color-warning;
+    }
+
+    .rs-notification-icon {
+      color: $color-warning;
+    }
+  }
+
+  &.rs-notification-info {
+    &::before {
+      background: $color-info;
+    }
+
+    .rs-notification-icon {
+      color: $color-info;
+    }
+  }
 }
 
 // Inline mesaj (Message bileşeni)
@@ -2055,14 +2564,43 @@ textarea.rs-input {
   border: 1px solid;
   font-size: $font-sm;
 
-  &-success { background: $color-success-light; border-color: rgba($color-success, 0.25); color: hsl($hue-success, 84%, 29%); }
-  &-error   { background: $color-danger-light;  border-color: rgba($color-danger,  0.25); color: hsl($hue-danger, 84%, 50%); }
-  &-warning { background: $color-warning-light; border-color: rgba($color-warning, 0.25); color: hsl($hue-warning, 91%, 35%); }
-  &-info    { background: $color-info-light;    border-color: rgba($color-info,    0.25); color: hsl($hue-info, 82%, 35%); }
+  &-success {
+    background: $color-success-light;
+    border-color: rgba($color-success, 0.25);
+    color: hsl($hue-success, 84%, 29%);
+  }
 
-  .rs-message-icon { flex-shrink: 0; margin-top: 1px; }
-  .rs-message-content { flex: 1; }
-  .rs-message-header { font-weight: $weight-semibold; margin-bottom: 3px; }
+  &-error {
+    background: $color-danger-light;
+    border-color: rgba($color-danger, 0.25);
+    color: hsl($hue-danger, 84%, 50%);
+  }
+
+  &-warning {
+    background: $color-warning-light;
+    border-color: rgba($color-warning, 0.25);
+    color: hsl($hue-warning, 91%, 35%);
+  }
+
+  &-info {
+    background: $color-info-light;
+    border-color: rgba($color-info, 0.25);
+    color: hsl($hue-info, 82%, 35%);
+  }
+
+  .rs-message-icon {
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .rs-message-content {
+    flex: 1;
+  }
+
+  .rs-message-header {
+    font-weight: $weight-semibold;
+    margin-bottom: 3px;
+  }
 }
 
 // Alert (tam genişlik uyarı)
@@ -2071,18 +2609,47 @@ textarea.rs-input {
   color: $text-inverse;
   border-color: transparent;
 
-  .rs-notification-title, .rs-notification-description { color: $text-inverse; }
-  .rs-notification-close { color: $slate-400; }
+  .rs-notification-title,
+  .rs-notification-description {
+    color: $text-inverse;
+  }
 
-  &.rs-notification-success { background: $color-success; }
-  &.rs-notification-error   { background: $color-danger; }
-  &.rs-notification-warning { background: $color-warning; .rs-notification-title, .rs-notification-description { color: $slate-900; } }
-  &.rs-notification-info    { background: $color-info; }
+  .rs-notification-close {
+    color: $slate-400;
+  }
+
+  &.rs-notification-success {
+    background: $color-success;
+  }
+
+  &.rs-notification-error {
+    background: $color-danger;
+  }
+
+  &.rs-notification-warning {
+    background: $color-warning;
+
+    .rs-notification-title,
+    .rs-notification-description {
+      color: $slate-900;
+    }
+  }
+
+  &.rs-notification-info {
+    background: $color-info;
+  }
 }
 
 @keyframes notification-in {
-  from { opacity: 0; transform: translateX(20px) scale(0.96); }
-  to   { opacity: 1; transform: translateX(0)    scale(1); }
+  from {
+    opacity: 0;
+    transform: translateX(20px) scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
 }
 
 // ==========================================================================
@@ -2101,8 +2668,16 @@ textarea.rs-input {
     animation: spin 0.7s linear infinite;
   }
 
-  &-lg .rs-loader-spin { width: 30px; height: 30px; border-width: 3px; }
-  &-sm .rs-loader-spin { width: 14px; height: 14px; }
+  &-lg .rs-loader-spin {
+    width: 30px;
+    height: 30px;
+    border-width: 3px;
+  }
+
+  &-sm .rs-loader-spin {
+    width: 14px;
+    height: 14px;
+  }
 
   &-content {
     font-size: $font-sm;
@@ -2139,33 +2714,66 @@ textarea.rs-input {
       &::after {
         content: '';
         position: absolute;
-        top: 0; bottom: 0; left: 0;
+        top: 0;
+        bottom: 0;
+        left: 0;
         width: 60%;
-        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
         animation: shimmer 1.5s ease-in-out infinite;
       }
     }
   }
 
-  &-status-success .rs-progress-line-inner { background: linear-gradient(90deg, hsl($hue-success, 84%, 49%), $color-success); }
-  &-status-fail    .rs-progress-line-inner { background: linear-gradient(90deg, hsl($hue-danger, 84%, 70%), $color-danger); }
+  &-status-success .rs-progress-line-inner {
+    background: linear-gradient(90deg, hsl($hue-success, 84%, 49%), $color-success);
+  }
+
+  &-status-fail .rs-progress-line-inner {
+    background: linear-gradient(90deg, hsl($hue-danger, 84%, 70%), $color-danger);
+  }
 
   // Daire progress
   &-circle {
-    .rs-progress-circle-trail { stroke: $slate-200; }
-    .rs-progress-circle-path  {
+    .rs-progress-circle-trail {
+      stroke: $slate-200;
+    }
+
+    .rs-progress-circle-path {
       stroke: $color-primary;
       stroke-linecap: round;
     }
-    &-status-success .rs-progress-circle-path { stroke: $color-success; }
-    &-status-fail    .rs-progress-circle-path { stroke: $color-danger; }
+
+    &-status-success .rs-progress-circle-path {
+      stroke: $color-success;
+    }
+
+    &-status-fail .rs-progress-circle-path {
+      stroke: $color-danger;
+    }
   }
 
-  &-info { font-size: $font-sm; font-weight: $weight-semibold; color: $text-secondary; }
+  &-info {
+    font-size: $font-sm;
+    font-weight: $weight-semibold;
+    color: $text-secondary;
+  }
 }
 
-@keyframes spin    { to { transform: rotate(360deg); } }
-@keyframes shimmer { from { left: -60%; } to { left: 100%; } }
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes shimmer {
+  from {
+    left: -60%;
+  }
+
+  to {
+    left: 100%;
+  }
+}
 
 // ==========================================================================
 // 17. PAGİNASYON
@@ -2210,15 +2818,29 @@ textarea.rs-input {
       background: $bg-surface-2;
       border-color: $border-color;
 
-      &:hover { border-color: $border-color; background: $bg-surface-2; color: $text-disabled; }
+      &:hover {
+        border-color: $border-color;
+        background: $bg-surface-2;
+        color: $text-disabled;
+      }
     }
 
     // Üç nokta
-    &.rs-pagination-btn-ellipsis { border: none; color: $text-muted; background: transparent; &:hover { background: $bg-surface-2; } }
+    &.rs-pagination-btn-ellipsis {
+      border: none;
+      color: $text-muted;
+      background: transparent;
+
+      &:hover {
+        background: $bg-surface-2;
+      }
+    }
   }
 
   // Sayfa seçici
-  &-limit-picker { margin-left: $space-4; }
+  &-limit-picker {
+    margin-left: $space-4;
+  }
 }
 
 // ==========================================================================
@@ -2247,7 +2869,9 @@ textarea.rs-input {
     transition: $transition-fast;
     text-decoration: none;
 
-    &:hover { background: $bg-surface-2; }
+    &:hover {
+      background: $bg-surface-2;
+    }
 
     // Aktif / seçili
     &.rs-dropdown-item-active {
@@ -2257,11 +2881,24 @@ textarea.rs-input {
     }
 
     // Tehlikeli aksiyon
-    &.danger { color: $color-danger; &:hover { background: $color-danger-light; } }
+    &.danger {
+      color: $color-danger;
+
+      &:hover {
+        background: $color-danger-light;
+      }
+    }
 
     // İkon
-    .dropdown-icon { color: $text-muted; font-size: $font-lg; flex-shrink: 0; }
-    &:hover .dropdown-icon { color: inherit; }
+    .dropdown-icon {
+      color: $text-muted;
+      font-size: $font-lg;
+      flex-shrink: 0;
+    }
+
+    &:hover .dropdown-icon {
+      color: inherit;
+    }
 
     // Kısayol
     .shortcut {
@@ -2291,14 +2928,20 @@ textarea.rs-input {
   }
 
   // Alt menü oku
-  &-item-submenu-arrow { margin-left: auto; color: $text-muted; }
+  &-item-submenu-arrow {
+    margin-left: auto;
+    color: $text-muted;
+  }
 
   // Tetikleyici buton
   &-toggle {
     @extend .rs-btn;
     @extend .rs-btn-default;
 
-    .rs-dropdown-toggle-caret { margin-left: $space-2; color: $text-muted; }
+    .rs-dropdown-toggle-caret {
+      margin-left: $space-2;
+      color: $text-muted;
+    }
   }
 }
 
@@ -2315,7 +2958,10 @@ textarea.rs-input {
     color: $text-muted;
     text-decoration: none;
     transition: $transition-fast;
-    &:hover { color: $color-primary; }
+
+    &:hover {
+      color: $color-primary;
+    }
 
     &.rs-breadcrumb-item-active {
       color: $text-primary;
@@ -2324,7 +2970,9 @@ textarea.rs-input {
     }
   }
 
-  &-separator { color: $text-muted; }
+  &-separator {
+    color: $text-muted;
+  }
 }
 
 // Steps
@@ -2345,9 +2993,13 @@ textarea.rs-input {
       background: $border-color;
     }
 
-    &:last-child::before { display: none; }
+    &:last-child::before {
+      display: none;
+    }
 
-    &-status-finish::before { background: $color-primary; }
+    &-status-finish::before {
+      background: $color-primary;
+    }
 
     &-icon-wrapper {
       width: 32px;
@@ -2382,8 +3034,18 @@ textarea.rs-input {
 
     &-content {
       text-align: center;
-      .rs-steps-item-title { font-size: $font-sm; font-weight: $weight-medium; color: $text-primary; }
-      .rs-steps-item-description { font-size: $font-xs; color: $text-muted; margin-top: 2px; }
+
+      .rs-steps-item-title {
+        font-size: $font-sm;
+        font-weight: $weight-medium;
+        color: $text-primary;
+      }
+
+      .rs-steps-item-description {
+        font-size: $font-xs;
+        color: $text-muted;
+        margin-top: 2px;
+      }
     }
   }
 }
@@ -2403,10 +3065,12 @@ textarea.rs-input {
       cursor: pointer;
       transition: $transition-fast;
 
-      &:hover { background: $bg-surface-2; }
+      &:hover {
+        background: $bg-surface-2;
+      }
     }
 
-    &.rs-tree-node-active > .rs-tree-node-label {
+    &.rs-tree-node-active>.rs-tree-node-label {
       background: $color-primary-50;
       color: $color-primary;
       font-weight: $weight-medium;
@@ -2416,7 +3080,10 @@ textarea.rs-input {
   &-node-expand-icon {
     color: $text-muted;
     transition: transform 0.2s;
-    .rs-tree-node-expanded & { transform: rotate(90deg); }
+
+    .rs-tree-node-expanded & {
+      transform: rotate(90deg);
+    }
   }
 }
 
@@ -2435,18 +3102,53 @@ textarea.rs-input {
   border: 2px solid $bg-surface;
   box-shadow: $shadow-xs;
 
-  &-xs  { width: 24px; height: 24px; font-size: $font-xs; }
-  &-sm  { width: 32px; height: 32px; font-size: $font-xs; }
-  &-md  { width: 40px; height: 40px; font-size: $font-sm; }
-  &-lg  { width: 48px; height: 48px; font-size: $font-base; }
-  &-xl  { width: 64px; height: 64px; font-size: $font-xl; }
+  &-xs {
+    width: 24px;
+    height: 24px;
+    font-size: $font-xs;
+  }
 
-  img   { width: 100%; height: 100%; object-fit: cover; }
+  &-sm {
+    width: 32px;
+    height: 32px;
+    font-size: $font-xs;
+  }
+
+  &-md {
+    width: 40px;
+    height: 40px;
+    font-size: $font-sm;
+  }
+
+  &-lg {
+    width: 48px;
+    height: 48px;
+    font-size: $font-base;
+  }
+
+  &-xl {
+    width: 64px;
+    height: 64px;
+    font-size: $font-xl;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 
   // Grup
   &-group {
     @include flex(row, center, flex-start);
-    .rs-avatar { margin-left: -8px; &:first-child { margin-left: 0; } }
+
+    .rs-avatar {
+      margin-left: -8px;
+
+      &:first-child {
+        margin-left: 0;
+      }
+    }
   }
 }
 
@@ -2457,8 +3159,16 @@ textarea.rs-input {
 .rs-divider {
   background-color: $border-color;
 
-  &-horizontal { height: 1px; margin: $space-5 0; }
-  &-vertical   { width: 1px; margin: 0 $space-3; align-self: stretch; }
+  &-horizontal {
+    height: 1px;
+    margin: $space-5 0;
+  }
+
+  &-vertical {
+    width: 1px;
+    margin: 0 $space-3;
+    align-self: stretch;
+  }
 
   &-text {
     display: flex;
@@ -2470,7 +3180,8 @@ textarea.rs-input {
     text-transform: uppercase;
     letter-spacing: 0.06em;
 
-    &::before, &::after {
+    &::before,
+    &::after {
       content: '';
       flex: 1;
       height: 1px;
@@ -2488,8 +3199,14 @@ textarea.rs-input {
     border-radius: 0;
     border-bottom: 1px solid $border-color;
 
-    &:first-child { border-radius: $radius-lg $radius-lg 0 0; }
-    &:last-child  { border-radius: 0 0 $radius-lg $radius-lg; border-bottom: none; }
+    &:first-child {
+      border-radius: $radius-lg $radius-lg 0 0;
+    }
+
+    &:last-child {
+      border-radius: 0 0 $radius-lg $radius-lg;
+      border-bottom: none;
+    }
 
     &-header {
       cursor: pointer;
@@ -2497,10 +3214,14 @@ textarea.rs-input {
       background: $bg-surface;
       transition: $transition-fast;
 
-      &:hover { background: $bg-surface-2; }
+      &:hover {
+        background: $bg-surface-2;
+      }
     }
 
-    &-collapse-in .rs-panel-header { border-bottom: 1px solid $border-color; }
+    &-collapse-in .rs-panel-header {
+      border-bottom: 1px solid $border-color;
+    }
 
     &-in:not(.rs-panel-collapse-in) .rs-panel-body {
       animation: slide-down 0.2s ease;
@@ -2509,8 +3230,15 @@ textarea.rs-input {
 }
 
 @keyframes slide-down {
-  from { opacity: 0; transform: translateY(-8px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 // ==========================================================================
@@ -2518,30 +3246,123 @@ textarea.rs-input {
 // ==========================================================================
 
 // Boşluk
-.mt-0 { margin-top: 0; } .mt-1 { margin-top: $space-1; } .mt-2 { margin-top: $space-2; }
-.mt-3 { margin-top: $space-3; } .mt-4 { margin-top: $space-4; } .mt-5 { margin-top: $space-5; }
-.mb-0 { margin-bottom: 0; } .mb-4 { margin-bottom: $space-4; } .mb-5 { margin-bottom: $space-5; }
+.mt-0 {
+  margin-top: 0;
+}
+
+.mt-1 {
+  margin-top: $space-1;
+}
+
+.mt-2 {
+  margin-top: $space-2;
+}
+
+.mt-3 {
+  margin-top: $space-3;
+}
+
+.mt-4 {
+  margin-top: $space-4;
+}
+
+.mt-5 {
+  margin-top: $space-5;
+}
+
+.mb-0 {
+  margin-bottom: 0;
+}
+
+.mb-4 {
+  margin-bottom: $space-4;
+}
+
+.mb-5 {
+  margin-bottom: $space-5;
+}
 
 // Flex
-.d-flex  { display: flex; }
-.flex-center  { display: flex; align-items: center; justify-content: center; }
-.flex-between { display: flex; align-items: center; justify-content: space-between; }
-.flex-1  { flex: 1; }
-.gap-2   { gap: $space-2; } .gap-3 { gap: $space-3; } .gap-4 { gap: $space-4; }
+.d-flex {
+  display: flex;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+.gap-2 {
+  gap: $space-2;
+}
+
+.gap-3 {
+  gap: $space-3;
+}
+
+.gap-4 {
+  gap: $space-4;
+}
 
 // Metin
-.text-primary   { color: $text-primary; }
-.text-secondary { color: $text-secondary; }
-.text-muted     { color: $text-muted; }
-.text-success   { color: $color-success; }
-.text-danger    { color: $color-danger; }
-.text-warning   { color: $color-warning; }
-.font-medium    { font-weight: $weight-medium; }
-.font-semibold  { font-weight: $weight-semibold; }
-.font-bold      { font-weight: $weight-bold; }
-.text-sm        { font-size: $font-sm; }
-.text-xs        { font-size: $font-xs; }
-.truncate       { @include truncate; }
+.text-primary {
+  color: $text-primary;
+}
+
+.text-secondary {
+  color: $text-secondary;
+}
+
+.text-muted {
+  color: $text-muted;
+}
+
+.text-success {
+  color: $color-success;
+}
+
+.text-danger {
+  color: $color-danger;
+}
+
+.text-warning {
+  color: $color-warning;
+}
+
+.font-medium {
+  font-weight: $weight-medium;
+}
+
+.font-semibold {
+  font-weight: $weight-semibold;
+}
+
+.font-bold {
+  font-weight: $weight-bold;
+}
+
+.text-sm {
+  font-size: $font-sm;
+}
+
+.text-xs {
+  font-size: $font-xs;
+}
+
+.truncate {
+  @include truncate;
+}
 
 // Kod bloğu
 .code-block {
@@ -2557,8 +3378,8 @@ textarea.rs-input {
 
 // Cam efektli kart
 .glass-card {
-  @include glass(16px, rgba(255,255,255,0.75));
-  border: 1px solid rgba(255,255,255,0.6);
+  @include glass(16px, rgba(255, 255, 255, 0.75));
+  border: 1px solid rgba(255, 255, 255, 0.6);
   border-radius: $radius-lg;
   box-shadow: $shadow-md;
 }
@@ -2581,8 +3402,13 @@ textarea.rs-input {
 }
 
 @keyframes skeleton-wave {
-  from { background-position: 200% 0; }
-  to   { background-position: -200% 0; }
+  from {
+    background-position: 200% 0;
+  }
+
+  to {
+    background-position: -200% 0;
+  }
 }
 
 // ==========================================================================
@@ -2597,17 +3423,37 @@ textarea.rs-input {
     gap: $space-3;
   }
 
-  .rs-table { font-size: $font-xs; }
+  .rs-table {
+    font-size: $font-xs;
+  }
 
-  .rs-modal-body { max-height: 80vh; padding: $space-4; }
+  .rs-modal-body {
+    max-height: 80vh;
+    padding: $space-3;
+  }
 
-  .rs-content { padding: $space-4; }
+  .rs-content {
+    padding: $space-4;
+  }
 
-  .rs-steps { flex-direction: column; }
+  .rs-steps {
+    flex-direction: column;
+  }
 }
 
 @include respond-to(sm) {
-  .rs-modal-dialog { margin: $space-3; }
-  .rs-nav-tabs .rs-nav-item { padding: $space-2 $space-3; font-size: $font-sm; }
-  .rs-pagination-btn { min-width: 32px; height: 32px; font-size: $font-xs; }
+  .rs-modal-dialog {
+    margin: $space-3;
+  }
+
+  .rs-nav-tabs .rs-nav-item {
+    padding: $space-2 $space-3;
+    font-size: $font-sm;
+  }
+
+  .rs-pagination-btn {
+    min-width: 32px;
+    height: 32px;
+    font-size: $font-xs;
+  }
 }

@@ -27,7 +27,7 @@ const ImageCell = ({ rowData, dataKey, ...props }: ImageCellProps) => {
   const imageUrl = rowData && dataKey ? (rowData[dataKey] as string) : undefined
   return (
     <Cell {...props} style={{ padding: 0 }}>
-      <div style={{ width: '52px', height: '52px', background: '#f1f5f9', borderRadius: '3px', marginTop: '14px', overflow: 'hidden', display: 'inline-block', border: '1px solid #e2e8f0' }}>
+      <div style={{ width: '38px', height: '38px', background: '#f4eee1', borderRadius: '3px', marginTop: '9px', overflow: 'hidden', display: 'inline-block', border: '1px solid #e8dfcd' }}>
         {imageUrl ? (
           <img src={imageUrl} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
         ) : (
@@ -74,8 +74,8 @@ function ActionMenu({ product, onView, onEdit, onDelete }: {
     position: 'absolute',
     top: pos.top,
     right: pos.right,
-    background: '#fff',
-    border: '1px solid #e2e8f0',
+    background: '#fdfbf7',
+    border: '1px solid #e8dfcd',
     borderRadius: '3px',
     boxShadow: '0 4px 20px rgba(15,23,42,0.12)',
     zIndex: 9999,
@@ -208,15 +208,15 @@ export default function ProductTable({ products, onEdit, onDelete, onView }: Pro
 
   return (
     <>
-      <div style={{ background: '#fff', borderRadius: '3px', border: '1px solid #e2e8f0', boxShadow: '0 1px 3px rgba(15,23,42,0.06)', overflow: 'visible' }}>
+      <div style={{ background: '#fdfbf7', borderRadius: '3px', border: '1px solid #e8dfcd', boxShadow: '0 1px 3px rgba(15,23,42,0.06)', overflow: 'hidden' }}>
         <Table
           autoHeight
           data={data}
           id="table"
-          rowHeight={80}
+          rowHeight={56}
           onRowClick={rowData => onView(rowData as Product)}
           rowClassName={() => 'cursor-pointer hover:bg-slate-50 transition-colors'}
-          style={{ borderRadius: '3px' }}
+          style={{ border: 'none', borderRadius: '3px' }}
         >
           <Column width={60} align="center" verticalAlign="middle">
             <HeaderCell>ID</HeaderCell>
@@ -279,7 +279,7 @@ export default function ProductTable({ products, onEdit, onDelete, onView }: Pro
 
           <Column width={72} align="center" verticalAlign="middle">
             <HeaderCell> </HeaderCell>
-            <Cell style={{ padding: '22px 12px', overflow: 'visible' }}>
+            <Cell style={{ padding: '10px 12px', overflow: 'visible' }}>
               {rowData => (
                 <ActionMenu
                   product={rowData as Product}
@@ -292,7 +292,7 @@ export default function ProductTable({ products, onEdit, onDelete, onView }: Pro
           </Column>
         </Table>
 
-        <div style={{ padding: '14px 16px', borderTop: '1px solid #e2e8f0' }}>
+        <div style={{ padding: '8px 12px', borderTop: '1px solid #e8dfcd' }}>
           <Pagination
             prev next first last ellipsis boundaryLinks
             maxButtons={5}

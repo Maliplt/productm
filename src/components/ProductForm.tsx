@@ -84,13 +84,13 @@ export default function ProductForm({ isOpen, onClose, onSave, onViewDetail, edi
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <Form fluid>
-          <Form.Group>
+        <Form fluid style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+          <Form.Group style={{ marginBottom: 0 }}>
             <Form.Label>Ürün Adı</Form.Label>
             <Input value={formValue.name} onChange={v => handleChange('name', v)} placeholder="Ürün adını giriniz" />
           </Form.Group>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
             <Form.Group style={{ marginBottom: 0 }}>
               <Form.Label>Kategori</Form.Label>
               <Input value={formValue.category} onChange={v => handleChange('category', v)} placeholder="Kategori" />
@@ -101,12 +101,12 @@ export default function ProductForm({ isOpen, onClose, onSave, onViewDetail, edi
             </Form.Group>
           </div>
 
-          <Form.Group style={{ marginTop: '16px' }}>
+          <Form.Group style={{ marginBottom: 0 }}>
             <Form.Label>Görsel URL</Form.Label>
             <Input value={formValue.image} onChange={v => handleChange('image', v)} placeholder="https://..." />
           </Form.Group>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
             <Form.Group style={{ marginBottom: 0 }}>
               <Form.Label>Fiyat (₺)</Form.Label>
               <NumberInput value={formValue.price} onChange={v => handleChange('price', v)} min={0} style={{ width: '100%' }} placeholder="0" />
@@ -117,7 +117,7 @@ export default function ProductForm({ isOpen, onClose, onSave, onViewDetail, edi
             </Form.Group>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '16px', marginTop: '16px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '10px' }}>
             <Form.Group style={{ marginBottom: 0 }}>
               <Form.Label>SKU</Form.Label>
               <Input value={formValue.sku} onChange={v => handleChange('sku', v)} placeholder="Ürün kodu" />
@@ -132,14 +132,14 @@ export default function ProductForm({ isOpen, onClose, onSave, onViewDetail, edi
             </Form.Group>
           </div>
 
-          <Form.Group style={{ marginTop: '16px' }}>
+          <Form.Group style={{ marginBottom: 0 }}>
             <Form.Label>Açıklama</Form.Label>
             <Input as="textarea" rows={3} value={formValue.description} onChange={v => handleChange('description', v)} placeholder="Ürün hakkında açıklama..." />
           </Form.Group>
         </Form>
       </Modal.Body>
       <Modal.Footer>
-        <div style={{ display: 'flex', gap: '10px', width: '100%' }}>
+        <div style={{ display: 'flex', gap: '8px', width: '100%' }}>
           <button className="btn btn-ghost" style={{ flex: 1 }} onClick={onClose}>
             <X size={18} />
             İptal

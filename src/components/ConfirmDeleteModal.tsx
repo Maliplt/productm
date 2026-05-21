@@ -22,7 +22,7 @@ export default function ConfirmDeleteModal({ isOpen, productName, categoryName, 
       </Modal.Header>
       <Modal.Body>
         <p style={{ margin: 0, fontSize: '14px', color: '#334155' }}>
-          <strong>{productName}</strong> <strong>{categoryName}</strong> silinecek. Bu işlem geri alınamaz.
+          <strong>{productName}</strong>{categoryName ? ` (${categoryName})` : ''} silinecek. Bu işlem geri alınamaz.
         </p>
       </Modal.Body>
       <Modal.Footer>

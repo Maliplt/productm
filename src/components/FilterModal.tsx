@@ -70,7 +70,7 @@ export default function FilterModal({ isOpen, onClose, products, onEdit, onDelet
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <div style={{ marginBottom: '16px' }}>
+          <div style={{ marginBottom: '10px' }}>
             <AutoComplete
               data={autocompleteData}
               value={search}
@@ -80,7 +80,7 @@ export default function FilterModal({ isOpen, onClose, products, onEdit, onDelet
             />
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px', marginBottom: '20px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px', marginBottom: '6px' }}>
             <SelectPicker
               data={categories}
               value={selectedCategory}
@@ -100,7 +100,7 @@ export default function FilterModal({ isOpen, onClose, products, onEdit, onDelet
           </div>
 
           {isFiltering && (
-            <div style={{ marginBottom: '12px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+            <div style={{ marginBottom: '8px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
               <span style={{ fontSize: '13px', color: '#64748b', fontWeight: 500 }}>
                 {searchResults.length} sonuç bulundu
               </span>
@@ -117,7 +117,7 @@ export default function FilterModal({ isOpen, onClose, products, onEdit, onDelet
               <div style={{ fontSize: '13px', marginTop: '4px' }}>veya kategori / marka filtresi seçin</div>
             </div>
           ) : (
-            <List hover style={{ borderRadius: '3px', overflow: 'hidden', border: '1px solid #e2e8f0' }}>
+            <List hover style={{ borderRadius: '8px', overflow: 'hidden', border: '1px solid #e8dfcd' }}>
               {searchResults.length === 0 ? (
                 <div style={{ textAlign: 'center', padding: '48px 32px', color: '#64748b' }}>
                   <Search size={36} style={{ marginBottom: '12px', color: '#cbd5e1' }} />
@@ -126,10 +126,10 @@ export default function FilterModal({ isOpen, onClose, products, onEdit, onDelet
                 </div>
               ) : (
                 searchResults.map(product => (
-                  <List.Item key={product.id} style={{ padding: '14px 18px' }}>
+                  <List.Item key={product.id} style={{ padding: '6px 10px' }}>
                     <Stack justifyContent="space-between" alignItems="center">
                       <Stack spacing={14}>
-                        <div style={{ width: '52px', height: '52px', borderRadius: '3px', overflow: 'hidden', flexShrink: 0, background: '#f1f5f9', border: '1px solid #e2e8f0' }}>
+                        <div style={{ width: '38px', height: '38px', borderRadius: '4px', overflow: 'hidden', flexShrink: 0, background: '#f4eee1', border: '1px solid #e8dfcd' }}>
                           {product.image ? (
                             <img src={product.image} alt={product.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                           ) : (
@@ -139,7 +139,7 @@ export default function FilterModal({ isOpen, onClose, products, onEdit, onDelet
                         <div>
                           <div style={{ fontWeight: 600, fontSize: '14px', color: '#0f172a' }}>{product.name}</div>
                           <div style={{ fontSize: '12px', color: '#64748b', marginTop: '3px' }}>
-                            <span style={{ background: '#f1f5f9', padding: '2px 8px', borderRadius: '3px', marginRight: '6px' }}>{product.category}</span>
+                            <span style={{ background: '#f1f5f9', padding: '2px 8px', borderRadius: '4px', marginRight: '6px' }}>{product.category}</span>
                             {product.brand && <span style={{ color: '#94a3b8', marginRight: '6px' }}>{product.brand}</span>}
                             <span style={{ color: '#f97316', fontWeight: 600 }}>{product.price.toLocaleString('tr-TR')}₺</span>
                           </div>

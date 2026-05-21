@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+/* @theme {
+  --color-white: #fdfbf7;
+  --color-slate-50: #faf6ee;
+} gereksiz*/
 
 :root {
   --rs-border-radius: 3px !important;
@@ -18,6 +22,6 @@ body,
 
 body {
   margin: 0;
-  background-color: #f8fafc;
+  background-color: #faf6ee;
   color: #0f172a;
 }

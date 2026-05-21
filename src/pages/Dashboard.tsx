@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Container, Content, Input, InputGroup, Grid, Row, Col, Panel, Tabs } from 'rsuite'
-import { Search, Plus, List as ListIcon, LayoutGrid, Filter, Package, Boxes, AlertTriangle, TrendingUp, Eye as EyeIcon, X } from 'lucide-react'
+import { Search, Plus, List as ListIcon, LayoutGrid, Filter, Package, Boxes, AlertTriangle, TrendingUp, Eye as EyeIcon, X, Upload } from 'lucide-react'
 import type { Product } from '../types/product'
 import initialProducts from '../data/products.json'
 import ProductCard from '../components/ProductCard'
@@ -8,6 +8,7 @@ import ProductModal from '../components/ProductModal'
 import ProductForm from '../components/ProductForm'
 import ProductTable from '../components/ProductTable'
 import FilterModal from '../components/FilterModal'
+import CsvImportModal from '../components/CsvImportModal'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 
@@ -24,6 +25,7 @@ export default function Dashboard({ onLogout }: DashboardProps) {
   const [isFormOpen, setIsFormOpen] = useState(false)
   const [editingProduct, setEditingProduct] = useState<Product | null>(null)
   const [isFilterModalOpen, setIsFilterModalOpen] = useState(false)
+  const [isCsvModalOpen, setIsCsvModalOpen] = useState(false)
   const [lowStockOnly, setLowStockOnly] = useState(false)
 
   const filteredProducts = products.filter(p => {
@@ -45,6 +47,24 @@ export default function Dashboard({ onLogout }: DashboardProps) {
 
   function handleDelete(id: number) {
     setProducts(prev => prev.filter(p => p.id !== id))
+  }
+
+  function handleImportCsv(newItems: Omit<Product, 'id' | 'createdAt'>[]) {
+    setProducts(prev => {
+      let currentMaxId = Math.max(0, ...prev.map(p => p.id))
+      const today = new Date().toISOString().split('T')[0]
+      
+      const itemsWithIds = newItems.map(item => {
+        currentMaxId++
+        return {
+          ...item,
+          id: currentMaxId,
+          createdAt: today
+        }
+      })
+      
+      return [...prev, ...itemsWithIds]
+    })
   }
 
   function openDetailModal(product: Product) {
@@ -81,14 +101,14 @@ export default function Dashboard({ onLogout }: DashboardProps) {
   return (
     <Container className="min-h-screen bg-slate-50 flex flex-col">
       <Header onLogout={onLogout} />
-      <Content style={{ padding: '32px 24px', flex: 1 }}>
+      <Content style={{ padding: '12px 16px', flex: 1 }}>
         <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
 
-          <Grid fluid style={{ marginBottom: '32px' }}>
+          <Grid fluid style={{ marginBottom: '12px' }}>
             <Row gutter={16}>
               {statCards.map((card, i) => (
-                <Col xs={12} sm={6} key={i}>
-                  <Panel bordered style={{ background: '#fff', borderRadius: '3px', position: 'relative', overflow: 'hidden' }}>
+                <Col span={{ xs: 12, sm: 6 }} key={i}>
+                  <Panel bordered style={{ background: '#fdfbf7', borderRadius: '3px', position: 'relative', overflow: 'hidden' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                       <div style={{ width: '44px', height: '44px', borderRadius: '3px', background: card.gradient, display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', flexShrink: 0 }}>
                         {card.icon}
@@ -114,8 +134,8 @@ export default function Dashboard({ onLogout }: DashboardProps) {
             </Row>
           </Grid>
 
-          <div style={{ display: 'flex', gap: '12px', marginBottom: '24px', alignItems: 'center' }}>
-            <InputGroup style={{ flex: 1, background: '#fff' }}>
+          <div style={{ display: 'flex', gap: '12px', marginBottom: '12px', alignItems: 'center' }}>
+            <InputGroup style={{ flex: 1, background: '#fdfbf7' }}>
               <InputGroup.Addon>
                 <Search size={20} />
               </InputGroup.Addon>
@@ -133,13 +153,17 @@ export default function Dashboard({ onLogout }: DashboardProps) {
               <Plus size={20} />
               Yeni Ürün
             </button>
+            <button className="btn btn-ghost" onClick={() => setIsCsvModalOpen(true)}>
+              <Upload size={18} />
+              CSV ile Aktar
+            </button>
           </div>
 
-          <Tabs activeKey={activeTab} onSelect={key => setActiveTab(key as string)} appearance="subtle" style={{ marginBottom: '20px' }}>
+          <Tabs activeKey={activeTab} onSelect={key => setActiveTab(key as string)} appearance="subtle" style={{ marginBottom: '8px' }}>
             <Tabs.Tab eventKey="table" title="Liste Görünümü" icon={<ListIcon size={18} />}>
-              <div className="pt-4">
+              <div className="pt-2">
                 {filteredProducts.length === 0 ? (
-                  <Panel bordered style={{ textAlign: 'center', padding: '64px 0', background: '#fff' }}>
+                  <Panel bordered style={{ textAlign: 'center', padding: '32px 0', background: '#fdfbf7' }}>
                     <p style={{ fontSize: '16px', color: '#64748b' }}>Ürün bulunamadı</p>
                   </Panel>
                 ) : (
@@ -148,16 +172,16 @@ export default function Dashboard({ onLogout }: DashboardProps) {
               </div>
             </Tabs.Tab>
             <Tabs.Tab eventKey="grid" title="Grid Görünümü" icon={<LayoutGrid size={18} />}>
-              <div className="pt-4">
+              <div className="pt-2">
                 {filteredProducts.length === 0 ? (
-                  <Panel bordered style={{ textAlign: 'center', padding: '64px 0', background: '#fff' }}>
+                  <Panel bordered style={{ textAlign: 'center', padding: '32px 0', background: '#fdfbf7' }}>
                     <p style={{ fontSize: '16px', color: '#64748b' }}>Ürün bulunamadı</p>
                   </Panel>
                 ) : (
                   <Grid fluid>
                     <Row gutter={16}>
                       {filteredProducts.map(product => (
-                        <Col xs={24} sm={12} md={8} lg={6} key={product.id} style={{ marginBottom: '16px' }}>
+                        <Col span={{ xs: 24, sm: 12, md: 8, lg: 6 }} key={product.id} style={{ marginBottom: '16px' }}>
                           <ProductCard product={product} onClick={() => openDetailModal(product)} />
                         </Col>
                       ))}
@@ -192,6 +216,11 @@ export default function Dashboard({ onLogout }: DashboardProps) {
         onEdit={openEditForm}
         onDelete={handleDelete}
         onView={openDetailModal}
+      />
+      <CsvImportModal
+        isOpen={isCsvModalOpen}
+        onClose={() => setIsCsvModalOpen(false)}
+        onImport={handleImportCsv}
       />
       <Footer />
     </Container>

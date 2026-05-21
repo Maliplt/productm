@@ -68,34 +68,34 @@ export default function ProductModal({ product, isOpen, onClose, onEdit, onDelet
           </Modal.Title>
         </Modal.Header>
         <Modal.Body style={{ padding: 0 }}>
-          <div style={{ display: 'flex', gap: '20px', padding: '20px 24px 16px', alignItems: 'flex-start', borderBottom: '1px solid #e2e8f0' }}>
+          <div style={{ display: 'flex', gap: '16px', padding: '12px 16px 10px', alignItems: 'flex-start', borderBottom: '1px solid #e8dfcd' }}>
             {product.image && (
-              <div style={{ width: '90px', height: '90px', flexShrink: 0, borderRadius: '3px', overflow: 'hidden', border: '1px solid #e2e8f0', background: '#f8fafc' }}>
+              <div style={{ width: '64px', height: '64px', flexShrink: 0, borderRadius: '4px', overflow: 'hidden', border: '1px solid #e8dfcd', background: '#f8fafc' }}>
                 <img src={product.image} alt={product.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
               </div>
             )}
             <div style={{ flex: 1, minWidth: 0 }}>
-              <h2 style={{ margin: '0 0 4px', fontSize: '18px', fontWeight: 700, color: '#0f172a', lineHeight: 1.3 }}>{product.name}</h2>
+              <h2 style={{ margin: '0 0 4px', fontSize: '15px', fontWeight: 700, color: '#0f172a', lineHeight: 1.3 }}>{product.name}</h2>
               {product.brand && (
                 <span style={{ fontSize: '12px', color: '#64748b', fontWeight: 500 }}>{product.brand}</span>
               )}
             </div>
           </div>
 
-          <div style={{ padding: '12px 24px', display: 'flex', flexDirection: 'column', gap: '2px' }}>
+          <div style={{ padding: '8px 16px', display: 'flex', flexDirection: 'column', gap: '2px' }}>
             {detailRows.map((row, i) => (
               <div key={i}>
                 <div className="product-detail-row">
                   <span className="product-detail-label">{row.icon} {row.label}</span>
                   <span className="product-detail-value">{row.value}</span>
                 </div>
-                {i < detailRows.length - 1 && <Divider style={{ margin: '6px 0' }} />}
+                  {i < detailRows.length - 1 && <Divider style={{ margin: '4px 0' }} />}
               </div>
             ))}
 
             {product.description && (
               <>
-                <Divider style={{ margin: '6px 0' }} />
+                <Divider style={{ margin: '4px 0' }} />
                 <div>
                   <div className="product-detail-label" style={{ marginBottom: '6px' }}>
                     <AlignLeft size={16} /> Açıklama

@@ -1,0 +1,12 @@
+product name,category,price,stock,brand,description,sku,weight,warranty,some_random_column
+"North Face Borealis Backpack",Outdoor,3950,15,"The North Face","28-liter backpack with FlexVent suspension system and dedicated laptop compartment.",TNF-BOR-BLK,1.05 kg,2 Years,sports_gear
+"Columbia Newton Ridge Hiking Boots",Outdoor,4850.99,6,Columbia,"Waterproof leather hiking boots with lightweight Techlite midsole for long-lasting comfort.",COL-NR-42,950 g,1 Year,hiking_footwear
+"Garmin Instinct 2 Solar",Saat,16400,9,Garmin,"Rugged GPS smartwatch with solar charging, tactical features, and military-grade durability.",GAR-INS2-SOL,52 g,2 Years,smart_watches
+"Stanley Classic Trigger-Action Mug",Mutfak,1850,30,Stanley,"0.47L double-wall vacuum insulated travel mug, leakproof, keeps hot for 7 hours.",STN-MUG-47,360 g,Lifetime,drinkware
+"Theragun Prime Massage Gun",Ev Aletleri,12500,4,Therabody,"Smart percussive therapy device with 5 speed ranges and Bluetooth companion app integration.",THR-PRM-G4,1 kg,2 Years,wellness_device
+"Apple AirPods Pro 2",Accessories,5899.00,20,Apple,"Active Noise Cancellation, adaptive audio, personalized spatial audio with dynamic head tracking.",AP-PRO2,5.3 g,2 Years,audio_devices
+,Electronics,21999.00,8,Sony,"Industry-leading noise canceling wireless over-ear headphones with auto NC optimizer.",WH-1000XM5,250 g,2 Years,audio_devices
+"Anker PowerCore 24K",Electronics,,40,Anker,"Ultra-high capacity power bank with 140W output and smart digital display.",ANK-PC-24K,630 g,18 Months,charging_power
+"Kindle Paperwhite 16GB",Books,4399.00,,Amazon,"6.8 inch display with adjustable warm light, up to 10 weeks of battery life.",KND-PW-16,205 g,1 Year,ereaders
+"Razer DeathAdder V3 Pro",Accessories,3850.00,12,,"Ultra-lightweight wireless ergonomic gaming mouse with 30K optical sensor.",RZR-DA-V3,,2 Years,gaming_mice
+"Hydro Flask 32 oz Wide Mouth",Kitchen,1450.00,25,Hydro Flask,,HDF-WF-32,475 g,,drinkware

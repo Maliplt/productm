@@ -4,6 +4,8 @@ import { useState } from 'react'
 import Login from './pages/Login'
 import Register from './pages/Register'
 import Dashboard from './pages/Dashboard'
+import Settings from './pages/Settings'
+import Customers from './pages/Customers'
 
 function App() {
   const [isAuth, setIsAuth] = useState(() => localStorage.getItem('isAuth') === 'true')
@@ -21,6 +23,8 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={isAuth ? <Dashboard onLogout={() => handleAuth(false)} /> : <Navigate to="/login" replace />} />
+        <Route path="/settings" element={isAuth ? <Settings onLogout={() => handleAuth(false)} /> : <Navigate to="/login" replace />} />
+        <Route path="/customers" element={isAuth ? <Customers onLogout={() => handleAuth(false)} /> : <Navigate to="/login" replace />} />
         <Route path="/dashboard" element={<Navigate to="/" replace />} />
         <Route path="/login" element={!isAuth ? <Login onLogin={() => handleAuth(true)} /> : <Navigate to="/" replace />} />
         <Route path="/register" element={!isAuth ? <Register /> : <Navigate to="/" replace />} />
